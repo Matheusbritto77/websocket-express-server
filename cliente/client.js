@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 // Conectar ao servidor WebSocket
-const ws = new WebSocket('ws://localhost:8080');
+const ws = new WebSocket('ws://websookt-servidor-prada8-6291bb-167-88-33-37.traefik.me:8080');
 
 // Evento de conexão
 ws.on('open', () => {
