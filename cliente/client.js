@@ -1,21 +1,17 @@
 const WebSocket = require('ws');
 
-// Conectar ao servidor WebSocket
-const ws = new WebSocket('ws://websookt-servidor-prada8-6291bb-167-88-33-37.traefik.me:8080');
+// Conectar ao servidor WebSocket (sem especificar a porta)
+const ws = new WebSocket('ws://websookt-servidor-prada8-6291bb-167-88-33-37.traefik.me:80');
 
-// Evento de conexão
 ws.on('open', () => {
   console.log('Conectado ao servidor WebSocket');
   ws.send('Olá, servidor!');
 });
 
-// Receber mensagens do servidor
 ws.on('message', (data) => {
-  const message = JSON.parse(data);
-  console.log('Mensagem recebida do servidor:', message);
+  console.log('Mensagem recebida:', data);
 });
 
-// Evento de erro
 ws.on('error', (error) => {
   console.error('Erro no WebSocket:', error);
 });
