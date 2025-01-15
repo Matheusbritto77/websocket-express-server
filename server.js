@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 // Criar o servidor WebSocket diretamente (sem servidor HTTP)
-const wss = new WebSocket.Server({ port: 80 });
+const wss = new WebSocket.Server({ port: 8080});
 
 console.log('Servidor WebSocket rodando na porta 80');
 

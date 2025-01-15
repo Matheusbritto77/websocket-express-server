@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 // Conectar ao servidor WebSocket (sem especificar a porta)
-const ws = new WebSocket('ws://sket-soket-cvy6ep-3c548c-167-88-33-37.traefik.me:8080');
+const ws = new WebSocket('ws://sket-soket-cvy6ep-3c548c-167-88-33-37.traefik.me:80');
 
 ws.on('open', () => {
   console.log('Conectado ao servidor WebSocket');
