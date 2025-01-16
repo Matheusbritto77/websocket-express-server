@@ -1,59 +1,60 @@
 const WebSocket = require('ws');
 
-// Criar o servidor WebSocket
-const wss = new WebSocket.Server({ port: 443 });
+class ChatServer {
+  constructor(port = 443) {
+    this.wss = new WebSocket.Server({ port });
+    this.clients = new Map();
+    console.log(`Servidor WebSocket rodando na porta ${port}`);
+  }
 
-console.log('Servidor WebSocket rodando na porta 443');
+  start() {
+    this.wss.on('connection', (ws) => this.handleConnection(ws));
+  }
 
-// Armazena conexões dos clientes
-const clients = new Map();
+  handleConnection(ws) {
+    const clientId = this.generateClientId();
+    console.log('Cliente conectado', clientId);
 
-wss.on('connection', (ws) => {
-  console.log('Cliente conectado');
+    // Armazenar a conexão do cliente
+    this.clients.set(clientId, ws);
 
-  // Gerar um identificador único para o cliente
-  const clientId = `client_${Date.now()}`;
-  clients.set(clientId, ws);
-  console.log(`Cliente registrado com ID: ${clientId}`);
+    // Enviar o ID do cliente para o próprio cliente
+    ws.send(JSON.stringify({ event: 'connected', clientId }));
 
-  // Enviar uma mensagem de boas-vindas com o ID do cliente
-  ws.send(JSON.stringify({ event: 'connected', clientId }));
+    // Quando o cliente enviar uma mensagem
+    ws.on('message', (message) => this.handleMessage(clientId, message));
 
-  // Quando receber uma mensagem do cliente
-  ws.on('message', (message) => {
-    try {
-      const data = JSON.parse(message);
+    // Quando o cliente se desconectar
+    ws.on('close', () => this.handleClose(clientId));
+  }
 
-      // Tratamento de eventos de sinalização
-      switch (data.event) {
-        case 'offer':
-        case 'answer':
-        case 'ice-candidate':
-          // Redirecionar a mensagem para o destino
-          const targetClient = clients.get(data.target);
-          if (targetClient) {
-            targetClient.send(JSON.stringify(data));
-          } else {
-            ws.send(
-              JSON.stringify({
-                event: 'error',
-                message: 'Destinatário não encontrado',
-              })
-            );
-          }
-          break;
+  handleMessage(clientId, message) {
+    console.log(`Mensagem recebida de ${clientId}:`, message);
 
-        default:
-          console.log('Evento desconhecido:', data.event);
+    // Procurar outro cliente para enviar a mensagem
+    this.clients.forEach((client, otherClientId) => {
+      if (otherClientId !== clientId) {
+        // Enviar a mensagem para o outro cliente
+        client.send(JSON.stringify({
+          event: 'message',
+          from: clientId,
+          message
+        }));
       }
-    } catch (err) {
-      console.error('Erro ao processar mensagem:', err);
-    }
-  });
+    });
+  }
 
-  // Quando o cliente desconectar
-  ws.on('close', () => {
+  handleClose(clientId) {
     console.log(`Cliente desconectado: ${clientId}`);
-    clients.delete(clientId);
-  });
-});
+    this.clients.delete(clientId);
+  }
+
+  generateClientId() {
+    // Gera um ID único para o cliente
+    return Math.random().toString(36).substr(2, 9);
+  }
+}
+
+// Inicializar o servidor
+const chatServer = new ChatServer();
+chatServer.start();
