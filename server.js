@@ -35,6 +35,15 @@ class ChatServer {
   handleMessage(clientId, message) {
     console.log(`Mensagem recebida de ${clientId}:`, message);
 
+    // Tenta parsear a mensagem recebida, caso não seja um JSON válido, será ignorado
+    let parsedMessage;
+    try {
+      parsedMessage = JSON.parse(message);
+    } catch (error) {
+      console.error('Mensagem inválida:', message);
+      return;
+    }
+
     // Procurar outro cliente conectado no mesmo par
     const pairId = this.clients.get(clientId).pairId;
     const pair = this.clients.get(pairId);
@@ -44,7 +53,7 @@ class ChatServer {
       pair.send(JSON.stringify({
         event: 'message',
         from: clientId,
-        message
+        message: parsedMessage.message
       }));
     }
   }
