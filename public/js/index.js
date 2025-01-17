@@ -99,26 +99,17 @@ function enterInRoom(e) {
         socket.emit('join-room', roomName);
     } else {
         // Se não houver sala disponível, cria uma nova e coloca o cliente nela
-        availableRooms[roomName] = 'available';  // Marca a sala como disponível
-        console.log(`Sala ${roomName} criada e esperando por outro cliente`);
+        availableRooms[roomName] = ' available';  // Marca a sala como disponivel
+        console.log(`Sala ${roomName} criada e ocupada por um novo cliente`);
 
         // Conecta o cliente à sala criada
         socket.emit('join-room', roomName);
     }
 
-    // Atualiza a interface para mostrar que o primeiro cliente entrou na sala e está aguardando o segundo
+    // Atualiza a interface para mostrar a sala
     showPlayers();  // Atualiza a interface para a sala
-
-    // Aguarda a conexão do segundo cliente
-    socket.on('waiting-for-second-client', function() {
-        // Quando o segundo cliente entrar, conecta ambos à sala
-        socket.emit('connect', roomName);
-        console.log(`Cliente conectado à sala ${roomName}`);
-
-        // Atualizar a interface para mostrar que o segundo cliente entrou na sala
-        showPlayers();  // Atualiza a interface para a sala
-    });
 }
+
 
 // Função para mostrar os jogadores
 function showPlayers() {
