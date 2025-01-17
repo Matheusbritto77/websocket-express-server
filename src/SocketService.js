@@ -60,12 +60,19 @@ class SocketService {
                 })
 
                 socket.on(EVENT_CANDIDATE, (data) => {
-                    console.log(`${socket.id} sending a candidate to ${data.id}`)
-                    socket.to(data.id).emit(EVENT_CANDIDATE, {
-                        id: socket.id,
-                        candidate: data.candidate
-                    })
+                    console.log(`${socket.id} enviando candidato para ${data.id}`)
+                    
+                    // Verifique se o candidato foi enviado anteriormente, ou adicione lógica para esperar a resposta do outro lado
+                    if (socket.handshake.query.ready) { 
+                        socket.to(data.id).emit(EVENT_CANDIDATE, {
+                            id: socket.id,
+                            candidate: data.candidate
+                        })
+                    } else {
+                        console.log(`${socket.id} aguardando resposta de ICE antes de enviar candidato`)
+                    }
                 })
+                
 
                 socket.on(EVENT_DISCONNECT, () => {
                     console.log(`${socket.id} disconnected`)
