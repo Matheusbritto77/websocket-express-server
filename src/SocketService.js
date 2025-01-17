@@ -5,6 +5,7 @@ const EVENT_ANSWER = 'answer';
 const EVENT_CANDIDATE = 'candidate';
 const EVENT_DISCONNECT_USER = 'disconnect-user';
 const EVENT_DISCONNECT = 'disconnect';
+const EVENT_READY = 'ready'; // Novo evento indicando que o cliente está pronto
 
 class SocketService {
     constructor(http) {
@@ -36,7 +37,7 @@ class SocketService {
         
                 console.log(`Sala ${roomName} criada com os usuários ${user1.id} e ${user2.id}`);
         
-                // Emite o evento de chamada para ambos os usuários
+                // Notifica que ambos os usuários estão prontos para trocar ofertas
                 user1.emit(EVENT_CALL, { id: user2.id });
                 user2.emit(EVENT_CALL, { id: user1.id });
             }
@@ -56,13 +57,17 @@ class SocketService {
                     answer: data.answer
                 });
             });
-
+        
             socket.on(EVENT_CANDIDATE, (data) => {
                 console.log(`${socket.id} enviando candidato para ${data.id}`);
                 socket.to(data.id).emit(EVENT_CANDIDATE, {
                     id: socket.id,
                     candidate: data.candidate
                 });
+            });
+
+            socket.on(EVENT_READY, () => {
+                console.log(`${socket.id} está pronto para a troca de SDP.`);
             });
 
             socket.on(EVENT_DISCONNECT, () => {
@@ -84,4 +89,4 @@ class SocketService {
 
 module.exports = (http) => {
     return new SocketService(http);
-}
+};
