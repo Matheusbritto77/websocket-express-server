@@ -19,10 +19,29 @@ function initServerConnection(room) {
     socket.on('disconnect-user', function (data) {
         var user = users.get(data.id);
         if (user) {
+            // Remove o usuário da lista
             users.delete(data.id);
             user.selfDestroy();
+    
+            // Verifica a sala do usuário desconectado
+            let roomName = data.room; // Presume que `data` contém a sala do usuário
+            if (roomName && availableRooms[roomName]) {
+                // Verifica se há mais usuários na sala
+                let isRoomEmpty = [...users.values()].every(u => u.room !== roomName);
+    
+                if (isRoomEmpty) {
+                    // Se a sala estiver vazia, destrói a sala
+                    delete availableRooms[roomName];
+                    console.log(`Sala ${roomName} foi destruída, pois não há mais usuários.`);
+                } else {
+                    // Se ainda houver usuários, marca a sala como "disponível"
+                    availableRooms[roomName] = 'available';
+                    console.log(`Sala ${roomName} está disponível novamente.`);
+                }
+            }
         }
     });
+    
 
     socket.on('call', function (data) {
         let user = new User(data.id);
