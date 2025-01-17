@@ -86,11 +86,11 @@ function enterInRoom(e) {
     // Gera um nome aleatório para a sala
     let roomName = generateRandomRoomName();
 
-    // Verifica se existe uma sala disponível
+    // Verifica se existe uma sala com uma pessoa sozinha
     let availableRoom = Object.keys(availableRooms).find(room => availableRooms[room] === 'available');
 
     if (availableRoom) {
-        // Se houver uma sala disponível, conecta o usuário a essa sala
+        // Se houver uma sala disponível com uma pessoa sozinha, conecta o novo cliente a essa sala
         roomName = availableRoom;
         availableRooms[roomName] = 'occupied';  // Marca a sala como ocupada
         console.log(`Sala ${roomName} ocupada por um novo cliente`);
@@ -98,9 +98,9 @@ function enterInRoom(e) {
         // Conecta o cliente à sala
         socket.emit('join-room', roomName);
     } else {
-        // Se não houver sala disponível, cria uma nova e coloca o cliente nela
-        availableRooms[roomName] = ' available';  // Marca a sala como disponivel
-        console.log(`Sala ${roomName} criada e ocupada por um novo cliente`);
+        // Se não houver uma sala disponível com uma pessoa sozinha, cria uma nova sala
+        availableRooms[roomName] = 'available';  // Marca a sala como disponível
+        console.log(`Sala ${roomName} criada e esperando por outro cliente`);
 
         // Conecta o cliente à sala criada
         socket.emit('join-room', roomName);
