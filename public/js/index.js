@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function (stream) {
         myStream = stream;
         setLocalPlayerStream(); // Função para exibir o vídeo local
-        initServerConnection(); // Conectar ao servidor automaticamente
+        const roomName = generateRandomRoomName(); // Gerar nome aleatório para a sala
+        initServerConnection(roomName); // Conectar ao servidor automaticamente com o nome da sala
     })
     .catch(function (err) {
         console.log(err);
@@ -26,9 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }, false);
 
-function initServerConnection() {
-    // Conexão sem necessidade de passar room, apenas utilizando socket padrão
-    socket = io();
+function initServerConnection(room) {
+    // Conexão com o nome da sala gerado aleatoriamente
+    socket = io({
+        query: {
+            room: room
+        }
+    });
 
     socket.on('disconnect-user', function (data) {
         var user = users.get(data.id);
@@ -110,4 +115,9 @@ function leave() {
     users.clear();
     removeAllMessages(); // Limpar todas as mensagens
     showForm(); // Mostrar o formulário novamente
+}
+
+function generateRandomRoomName() {
+    // Função para gerar um nome de sala aleatório
+    return 'room_' + Math.random().toString(36).substring(2, 15);
 }
