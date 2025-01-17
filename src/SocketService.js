@@ -42,6 +42,7 @@ class SocketService {
                 user2.emit(EVENT_CALL, { id: user1.id });
             }
         
+            // Evento de oferta de conexão
             socket.on(EVENT_OFFER, (data) => {
                 console.log(`${socket.id} oferecendo para ${data.id}`);
                 socket.to(data.id).emit(EVENT_OFFER, {
@@ -50,6 +51,7 @@ class SocketService {
                 });
             });
         
+            // Evento de resposta à oferta
             socket.on(EVENT_ANSWER, (data) => {
                 console.log(`${socket.id} respondendo para ${data.id}`);
                 socket.to(data.id).emit(EVENT_ANSWER, {
@@ -58,6 +60,7 @@ class SocketService {
                 });
             });
         
+            // Evento de candidato ICE
             socket.on(EVENT_CANDIDATE, (data) => {
                 console.log(`${socket.id} enviando candidato para ${data.id}`);
                 socket.to(data.id).emit(EVENT_CANDIDATE, {
@@ -66,10 +69,12 @@ class SocketService {
                 });
             });
 
+            // Evento de cliente pronto para troca de SDP
             socket.on(EVENT_READY, () => {
                 console.log(`${socket.id} está pronto para a troca de SDP.`);
             });
 
+            // Evento de desconexão
             socket.on(EVENT_DISCONNECT, () => {
                 console.log(`${socket.id} desconectado.`);
                 this.handleUserDisconnect(socket);
