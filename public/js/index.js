@@ -90,14 +90,42 @@ function initServerConnection(room) {
     return socket
 }
 
-function enterInRoom (e) {
-    e.preventDefault()
-    room = document.getElementById('inputRoom').value
+var waitingQueue = [];  // Lista de espera para os clientes
 
-    if (room) {
-        socket = initServerConnection(room)
+// Função para gerar um nome aleatório para a sala
+function generateRandomRoomName() {
+    return 'room-' + Math.random().toString(36).substring(2, 8);  // Gera um nome aleatório
+}
+
+function enterInRoom(e) {
+    e.preventDefault();
+
+    // Adiciona o cliente na lista de espera
+    waitingQueue.push(socket);
+
+    // Verifica se existem pelo menos 2 clientes esperando
+    if (waitingQueue.length >= 2) {
+        // Gera um nome aleatório para a sala
+        const roomName = generateRandomRoomName();
+
+        // Pega os dois primeiros clientes da lista de espera
+        const client1 = waitingQueue.shift();
+        const client2 = waitingQueue.shift();
+
+        // Conecta os clientes na sala
+        client1.emit('join-room', roomName);
+        client2.emit('join-room', roomName);
+
+        // Cria a sala no servidor (você precisa configurar isso no seu servidor)
+        socket = initServerConnection(roomName);  // Conecta o cliente atual
+        client1.emit('connect', roomName);
+        client2.emit('connect', roomName);
+    } else {
+        // Se não tiver 2 clientes, o cliente ficará aguardando
+        console.log('Aguardando outros clientes para formar a sala...');
     }
 }
+
 
 function broadcastChatMessage(e) {
     e.preventDefault()
