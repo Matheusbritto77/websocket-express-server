@@ -3,7 +3,11 @@ var socket;
 const users = new Map();
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('roomForm').addEventListener('submit', initServerConnection)
+  // Adiciona o evento ao formulário de sala
+  document.getElementById('roomForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o envio tradicional do formulário
+    initServerConnection(); // Inicia a conexão do servidor após o submit
+});
     document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
     document.getElementById('leave').addEventListener('click', leave);
 
