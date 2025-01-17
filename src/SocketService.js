@@ -56,13 +56,13 @@ class SocketService {
             });
 
             socket.on(EVENT_CANDIDATE, (data) => {
-                console.log(`${socket.id} sending a candidate to ${data.id}`);
+                console.log(`${socket.id} sending a candidate to ${data.id}`)
                 socket.to(data.id).emit(EVENT_CANDIDATE, {
                     id: socket.id,
                     candidate: data.candidate
-                });
-            });
-
+                })
+            })
+            
             // Desconexão do usuário
             socket.on(EVENT_DISCONNECT, () => {
                 console.log(`${socket.id} disconnected`);
