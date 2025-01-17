@@ -1,18 +1,15 @@
 {
-  "name": "websocket-express-server",
+  "name": "api-p2p-video-chat",
   "version": "1.0.0",
-  "description": "Servidor WebSocket com Express",
-  "main": "server.js",
+  "description": "Create rooms using websocket to help users connect using webrtc",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "ws": "^8.8.0"
-  },
-  "devDependencies": {},
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "license": "ISC"
+    "express": "^4.17.1",
+    "socket.io": "^4.8.1"
+  }
 }
