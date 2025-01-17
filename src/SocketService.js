@@ -5,6 +5,7 @@ const EVENT_ANSWER = 'answer'
 const EVENT_CANDIDATE = 'candidate'
 const EVENT_DISCONNECT_USER = 'disconnect-user'
 const EVENT_DISCONNECT = 'disconnect'
+const EVENT_ENTER_ROOM = 'enter-room'
 
 class SocketService {
     constructor(http) {
@@ -33,6 +34,10 @@ class SocketService {
                 // Coloca os dois clientes na sala
                 user1.join(roomName)
                 user2.join(roomName)
+
+                // Emitir evento para que os clientes saiam da tela de carregamento e entrem na sala
+                user1.emit(EVENT_ENTER_ROOM, { id: user2.id, room: roomName })
+                user2.emit(EVENT_ENTER_ROOM, { id: user1.id, room: roomName })
 
                 // Inicia a chamada entre os dois clientes
                 user1.emit(EVENT_CALL, { id: user2.id, room: roomName })
@@ -114,6 +119,7 @@ class SocketService {
         }
     }
 
+    // Função para realizar a limpeza quando a sala está vazia
     cleanupRoom(roomName) {
         this.io.in(roomName).clients((error, clients) => {
             if (error) throw error;
@@ -125,6 +131,4 @@ class SocketService {
     }
 }
 
-module.exports = (http) => {
-    return new SocketService(http)
-}
+module.exports = SocketService;

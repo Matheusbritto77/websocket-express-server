@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
     document.getElementById('leave').addEventListener('click', leave);
 
+    // Obter o stream do usuário
     navigator.mediaDevices.getUserMedia({ 
         video: {
             height: 480,
@@ -14,41 +15,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 
         audio: true 
     })
-    .then(function(stream) {
+    .then(function (stream) {
         myStream = stream;
-        setLocalPlayerStream();
-        showForm();
-    }).catch(function(err) {
+        setLocalPlayerStream(); // Função para exibir o vídeo local
+        initServerConnection(); // Conectar ao servidor automaticamente
+    })
+    .catch(function (err) {
         console.log(err);
-        showFail();
+        showFail(); // Função para mostrar erro de falha
     });
 }, false);
 
-function initServerConnection(room) {
-    // Remova a declaração de 'var socket' aqui para não sobrescrever a variável global 'socket'
-    socket = io({
-        query: {
-            room: room
-        }
-    });
+function initServerConnection() {
+    // Conexão sem necessidade de passar room, apenas utilizando socket padrão
+    socket = io();
 
-    socket.on('disconnect-user', function(data) {
+    socket.on('disconnect-user', function (data) {
         var user = users.get(data.id);
-        if(user) {
+        if (user) {
             users.delete(data.id);
             user.selfDestroy();
         }
     });
 
-    socket.on('call', function(data) {
+    socket.on('call', function (data) {
         let user = new User(data.id);
         user.pc = createPeer(user);
         users.set(data.id, user);
 
-        createOffer(user, socket);
+        createOffer(user, socket); // Enviar uma oferta para o novo usuário
     });
 
-    socket.on('offer', function(data) {
+    socket.on('offer', function (data) {
         var user = users.get(data.id);
         if (user) {
             answerPeer(user, data.offer, socket);
@@ -60,14 +58,14 @@ function initServerConnection(room) {
         }
     });
 
-    socket.on('answer', function(data) {
+    socket.on('answer', function (data) {
         var user = users.get(data.id);
-        if(user) {
+        if (user) {
             user.pc.setRemoteDescription(data.answer);
         }
     });
 
-    socket.on('candidate', function(data) {
+    socket.on('candidate', function (data) {
         var user = users.get(data.id);
         if (user) {
             user.pc.addIceCandidate(data.candidate);
@@ -79,26 +77,15 @@ function initServerConnection(room) {
         }
     });
 
-    socket.on('connect', function() {
-        showPlayers();
+    socket.on('connect', function () {
+        showPlayers(); // Função para exibir os jogadores
     });
 
     socket.on('connect_error', function(error) {
         console.log('Connection ERROR!');
         console.log(error);
-        leave();
+        leave(); // Função para deixar o chat
     });
-
-    return socket;
-}
-
-function enterInRoom(e) {
-    e.preventDefault();
-    room = document.getElementById('inputRoom').value;
-
-    if (room) {
-        socket = initServerConnection(room);
-    }
 }
 
 function broadcastChatMessage(e) {
@@ -106,21 +93,21 @@ function broadcastChatMessage(e) {
 
     var message = document.getElementById('inputChatMessage').value;
 
-    addMessage(message);
+    addMessage(message); // Função para adicionar a mensagem na interface
 
-    for(var user of users.values()) {
-        user.sendMessage(message);
+    for (var user of users.values()) {
+        user.sendMessage(message); // Enviar mensagem para todos os usuários
     }
 
     document.getElementById('inputChatMessage').value = '';
 }
 
 function leave() {
-    socket.close();
-    for(var user of users.values()) {
-        user.selfDestroy();
+    socket.close(); // Fechar conexão de socket
+    for (var user of users.values()) {
+        user.selfDestroy(); // Remover cada usuário da sala
     }
     users.clear();
-    removeAllMessages();
-    showForm();
+    removeAllMessages(); // Limpar todas as mensagens
+    showForm(); // Mostrar o formulário novamente
 }
