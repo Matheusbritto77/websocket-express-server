@@ -100,31 +100,37 @@ function generateRandomRoomName() {
 function enterInRoom(e) {
     e.preventDefault();
 
-    // Adiciona o cliente na lista de espera
-    waitingQueue.push(socket);
+    // Gera um nome aleatório para a sala
+    let roomName = generateRandomRoomName();
 
-    // Verifica se existem pelo menos 2 clientes esperando
-    if (waitingQueue.length >= 2) {
-        // Gera um nome aleatório para a sala
-        const roomName = generateRandomRoomName();
+    // Verifica se existe uma sala disponível
+    let availableRoom = Object.keys(availableRooms).find(room => availableRooms[room] === 'available');
 
-        // Pega os dois primeiros clientes da lista de espera
-        const client1 = waitingQueue.shift();
-        const client2 = waitingQueue.shift();
+    if (availableRoom) {
+        // Se houver uma sala disponível, conecta o usuário a essa sala
+        roomName = availableRoom;
+        availableRooms[roomName] = 'occupied';  // Marca a sala como ocupada
+        console.log(`Sala ${roomName} ocupada por um novo cliente`);
 
-        // Conecta os clientes na sala
-        client1.emit('join-room', roomName);
-        client2.emit('join-room', roomName);
-
-        // Cria a sala no servidor (você precisa configurar isso no seu servidor)
-        socket = initServerConnection(roomName);  // Conecta o cliente atual
-        client1.emit('connect', roomName);
-        client2.emit('connect', roomName);
+        // Conecta o cliente à sala
+        socket.emit('join-room', roomName);
     } else {
-        // Se não tiver 2 clientes, o cliente ficará aguardando
-        console.log('Aguardando outros clientes para formar a sala...');
+        // Se não houver sala disponível, cria uma nova e coloca o cliente nela
+        availableRooms[roomName] = 'available';  // Marca a sala como disponível
+        console.log(`Sala ${roomName} criada e esperando por outro cliente`);
+
+        // Coloca o cliente na sala criada, aguardando o próximo
+        socket.emit('join-room', roomName);
     }
+
+    // Aguarda a conexão do segundo cliente
+    socket.on('waiting-for-second-client', function() {
+        // Quando o segundo cliente entrar, conecta ambos à sala
+        socket.emit('connect', roomName);
+        console.log(`Cliente conectado à sala ${roomName}`);
+    });
 }
+
 
 
 function broadcastChatMessage(e) {
