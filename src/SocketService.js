@@ -38,22 +38,21 @@ class SocketService {
                 socket.to(roomName).emit(EVENT_CALL, { id: socket.id });
             }
 
-            // Eventos de oferta, resposta e candidato
             socket.on(EVENT_OFFER, (data) => {
-                console.log(`${socket.id} offering ${data.id}`);
+                console.log(`${socket.id} offering ${data.id}`)
                 socket.to(data.id).emit(EVENT_OFFER, {
                     id: socket.id,
                     offer: data.offer
-                });
-            });
+                })
+            })
 
             socket.on(EVENT_ANSWER, (data) => {
-                console.log(`${socket.id} answering ${data.id}`);
+                console.log(`${socket.id} answering ${data.id}`)
                 socket.to(data.id).emit(EVENT_ANSWER, {
                     id: socket.id,
                     answer: data.answer
-                });
-            });
+                })
+            })
 
             socket.on(EVENT_CANDIDATE, (data) => {
                 console.log(`${socket.id} sending a candidate to ${data.id}`)
@@ -62,7 +61,7 @@ class SocketService {
                     candidate: data.candidate
                 })
             })
-            
+
             // Desconexão do usuário
             socket.on(EVENT_DISCONNECT, () => {
                 console.log(`${socket.id} disconnected`);
