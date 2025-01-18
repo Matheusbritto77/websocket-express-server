@@ -1,15 +1,13 @@
-var myStream;
-var socket;
-const users = new Map();
+var getUserMedia
+var myStream
+var socket
+const users = new Map()
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Adiciona o evento ao formulário de sala
-  document.getElementById('roomForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede o envio tradicional do formulário
-    initServerConnection(); // Inicia a conexão do servidor após o submit
-});
-    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
-    document.getElementById('leave').addEventListener('click', leave);
+
+    document.getElementById('roomForm').addEventListener('submit', enterInRoom)
+    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage)
+    document.getElementById('leave').addEventListener('click', leave)
 
     navigator.mediaDevices.getUserMedia({ video: {
         height: 480,
@@ -25,23 +23,20 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 }, false)
 
-
-function initServerConnection() {
-    socket = io(); // Não é necessário passar o nome da sala aqui
+function initServerConnection(room) {
+    var socket = io({
+        query : {
+            room: room
+        }
+    })
 
     socket.on('disconnect-user', function (data) {
-        var user = users.get(data.id);
+        var user = users.get(data.id)
         if(user) {
-            users.delete(data.id);
-            user.selfDestroy();
+            users.delete(data.id)
+            user.selfDestroy()
         }
-    });
-
-
-    // Mostra a tela de loading quando o usuário está na lista de espera
-    socket.on('waiting', function() {
-        showLoading();
-    });
+    })
     
     socket.on('call',  function (data) {
         let user = new User(data.id)
@@ -81,40 +76,49 @@ function initServerConnection() {
             users.set(data.id, user)
         }
     })
-
+    
     socket.on('connect', function () {
-        showPlayers();
-    });
+        showPlayers()
+    })
 
     socket.on('connect_error', function(error) {
-        console.log('Connection ERROR!');
-        console.log(error);
-        leave();
-    });
+        console.log('Connection ERROR!')
+        console.log(error)
+        leave()
+    })
+    
+    return socket
+}
 
-    return socket;
+function enterInRoom (e) {
+    e.preventDefault()
+    room = document.getElementById('inputRoom').value
+
+    if (room) {
+        socket = initServerConnection(room)
+    }
 }
 
 function broadcastChatMessage(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    var message = document.getElementById('inputChatMessage').value;
+    var message = document.getElementById('inputChatMessage').value
 
-    addMessage(message);
+    addMessage(message)
 
     for(var user of users.values()) {
-        user.sendMessage(message);
+        user.sendMessage(message)
     }
 
-    document.getElementById('inputChatMessage').value = '';
+    document.getElementById('inputChatMessage').value = ''
 }
 
 function leave() {
-    socket.close();
+    socket.close()
     for(var user of users.values()) {
-        user.selfDestroy();
+        user.selfDestroy()
     }
-    users.clear();
-    removeAllMessages();
-    showForm();
+    users.clear()
+    removeAllMessages()
+    showForm()
 }
