@@ -11,7 +11,5 @@ COPY . /app
 RUN npm install
 
 # Expor a porta 80 para permitir acesso externo
-EXPOSE 80
+EXPOSE 443
 
-# Definir o comando para rodar o servidor na porta 80
-CMD ["node", "server.js"]
