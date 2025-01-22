@@ -42,7 +42,7 @@ class SocketService {
                 console.log('Requesting offers');
                 socket.to(newRoomName).emit(EVENT_CALL, { id: socket.id });
             
-        
+            }
         
 
 
@@ -76,7 +76,7 @@ class SocketService {
                         id: socket.id
                     })
                 })
-            }
+            
         })
     }
 }
