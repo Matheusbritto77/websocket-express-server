@@ -2,6 +2,7 @@ var getUserMedia
 var myStream
 var socket
 const users = new Map()
+let activeRooms = [];
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -90,9 +91,12 @@ function initServerConnection(room) {
     return socket
 }
 
-// Array para armazenar salas ativas
-let activeRooms = [];
 
+
+
+
+
+// Função principal chamada quando o evento 'enterInRoom' ocorre
 function enterInRoom(e) {
     e.preventDefault();
 
@@ -104,19 +108,29 @@ function enterInRoom(e) {
         room = activeRooms.pop();
         console.log(`Reusing room: ${room}`);
     } else {
-        // Caso não tenha nenhuma sala armazenada, gera uma nova
+        // Caso não tenha nenhuma sala armazenada, gera uma nova e adiciona ao array
         room = generateRandomRoomName();
-        console.log(`Generated new room: ${room}`);
+        activeRooms.push(room); // Adiciona o nome da sala ao array
+        console.log(`Generated and added new room: ${room}`);
     }
 
     // Chama a função initServerConnection passando o nome da sala
     socket = initServerConnection(room);
+
+    // Limpa o array após o uso da sala
+    if (activeRooms.length > 0) {
+        activeRooms = []; // Limpa o array de salas
+    }
 }
 
 // Função para gerar um nome aleatório para a sala
 function generateRandomRoomName() {
     return 'room-' + Math.random().toString(36).substr(2, 9); // Gera uma string aleatória
 }
+
+
+
+
 
 function broadcastChatMessage(e) {
     e.preventDefault()
