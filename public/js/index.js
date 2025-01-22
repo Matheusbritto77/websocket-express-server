@@ -90,19 +90,31 @@ function initServerConnection(room) {
     return socket
 }
 
+// Array para armazenar salas ativas
+let activeRooms = [];
+
 function enterInRoom(e) {
     e.preventDefault();
 
-    // Gerar um nome aleatório para a sala
-    const room = generateRandomRoomName();
+    let room;
 
-    // Chama a função initServerConnection passando o nome aleatório da sala
+    // Verifica se há alguma sala no array
+    if (activeRooms.length > 0) {
+        // Se houver, pega o primeiro nome de sala e remove do array
+        room = activeRooms.pop();
+        console.log(`Reusing room: ${room}`);
+    } else {
+        // Caso não tenha nenhuma sala armazenada, gera uma nova
+        room = generateRandomRoomName();
+        console.log(`Generated new room: ${room}`);
+    }
+
+    // Chama a função initServerConnection passando o nome da sala
     socket = initServerConnection(room);
 }
 
 // Função para gerar um nome aleatório para a sala
 function generateRandomRoomName() {
-    // Gerando um nome aleatório para a sala
     return 'room-' + Math.random().toString(36).substr(2, 9); // Gera uma string aleatória
 }
 
