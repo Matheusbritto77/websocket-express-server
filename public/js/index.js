@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
     // Evento para sair da sala
     document.getElementById('leave').addEventListener('click', leave);
+    document.getElementById('nextButton').addEventListener('click', next);
+
 
     navigator.mediaDevices.getUserMedia({ video: {
         height: 480,
@@ -126,3 +128,15 @@ function leave() {
     removeAllMessages()
     showForm()
 }
+
+
+function next() {
+    socket.close()
+    for(var user of users.values()) {
+        user.selfDestroy()
+    }
+    users.clear()
+    removeAllMessages()
+    nextrom()
+}
+

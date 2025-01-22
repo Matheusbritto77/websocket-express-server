@@ -74,35 +74,41 @@
         </nav>
     
         <!-- Área de Vídeo e Chat -->
-        <div class="flex flex-col md:flex-row p-4 space-y-4 md:space-y-0">
-            <!-- Área de Vídeos -->
-            <div class="flex flex-row gap-4 w-full md:w-3/4">
-                <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
-                    <video id="local-player" class="w-full h-auto rounded-lg" autoplay muted></video>
-                </div>
-                <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
-                    <video id="players-row" class="w-full h-auto rounded-lg" autoplay></video>
-                </div>
-            </div>
-    
-            <!-- Área de Chat -->
-            <div class="w-full md:w-1/4 bg-blue-800 p-4 rounded-lg shadow-lg">
-                <!-- Formulário de envio de mensagens -->
-                <form id="chatForm" class="w-full">
-                    <input id="inputChatMessage" type="text" placeholder="Digite sua mensagem..." class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                    <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
-                        <i class="material-icons">send</i> Enviar
-                    </button>
-                </form>
-    
-                <!-- Área para mensagens -->
-                <div id="message-printer" class="bg-blue-700 p-3 rounded-lg h-48 overflow-y-auto mt-4">
-                    <!-- As mensagens aparecerão aqui -->
-                </div>
-            </div>
+<div class="flex flex-col md:flex-row p-4 space-y-4 md:space-y-0">
+    <!-- Área de Vídeos -->
+    <div class="flex flex-row gap-4 w-full md:w-3/4">
+        <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
+            <video id="local-player" class="w-full h-auto rounded-lg" autoplay muted></video>
+        </div>
+        <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
+            <video id="players-row" class="w-full h-auto rounded-lg" autoplay></video>
         </div>
     </div>
-    
+
+    <!-- Área de Chat -->
+    <div class="w-full md:w-1/4 bg-blue-800 p-4 rounded-lg shadow-lg">
+        <!-- Formulário de envio de mensagens -->
+        <form id="chatForm" class="w-full">
+            <input id="inputChatMessage" type="text" placeholder="Digite sua mensagem..." class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+            <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
+                <i class="material-icons">send</i> Enviar
+            </button>
+        </form>
+
+        <!-- Área para mensagens -->
+        <div id="message-printer" class="bg-blue-700 p-3 rounded-lg h-48 overflow-y-auto mt-4">
+            <!-- As mensagens aparecerão aqui -->
+        </div>
+
+        <!-- Botão Próximo -->
+        <div class="mt-4 flex justify-center">
+            <button id="nextButton" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
+                Próximo
+            </button>
+        </div>
+    </div>
+</div>
+
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script src="js/user.js"></script>
