@@ -5,9 +5,8 @@ const users = new Map()
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    document.getElementById('roomForm').addEventListener('submit', enterInRoom)
-    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage)
-    document.getElementById('leave').addEventListener('click', leave)
+    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
+    document.getElementById('leave').addEventListener('click', leave);
 
     navigator.mediaDevices.getUserMedia({ video: {
         height: 480,
@@ -23,12 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 }, false)
 
-function initServerConnection(room) {
-    var socket = io({
-        query : {
-            room: room
-        }
-    })
+function initServerConnection() {
+    socket = io(); // Não é necessário passar o nome da sala aqui
 
     socket.on('disconnect-user', function (data) {
         var user = users.get(data.id)

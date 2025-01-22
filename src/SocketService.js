@@ -16,14 +16,30 @@ class SocketService {
         this.io = require('socket.io')(http)
 
         this.io.on(EVENT_CONNECTION, (socket) => {
-            const room = socket.handshake.query.room
-            if (!room) {
-                socket.disconnect()
+           
+
+            // Verificar se já existe uma sala com 1 usuário
+            let availableRoom = null;
+            for (const [room, users] of this.io.sockets.adapter.rooms) {
+                if (users.size === 1) {
+                    availableRoom = room; // Encontrou uma sala com 1 usuário
+                    break;
+                }
+            }
+
+
+             if (availableRoom) {
+                socket.join(availableRoom);
+                console.log(`User ${socket.id} joined existing room ${availableRoom}`);
+                socket.to(availableRoom).emit(EVENT_CALL, { id: socket.id });
             } else {
-                console.log(`new user enter in room ${room}`)
-                socket.join(room)
-                console.log('requesting offers')
-                socket.to(room).emit(EVENT_CALL, { id: socket.id })
+                // Caso contrário, cria uma nova sala
+                const roomName = `room-${socket.id}`;
+                socket.join(roomName);
+                console.log(`User ${socket.id} created and joined new room ${roomName}`);
+                socket.to(roomName).emit(EVENT_CALL, { id: socket.id });
+
+                
 
                 socket.on(EVENT_OFFER, (data) => {
                     console.log(`${socket.id} offering ${data.id}`)
