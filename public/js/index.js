@@ -104,7 +104,7 @@ function enterInRoom(e) {
     let activeRooms = [];
 
     // Verifica se há alguma sala no array
-    if (activeRooms.length > 1) {
+    if (activeRooms.length > 0) {
         // Se houver, pega o primeiro nome de sala e remove do array
         room = activeRooms.pop();
         console.log(`Reusing room: ${room}`);
@@ -119,7 +119,7 @@ function enterInRoom(e) {
     socket = initServerConnection(room);
 
     // Limpa o array após o uso da sala
-    if (activeRooms.length > 1) {
+    if (activeRooms.length > 0) {
         activeRooms = []; // Limpa o array de salas
     }
 }
