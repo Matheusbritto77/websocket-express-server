@@ -15,15 +15,36 @@ class SocketService {
     init(http) {
         this.io = require('socket.io')(http)
 
+        const { v4: uuidv4 } = require('uuid'); // Importa UUID para nomes únicos de salas
+
         this.io.on(EVENT_CONNECTION, (socket) => {
-            const room = socket.handshake.query.room
-            if (!room) {
-                socket.disconnect()
+            console.log(`New connection: ${socket.id}`);
+        
+            // Verificar se já existe uma sala com 1 usuário
+            let availableRoom = null;
+            for (const [room, users] of this.io.sockets.adapter.rooms) {
+                if (users.size === 1 && !users.has(room)) { // Certificar-se de que a sala não é privada
+                    availableRoom = room; // Encontrou uma sala com 1 usuário
+                    break;
+                }
+            }
+        
+            if (availableRoom) {
+                console.log(`New user entering existing room: ${availableRoom}`);
+                socket.join(availableRoom);
+                console.log('Requesting offers');
+                socket.to(availableRoom).emit(EVENT_CALL, { id: socket.id });
             } else {
-                console.log(`new user enter in room ${room}`)
-                socket.join(room)
-                console.log('requesting offers')
-                socket.to(room).emit(EVENT_CALL, { id: socket.id })
+                // Cria uma nova sala pública com um nome único
+                const newRoomName = `room-${uuidv4()}`;
+                console.log(`New user creating room: ${newRoomName}`);
+                socket.join(newRoomName);
+                console.log('Requesting offers');
+                socket.to(newRoomName).emit(EVENT_CALL, { id: socket.id });
+            
+        
+        
+
 
                 socket.on(EVENT_OFFER, (data) => {
                     console.log(`${socket.id} offering ${data.id}`)

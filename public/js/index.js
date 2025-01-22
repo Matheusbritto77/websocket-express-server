@@ -3,12 +3,18 @@ var myStream
 var socket
 const users = new Map()
 
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Evento de submit no formulário de sala
+    document.getElementById('roomForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede o envio tradicional do formulário
+        showLoading(); // Exibe a tela de carregamento enquanto espera a conexão
+        initServerConnection(); // Inicia a conexão com o servidor
+    });
 
-    document.getElementById('roomForm').addEventListener('submit', enterInRoom)
-    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage)
-    document.getElementById('leave').addEventListener('click', leave)
+    // Evento para enviar mensagens no chat
+    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
+    // Evento para sair da sala
+    document.getElementById('leave').addEventListener('click', leave);
 
     navigator.mediaDevices.getUserMedia({ video: {
         height: 480,
@@ -23,13 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         showFail()
     })
 }, false)
+function initServerConnection() {
+    socket = io(); // Conecta ao servidor
 
-function initServerConnection(room) {
-    var socket = io({
-        query : {
-            room: room
-        }
-    })
+    
 
     socket.on('disconnect-user', function (data) {
         var user = users.get(data.id)
@@ -91,71 +94,14 @@ function initServerConnection(room) {
     return socket
 }
 
+function enterInRoom (e) {
+    e.preventDefault()
+    room = document.getElementById('inputRoom').value
 
-
-
-
-const fs = require('fs');
-const path = require('path');
-
-// Caminho do arquivo onde as salas serão armazenadas
-const roomsFilePath = path.join(__dirname, 'activeRooms.txt');
-
-// Função principal chamada quando o evento 'enterInRoom' ocorre
-function enterInRoom(e) {
-    e.preventDefault();
-
-    let room;
-
-    // Verifica se há salas disponíveis no arquivo
-    const activeRooms = readRoomsFromFile();
-
-    if (activeRooms.length > 0) {
-        // Se houver, pega a primeira sala e remove do arquivo
-        room = activeRooms.pop();
-        console.log(`Reusing room: ${room}`);
-        writeRoomsToFile(activeRooms); // Atualiza o arquivo sem a sala reutilizada
-    } else {
-        // Caso não tenha nenhuma sala armazenada, gera uma nova
-        room = generateRandomRoomName();
-        console.log(`Generated new room: ${room}`);
-        writeRoomsToFile([room]); // Armazena a nova sala no arquivo
-    }
-
-    // Chama a função initServerConnection passando o nome da sala
-    socket = initServerConnection(room);
-}
-
-// Função para ler salas do arquivo
-function readRoomsFromFile() {
-    try {
-        if (fs.existsSync(roomsFilePath)) {
-            const data = fs.readFileSync(roomsFilePath, 'utf-8');
-            return data ? data.split('\n').filter(room => room.trim()) : [];
-        }
-    } catch (err) {
-        console.error('Error reading rooms from file:', err);
-    }
-    return [];
-}
-
-// Função para escrever salas no arquivo
-function writeRoomsToFile(rooms) {
-    try {
-        fs.writeFileSync(roomsFilePath, rooms.join('\n'), 'utf-8');
-    } catch (err) {
-        console.error('Error writing rooms to file:', err);
+    if (room) {
+        socket = initServerConnection(room)
     }
 }
-
-// Função para gerar um nome aleatório para a sala
-function generateRandomRoomName() {
-    return 'room-' + Math.random().toString(36).substr(2, 9); // Gera uma string aleatória
-}
-
-
-
-
 
 function broadcastChatMessage(e) {
     e.preventDefault()
