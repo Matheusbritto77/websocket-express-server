@@ -1,0 +1,13 @@
+# Bloqueia pastas administrativas e arquivos sensíveis
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /private/
+Disallow: /config/
+
+# Permite todas as outras áreas do site
+Allow: /
+
+# Específica URL do sitemap para melhor indexação
+Sitemap: https://strangers-camchat.com/sitemap.xml

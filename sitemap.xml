@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+  <!-- Página inicial -->
+  <url>
+    <loc>https://strangers-camchat.com/</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Arquivos dentro da pasta public -->
+  <url>
+    <loc>https://strangers-camchat.com/public/</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Arquivo index.html dentro da pasta js -->
+  <url>
+    <loc>https://strangers-camchat.com/public/js/index.html</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
