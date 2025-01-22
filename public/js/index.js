@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
     // Evento para sair da sala
     document.getElementById('leave').addEventListener('click', leave);
-    document.getElementById('nextButton').addEventListener('click', next);
+    document.getElementById("nextButton").addEventListener("click", () => { 
+        next(); // Chama a função leave
+        
+    });
+    
+
+    
 
 
     navigator.mediaDevices.getUserMedia({ video: {
@@ -41,6 +47,8 @@ function initServerConnection() {
         if(user) {
             users.delete(data.id)
             user.selfDestroy()
+            initServerConnection()
+           
         }
     })
     
@@ -70,6 +78,16 @@ function initServerConnection() {
             user.pc.setRemoteDescription(data.answer)
         }
     })
+
+    // Escutando o evento de 'loading' e exibindo a tela de carregamento
+socket.on('loading', () => {
+    document.getElementById('loading').style.display = 'flex';
+});
+
+
+function showLoading() {
+    document.getElementById('loading').style.display = 'flex';
+}
 
     socket.on('candidate', function (data) {
         var user = users.get(data.id)
@@ -129,14 +147,23 @@ function leave() {
     showForm()
 }
 
-
 function next() {
     socket.close()
     for(var user of users.values()) {
         user.selfDestroy()
     }
-    users.clear()
-    removeAllMessages()
-    nextrom()
+
+   
+            
+    
+    showLoading();
+    
+    initServerConnection()
+
+    
+   
 }
+
+
+
 

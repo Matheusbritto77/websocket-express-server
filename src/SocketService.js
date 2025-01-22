@@ -4,6 +4,7 @@ const EVENT_OFFER = 'offer'
 const EVENT_ANSWER = 'answer'
 const EVENT_CANDIDATE = 'candidate'
 const EVENT_DISCONNECT_USER = 'disconnect-user'
+const EVENT_NEXT = 'next'
 
 const EVENT_DISCONNECT = 'disconnect'
 
@@ -21,29 +22,44 @@ class SocketService {
             console.log(`New connection: ${socket.id}`);
         
             // Verificar se já existe uma sala com 1 usuário
-            let availableRoom = null;
+            let availableRooms = []; // Array para armazenar as salas com 1 usuário
             for (const [room, users] of this.io.sockets.adapter.rooms) {
                 if (users.size === 1 && !users.has(room)) { // Certificar-se de que a sala não é privada
-                    availableRoom = room; // Encontrou uma sala com 1 usuário
-                    break;
+                    availableRooms.push(room); // Adiciona a sala à lista de disponíveis
                 }
             }
         
-            if (availableRoom) {
+            let availableRoom = null;
+            if (availableRooms.length > 0) {
+                // Se houver mais de uma sala disponível, escolhe aleatoriamente
+                availableRoom = availableRooms[Math.floor(Math.random() * availableRooms.length)];
                 console.log(`New user entering existing room: ${availableRoom}`);
+            }
+        
+            if (availableRoom) {
                 socket.join(availableRoom);
                 console.log('Requesting offers');
                 socket.to(availableRoom).emit(EVENT_CALL, { id: socket.id });
             } else {
-                // Cria uma nova sala pública com um nome único
+                // Se não houver salas disponíveis, cria uma nova sala pública com um nome único
                 const newRoomName = `room-${uuidv4()}`;
                 console.log(`New user creating room: ${newRoomName}`);
                 socket.join(newRoomName);
                 console.log('Requesting offers');
                 socket.to(newRoomName).emit(EVENT_CALL, { id: socket.id });
-            
-        
             }
+        
+        
+
+
+
+            
+           
+
+
+            
+
+           
 
 
                 socket.on(EVENT_OFFER, (data) => {
@@ -71,6 +87,16 @@ class SocketService {
                     })
                 })
 
+
+
+                
+
+
+                
+
+
+
+
                 socket.on(EVENT_DISCONNECT, () => {
                     console.log(`${socket.id} disconnected`)
                     this.io.emit(EVENT_DISCONNECT_USER, {
@@ -81,6 +107,9 @@ class SocketService {
         )
     }
 }
+
+
+
 
 module.exports = (http) => {
     return new SocketService(http)
