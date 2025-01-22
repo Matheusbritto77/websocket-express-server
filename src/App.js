@@ -7,7 +7,7 @@ const io = require('socket.io')(http, {
         methods: ["GET", "POST"]
     },
     transports: ['websocket', 'polling'], // Compatibilidade com transporte
-    allowEIO3: true // Garantir compatibilidade com a versão EIO 3
+    allowEIO3: false // Garantir compatibilidade com a versão EIO 3
 });
 
 // Importando o serviço de socket
