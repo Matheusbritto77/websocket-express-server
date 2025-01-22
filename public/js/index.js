@@ -4,14 +4,10 @@ var socket
 const users = new Map()
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Adiciona o evento ao formulário de sala
-    document.getElementById('roomForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Impede o envio tradicional do formulário
-        initServerConnection(); // Inicia a conexão do servidor após o submit
-    });
 
-    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
-    document.getElementById('leave').addEventListener('click', leave);
+    document.getElementById('roomForm').addEventListener('submit', enterInRoom)
+    document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage)
+    document.getElementById('leave').addEventListener('click', leave)
 
     navigator.mediaDevices.getUserMedia({ video: {
         height: 480,
@@ -27,8 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 }, false)
 
-function initServerConnection() {
-    socket = io(); // Não é necessário passar o nome da sala aqui
+function initServerConnection(room) {
+    var socket = io({
+        query : {
+            room: room
+        }
+    })
 
     socket.on('disconnect-user', function (data) {
         var user = users.get(data.id)
@@ -90,13 +90,20 @@ function initServerConnection() {
     return socket
 }
 
-function enterInRoom (e) {
-    e.preventDefault()
-    room = document.getElementById('inputRoom').value
+function enterInRoom(e) {
+    e.preventDefault();
 
-    if (room) {
-        socket = initServerConnection(room)
-    }
+    // Gerar um nome aleatório para a sala
+    const room = generateRandomRoomName();
+
+    // Chama a função initServerConnection passando o nome aleatório da sala
+    socket = initServerConnection(room);
+}
+
+// Função para gerar um nome aleatório para a sala
+function generateRandomRoomName() {
+    // Gerando um nome aleatório para a sala
+    return 'room-' + Math.random().toString(36).substr(2, 9); // Gera uma string aleatória
 }
 
 function broadcastChatMessage(e) {
