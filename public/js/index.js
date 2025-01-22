@@ -4,7 +4,7 @@ var socket
 const users = new Map()
 
 document.addEventListener('DOMContentLoaded', function() {
-
+    document.getElementById('roomForm').addEventListener('submit', initServerConnection);
     document.getElementById('chatForm').addEventListener('submit', broadcastChatMessage);
     document.getElementById('leave').addEventListener('click', leave);
 
