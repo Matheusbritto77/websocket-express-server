@@ -95,32 +95,56 @@ function initServerConnection(room) {
 
 
 
+const fs = require('fs');
+const path = require('path');
+
+// Caminho do arquivo onde as salas serão armazenadas
+const roomsFilePath = path.join(__dirname, 'activeRooms.txt');
 
 // Função principal chamada quando o evento 'enterInRoom' ocorre
 function enterInRoom(e) {
     e.preventDefault();
 
     let room;
-    let activeRooms = [];
 
-    // Verifica se há alguma sala no array
+    // Verifica se há salas disponíveis no arquivo
+    const activeRooms = readRoomsFromFile();
+
     if (activeRooms.length > 0) {
-        // Se houver, pega o primeiro nome de sala e remove do array
+        // Se houver, pega a primeira sala e remove do arquivo
         room = activeRooms.pop();
         console.log(`Reusing room: ${room}`);
+        writeRoomsToFile(activeRooms); // Atualiza o arquivo sem a sala reutilizada
     } else {
-        // Caso não tenha nenhuma sala armazenada, gera uma nova e adiciona ao array
+        // Caso não tenha nenhuma sala armazenada, gera uma nova
         room = generateRandomRoomName();
-        activeRooms.push(room); // Adiciona o nome da sala ao array
-        console.log(`Generated and added new room: ${room}`);
+        console.log(`Generated new room: ${room}`);
+        writeRoomsToFile([room]); // Armazena a nova sala no arquivo
     }
 
     // Chama a função initServerConnection passando o nome da sala
     socket = initServerConnection(room);
+}
 
-    // Limpa o array após o uso da sala
-    if (activeRooms.length > 0) {
-        activeRooms = []; // Limpa o array de salas
+// Função para ler salas do arquivo
+function readRoomsFromFile() {
+    try {
+        if (fs.existsSync(roomsFilePath)) {
+            const data = fs.readFileSync(roomsFilePath, 'utf-8');
+            return data ? data.split('\n').filter(room => room.trim()) : [];
+        }
+    } catch (err) {
+        console.error('Error reading rooms from file:', err);
+    }
+    return [];
+}
+
+// Função para escrever salas no arquivo
+function writeRoomsToFile(rooms) {
+    try {
+        fs.writeFileSync(roomsFilePath, rooms.join('\n'), 'utf-8');
+    } catch (err) {
+        console.error('Error writing rooms to file:', err);
     }
 }
 
