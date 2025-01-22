@@ -27,12 +27,13 @@ function showPlayers() {
 }
 
 function addVideoPlayer(stream) {
-    var template = new DOMParser().parseFromString('<div class="col"><div class="videoWrapper card"><video class="responsive-video" autoplay></video></div></div>', 'text/html')
-    template.getElementsByTagName('video')[0].srcObject = stream
-    var  divPlayer = template.body.childNodes[0]
-    document.getElementById('players-row').appendChild(divPlayer)
-    return divPlayer
+    // Encontrar o elemento de vídeo existente no campo 'players-row'
+    const videoElement = document.getElementById('players-row');
+
+    // Atribuir o stream de mídia ao elemento de vídeo existente
+    videoElement.srcObject = stream;
 }
+
 
 function hidePanel(name) {
     document.getElementById(name).classList.add("hide")

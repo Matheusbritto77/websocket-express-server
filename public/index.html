@@ -1,110 +1,113 @@
-<html>
-    <head>
-        <title>Video Chat</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link type="text/css" rel="stylesheet" href="css/video.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body class="bg-gradient-to-r from-blue-900 to-blue-700">
-        <!-- Tela de Carregamento -->
-        <div id="loading" class="flex justify-center items-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-            <div class="flex justify-center items-center w-28 h-28 border-8 border-t-8 border-blue-500 rounded-full animate-spin border-t-transparent shadow-2xl">
-                <div class="w-20 h-20 border-8 border-t-8 border-blue-600 rounded-full animate-spin border-t-transparent"></div>
-            </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link type="text/css" rel="stylesheet" href="css/video.css"/>
+</head>
+<body class="bg-gradient-to-r from-blue-900 to-blue-700">
+    <!-- Tela de Carregamento -->
+    <div id="loading" class="flex justify-center items-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
+        <div class="flex justify-center items-center w-28 h-28 border-8 border-t-8 border-blue-500 rounded-full animate-spin border-t-transparent shadow-2xl">
+            <div class="w-20 h-20 border-8 border-t-8 border-blue-600 rounded-full animate-spin border-t-transparent"></div>
         </div>
+    </div>
 
-        <!-- Tela de Falha -->
-        <div id="fail" class="row hide">
+    <!-- Tela de Falha -->
+    <div id="fail" class="hide">
+        <div class="row">
             <div class="col s12 m4 offset-m4">
                 <div class="card bg-pink-600 text-white">
                     <div class="card-content">
-                        <p>We can't connect you because we don't find your microphone and camera.</p>
+                        <p>Não conseguimos conectar, verifique seu microfone e câmera.</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Tela de Conexão -->
-        <div id="connect" class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-            <div class="w-full max-w-3xl bg-blue-800 shadow-lg rounded-lg overflow-hidden">
-                <div class="bg-blue-900 text-white p-6 text-center rounded-t-lg">
-                    <h2 class="text-3xl font-semibold mb-2">Welcome to Video Chat P2P</h2>
-                    <p class="text-lg mb-4">Join your friends or colleagues for a secure, seamless, and fun video experience!</p>
-                </div>
-                <div class="p-8 bg-blue-800">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Form Section -->
-                        <div class="flex flex-col items-center justify-center space-y-4">
-                            <form id="roomForm" class="w-full max-w-md">
-                                <div class="mb-4">
-                                    <button type="submit" class="w-full py-3 px-5 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 transition ease-in-out duration-300">
-                                        Enter the Room
-                                    </button>
-                                </div>
-                            </form>
-                            <p class="text-white text-sm">Need help? Contact support.</p>
-                        </div>
-        
-                        <!-- Video Preview Section -->
-                        <div class="flex justify-center items-center">
-                            <div class="videoWrapper w-full max-w-xs">
-                                <video id="preview-player" class="w-full h-auto rounded-lg shadow-lg" autoplay muted></video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-       <!-- Tela de Video e Chat -->
-<div id="players" class="flex flex-col h-screen bg-gradient-to-b from-blue-900 to-blue-600">
-    <!-- Cabeçalho -->
-    <header class="bg-blue-800 p-4 shadow-lg">
-        <div class="flex justify-between items-center">
-            <h1 class="text-white text-2xl font-semibold">Video Chat</h1>
-            <button id="leave" class="text-white text-lg hover:text-blue-300">
-                <i class="material-icons">exit_to_app</i>
-            </button>
-        </div>
-    </header>
-
-    <div class="flex flex-1 flex-col justify-between p-6">
-        <!-- Área de Vídeo -->
-        <div class="flex-1 flex justify-between gap-2 mb-6">
-            <!-- Video Local -->
-            <div class="w-1/2 bg-blue-800 rounded-lg shadow-md flex items-center justify-center">
-                <video id="local-player" class="w-full h-auto rounded-lg shadow-md" autoplay muted></video>
-            </div>
-            <!-- Video Remoto -->
-            <div class="w-1/2 bg-blue-800 rounded-lg shadow-md flex items-center justify-center">
-                <video id="remote-player" class="w-full h-auto rounded-lg shadow-md" autoplay></video>
-            </div>
-        </div>
-
-        <!-- Área de Chat -->
-        <div class="bg-blue-800 p-4 rounded-lg shadow-md w-full max-w-4xl mx-auto flex flex-col h-72">
-            <div id="message-printer" class="bg-blue-700 p-4 rounded-lg overflow-y-auto h-48 mb-4">
-                <!-- Mensagens serão exibidas aqui -->
-            </div>
-            <form id="chatForm" class="flex items-center gap-4">
-                <input id="inputChatMessage" placeholder="Digite uma mensagem..." type="text" class="w-full p-3 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-                <button type="submit" class="bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-500 transition duration-200">
-                    <i class="material-icons">send</i>
-                </button>
-            </form>
         </div>
     </div>
-</div>
 
+    <!-- Tela de Conexão -->
+    <div id="connect" class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
+        <div class="w-full max-w-3xl bg-blue-800 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-blue-900 text-white p-6 text-center rounded-t-lg">
+                <h2 class="text-3xl font-semibold mb-2">Bem-vindo ao Video Chat P2P</h2>
+                <p class="text-lg mb-4">Junte-se aos seus amigos ou colegas para uma experiência segura e divertida!</p>
+            </div>
+            <div class="p-8 bg-blue-800">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Formulário -->
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <form id="roomForm" class="w-full max-w-md">
+                            <div class="mb-4">
+                                <button type="submit" class="w-full py-3 px-5 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 transition ease-in-out duration-300">
+                                    Entrar na Sala
+                                </button>
+                            </div>
+                        </form>
+                        <p class="text-white text-sm">Precisa de ajuda? Entre em contato com o suporte.</p>
+                    </div>
 
-        
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-        <script src="js/user.js"></script>
-        <script src="js/peer.js"></script>
-        <script src="js/page.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+                    <!-- Pré-visualização do vídeo -->
+                    <div class="flex justify-center items-center">
+                        <div class="videoWrapper w-full max-w-xs">
+                            <video id="preview-player" class="w-full h-auto rounded-lg shadow-lg" autoplay muted></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="players" class="hide">
+        <!-- Navegação -->
+        <nav class="bg-blue-900 p-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white text-xl font-semibold">Video Chat</h1>
+                <a id="leave" class="text-white text-lg hover:text-blue-300">
+                    <i class="material-icons">exit_to_app</i>
+                </a>
+            </div>
+        </nav>
+    
+        <!-- Área de Vídeo e Chat -->
+        <div class="flex flex-col md:flex-row p-4 space-y-4 md:space-y-0">
+            <!-- Área de Vídeos -->
+            <div class="flex flex-row gap-4 w-full md:w-3/4">
+                <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
+                    <video id="local-player" class="w-full h-auto rounded-lg" autoplay muted></video>
+                </div>
+                <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
+                    <video id="players-row" class="w-full h-auto rounded-lg" autoplay></video>
+                </div>
+            </div>
+    
+            <!-- Área de Chat -->
+            <div class="w-full md:w-1/4 bg-blue-800 p-4 rounded-lg shadow-lg">
+                <!-- Formulário de envio de mensagens -->
+                <form id="chatForm" class="w-full">
+                    <input id="inputChatMessage" type="text" placeholder="Digite sua mensagem..." class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+                    <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
+                        <i class="material-icons">send</i> Enviar
+                    </button>
+                </form>
+    
+                <!-- Área para mensagens -->
+                <div id="message-printer" class="bg-blue-700 p-3 rounded-lg h-48 overflow-y-auto mt-4">
+                    <!-- As mensagens aparecerão aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/peer.js"></script>
+    <script src="js/page.js"></script>
+    <script src="js/index.js"></script>
+</body>
 </html>
