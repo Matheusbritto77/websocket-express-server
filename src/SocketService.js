@@ -32,12 +32,25 @@ class SocketService {
                 socket.join(availableRoom);
                 console.log(`User ${socket.id} joined existing room ${availableRoom}`);
                 socket.to(availableRoom).emit(EVENT_CALL, { id: socket.id });
+
+                // Emitir evento para que o cliente execute 'showPlayers'
+        socket.emit('connect', () => {
+            // Chame a função showPlayers aqui no servidor, se necessário
+            console.log('Executing showPlayers on the client-side');
+        });
+
             } else {
                 // Caso contrário, cria uma nova sala
                 const roomName = `room-${socket.id}`;
                 socket.join(roomName);
                 console.log(`User ${socket.id} created and joined new room ${roomName}`);
                 socket.to(roomName).emit(EVENT_CALL, { id: socket.id });
+
+                 // Emitir evento para que o cliente execute 'showPlayers'
+        socket.emit('connect', () => {
+            // Chame a função showPlayers aqui no servidor, se necessário
+            console.log('Executing showPlayers on the client-side');
+        });
 
                 
 
