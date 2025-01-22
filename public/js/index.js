@@ -2,7 +2,7 @@ var getUserMedia
 var myStream
 var socket
 const users = new Map()
-let activeRooms = [];
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -101,6 +101,7 @@ function enterInRoom(e) {
     e.preventDefault();
 
     let room;
+    let activeRooms = [];
 
     // Verifica se há alguma sala no array
     if (activeRooms.length > 1) {
