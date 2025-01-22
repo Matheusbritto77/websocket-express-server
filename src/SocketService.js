@@ -42,8 +42,8 @@ class SocketService {
                 console.log('Requesting offers');
                 socket.to(newRoomName).emit(EVENT_CALL, { id: socket.id });
             
-            }
         
+            }
 
 
                 socket.on(EVENT_OFFER, (data) => {
@@ -61,6 +61,7 @@ class SocketService {
                         answer: data.answer
                     })
                 })
+                
 
                 socket.on(EVENT_CANDIDATE, (data) => {
                     console.log(`${socket.id} sending a candidate to ${data.id}`)
@@ -76,8 +77,8 @@ class SocketService {
                         id: socket.id
                     })
                 })
-            
-        })
+            }
+        )
     }
 }
 
