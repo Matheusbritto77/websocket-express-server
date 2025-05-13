@@ -5,8 +5,8 @@ require('./SocketService')(http)
 
 class App {
     constructor(port, host) {
-        this.port = port || 443
-        this.host = host || '0.0.0.0' // aceita conexões externas na rede local
+        this.port = port || 3333
+        this.host = host || '127.0.0.1' // aceita conexões externas na rede local
     }
 
     start() {
