@@ -8,7 +8,7 @@ app.get('/health', (req, res) => {
 
 app.use(express.static('public'))
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3333
 http.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor ouvindo na porta ${PORT}`)
 })
