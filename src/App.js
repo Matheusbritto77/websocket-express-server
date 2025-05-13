@@ -1,14 +1,27 @@
 const express = require('express')
 const app = express()
 const http = require('http').createServer(app)
+require('./SocketService')(http)
 
-app.get('/health', (req, res) => {
-    res.send({ status: 'UP' })
-})
+class App {
+    constructor(port, host) {
+        this.port = port || 443
+        this.host = host || '0.0.0.0' // aceita conexões externas na rede local
+    }
 
-app.use(express.static('public'))
+    start() {
+        app.get('/health', (req, res) => {
+            res.send({ status: 'UP' })
+        })
 
-const PORT = process.env.PORT || 3333
-http.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor ouvindo na porta ${PORT}`)
-})
+        app.use(express.static('public'))
+
+        http.listen(this.port, this.host, () => {
+            console.log(`✅ Server up at http://${this.host}:${this.port}`)
+        })
+    }
+}
+
+module.exports = (port, host) => {
+    return new App(port, host)
+}
