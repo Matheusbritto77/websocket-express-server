@@ -2736,3 +2736,1297 @@
 {"level":"info","message":"Usuário dg9ZXxtsLJDGHvruAAAL entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:03:23"}
 {"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:03:23"}
 {"level":"info","message":"⏳ Usuário dg9ZXxtsLJDGHvruAAAL aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:03:23"}
+{"level":"info","message":"dg9ZXxtsLJDGHvruAAAL desconectado","service":"websocket-server","timestamp":"2025-06-22 15:04:54"}
+{"level":"info","message":"User set offline: dg9ZXxtsLJDGHvruAAAL","service":"websocket-server","timestamp":"2025-06-22 15:04:54"}
+{"level":"info","message":"Usuário dg9ZXxtsLJDGHvruAAAL removido das filas","service":"websocket-server","timestamp":"2025-06-22 15:04:54"}
+{"level":"info","message":"Nova conexão: muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:04:55"}
+{"level":"info","message":"User created: muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:04:55"}
+{"level":"info","message":"Usuário muntymbayCM0mEIbAAAN adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"Usuário muntymbayCM0mEIbAAAN entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"⏳ Usuário muntymbayCM0mEIbAAAN aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:04:56"}
+{"level":"info","message":"Usuário cgPFuohmsFK-Y38LAAAJ adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:05:00"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:05:00"}
+{"level":"info","message":"✅ Match possível! Usuário A: muntymbayCM0mEIbAAAN, Usuário B: cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:00"}
+{"level":"info","message":"🎯 Match criado! Sala: room-08fdda63-df9b-4172-8ea4-c14c498040bc - Usuários: muntymbayCM0mEIbAAAN, cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:00"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"Room created: room-08fdda63-df9b-4172-8ea4-c14c498040bc","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"User updated: muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"User updated: cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-08fdda63-df9b-4172-8ea4-c14c498040bc","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"🔄 Usuário cgPFuohmsFK-Y38LAAAJ removido da sala room-2a210d03-4fbb-42b7-b579-ede44d21dfff e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"Usuário cgPFuohmsFK-Y38LAAAJ solicitou próximo usuário","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando offer para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"cgPFuohmsFK-Y38LAAAJ enviando candidate para muntymbayCM0mEIbAAAN","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando answer para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando candidate para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando candidate para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando candidate para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando candidate para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"muntymbayCM0mEIbAAAN enviando candidate para cgPFuohmsFK-Y38LAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:05:01"}
+{"level":"info","message":"Servidor iniciado na porta 3000","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"Redis Client Connected","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"Redis Client Ready","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"MongoDB Connected Successfully","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"MongoDB Ping Successful","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"UserRepository initialized successfully","service":"websocket-server","timestamp":"2025-06-22 15:17:42"}
+{"level":"info","message":"RoomRepository initialized successfully","service":"websocket-server","timestamp":"2025-06-22 15:17:43"}
+{"level":"info","message":"Nova conexão: U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:17:44"}
+{"level":"info","message":"User created: U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:17:44"}
+{"level":"info","message":"Usuário U-1VPC7T7xgQtHIrAAAB adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"Usuário U-1VPC7T7xgQtHIrAAAB entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"⏳ Usuário U-1VPC7T7xgQtHIrAAAB aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:17:45"}
+{"level":"info","message":"Nova conexão: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:09"}
+{"level":"info","message":"User created: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:09"}
+{"level":"info","message":"Usuário 81Vz73Qoyu7QL8lHAAAD adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"✅ Match possível! Usuário A: U-1VPC7T7xgQtHIrAAAB, Usuário B: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"🎯 Match criado! Sala: room-9b3159b6-334c-4a5c-9e04-48fba4b49d42 - Usuários: U-1VPC7T7xgQtHIrAAAB, 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"Room created: room-9b3159b6-334c-4a5c-9e04-48fba4b49d42","service":"websocket-server","timestamp":"2025-06-22 15:18:10"}
+{"level":"info","message":"User updated: U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"User updated: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-9b3159b6-334c-4a5c-9e04-48fba4b49d42","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"Usuário 81Vz73Qoyu7QL8lHAAAD entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"🎯 Usuário 81Vz73Qoyu7QL8lHAAAD está em match ativo na sala room-9b3159b6-334c-4a5c-9e04-48fba4b49d42","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando offer para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando offer para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando answer para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB enviando answer para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD enviando candidate para U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:11"}
+{"level":"info","message":"81Vz73Qoyu7QL8lHAAAD desconectado","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"User set offline: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"Usuário 81Vz73Qoyu7QL8lHAAAD adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"🔄 Usuário 81Vz73Qoyu7QL8lHAAAD removido da sala room-9b3159b6-334c-4a5c-9e04-48fba4b49d42 e colocado na fila A (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"Nova conexão: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"User created: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:26"}
+{"level":"info","message":"Usuário HzEIsSqiPLBcSwvgAAAF adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:18:27"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:18:27"}
+{"level":"info","message":"✅ Match possível! Usuário A: 81Vz73Qoyu7QL8lHAAAD, Usuário B: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:27"}
+{"level":"info","message":"🎯 Match criado! Sala: room-cc40d6d6-9c46-4f67-8849-8494c8c1aa91 - Usuários: 81Vz73Qoyu7QL8lHAAAD, HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:27"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:27"}
+{"level":"info","message":"Room created: room-cc40d6d6-9c46-4f67-8849-8494c8c1aa91","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"User updated: 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"User updated: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-cc40d6d6-9c46-4f67-8849-8494c8c1aa91","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"Usuário HzEIsSqiPLBcSwvgAAAF entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"🎯 Usuário HzEIsSqiPLBcSwvgAAAF está em match ativo na sala room-cc40d6d6-9c46-4f67-8849-8494c8c1aa91","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando offer para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF enviando candidate para 81Vz73Qoyu7QL8lHAAAD","service":"websocket-server","timestamp":"2025-06-22 15:18:28"}
+{"level":"info","message":"🗑️ Sala room-9b3159b6-334c-4a5c-9e04-48fba4b49d42 removida (vazia)","service":"websocket-server","timestamp":"2025-06-22 15:18:32"}
+{"level":"info","message":"Usuário U-1VPC7T7xgQtHIrAAAB solicitou próximo usuário","service":"websocket-server","timestamp":"2025-06-22 15:18:32"}
+{"level":"info","message":"HzEIsSqiPLBcSwvgAAAF desconectado","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"User set offline: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"Usuário HzEIsSqiPLBcSwvgAAAF adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"🔄 Usuário HzEIsSqiPLBcSwvgAAAF removido da sala room-cc40d6d6-9c46-4f67-8849-8494c8c1aa91 e colocado na fila A (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"Nova conexão: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"User created: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:39"}
+{"level":"info","message":"Usuário ML_lDV70VXxB60M9AAAH adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"✅ Match possível! Usuário A: HzEIsSqiPLBcSwvgAAAF, Usuário B: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"🎯 Match criado! Sala: room-02544e45-b226-4144-984d-922bdb7d0dac - Usuários: HzEIsSqiPLBcSwvgAAAF, ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"Room created: room-02544e45-b226-4144-984d-922bdb7d0dac","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"User updated: HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"User updated: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-02544e45-b226-4144-984d-922bdb7d0dac","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"Usuário ML_lDV70VXxB60M9AAAH entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"🎯 Usuário ML_lDV70VXxB60M9AAAH está em match ativo na sala room-02544e45-b226-4144-984d-922bdb7d0dac","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando offer para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:40"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH enviando candidate para HzEIsSqiPLBcSwvgAAAF","service":"websocket-server","timestamp":"2025-06-22 15:18:41"}
+{"level":"info","message":"U-1VPC7T7xgQtHIrAAAB desconectado","service":"websocket-server","timestamp":"2025-06-22 15:18:45"}
+{"level":"info","message":"User set offline: U-1VPC7T7xgQtHIrAAAB","service":"websocket-server","timestamp":"2025-06-22 15:18:45"}
+{"level":"info","message":"Usuário U-1VPC7T7xgQtHIrAAAB removido das filas","service":"websocket-server","timestamp":"2025-06-22 15:18:45"}
+{"level":"info","message":"Nova conexão: SmTG70h8RcFYECfmAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:18:45"}
+{"level":"info","message":"User created: SmTG70h8RcFYECfmAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:18:45"}
+{"level":"info","message":"Usuário SmTG70h8RcFYECfmAAAJ adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"Usuário SmTG70h8RcFYECfmAAAJ entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"⏳ Usuário SmTG70h8RcFYECfmAAAJ aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:46"}
+{"level":"info","message":"SmTG70h8RcFYECfmAAAJ desconectado","service":"websocket-server","timestamp":"2025-06-22 15:18:50"}
+{"level":"info","message":"User set offline: SmTG70h8RcFYECfmAAAJ","service":"websocket-server","timestamp":"2025-06-22 15:18:50"}
+{"level":"info","message":"Usuário SmTG70h8RcFYECfmAAAJ removido das filas","service":"websocket-server","timestamp":"2025-06-22 15:18:50"}
+{"level":"info","message":"Nova conexão: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:18:50"}
+{"level":"info","message":"User created: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:18:50"}
+{"level":"info","message":"Usuário tuiAZO-sS_AZNtVUAAAL adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:18:51"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:51"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:52"}
+{"level":"info","message":"Usuário tuiAZO-sS_AZNtVUAAAL entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:52"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:52"}
+{"level":"info","message":"⏳ Usuário tuiAZO-sS_AZNtVUAAAL aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:52"}
+{"level":"info","message":"ML_lDV70VXxB60M9AAAH desconectado","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"User set offline: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"Usuário ML_lDV70VXxB60M9AAAH adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"✅ Match possível! Usuário A: tuiAZO-sS_AZNtVUAAAL, Usuário B: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"🎯 Match criado! Sala: room-ce317b9d-4cbd-46be-87d6-3342a8208967 - Usuários: tuiAZO-sS_AZNtVUAAAL, ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"Room created: room-ce317b9d-4cbd-46be-87d6-3342a8208967","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"User updated: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"User updated: ML_lDV70VXxB60M9AAAH","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-ce317b9d-4cbd-46be-87d6-3342a8208967","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"🔄 Usuário ML_lDV70VXxB60M9AAAH removido da sala room-02544e45-b226-4144-984d-922bdb7d0dac e colocado na fila A (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"Nova conexão: Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"User created: Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:18:56"}
+{"level":"info","message":"Usuário Ba_5_VpapyhxgoXuAAAN adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"Usuário Ba_5_VpapyhxgoXuAAAN entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"⏳ Usuário Ba_5_VpapyhxgoXuAAAN aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:18:57"}
+{"level":"info","message":"Nova conexão: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:38"}
+{"level":"info","message":"User created: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:38"}
+{"level":"info","message":"Usuário d0R8UKJHVcz8KqJTAAAP adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"✅ Match possível! Usuário A: Ba_5_VpapyhxgoXuAAAN, Usuário B: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"🎯 Match criado! Sala: room-397fe103-779e-4ddd-b6ef-57b53a957df6 - Usuários: Ba_5_VpapyhxgoXuAAAN, d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Room created: room-397fe103-779e-4ddd-b6ef-57b53a957df6","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"User updated: Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"User updated: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-397fe103-779e-4ddd-b6ef-57b53a957df6","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Usuário d0R8UKJHVcz8KqJTAAAP entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"🎯 Usuário d0R8UKJHVcz8KqJTAAAP está em match ativo na sala room-397fe103-779e-4ddd-b6ef-57b53a957df6","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando offer para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:39"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando offer para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN enviando candidate para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando answer para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP enviando candidate para Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:19:40"}
+{"level":"info","message":"Nova conexão: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:43"}
+{"level":"info","message":"User created: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:43"}
+{"level":"info","message":"Usuário lzEnx_mPHIKFTxSiAAAR adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"Usuário lzEnx_mPHIKFTxSiAAAR entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"⏳ Usuário lzEnx_mPHIKFTxSiAAAR aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:44"}
+{"level":"info","message":"d0R8UKJHVcz8KqJTAAAP desconectado","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"User set offline: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"Usuário d0R8UKJHVcz8KqJTAAAP adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"✅ Match possível! Usuário A: lzEnx_mPHIKFTxSiAAAR, Usuário B: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"🎯 Match criado! Sala: room-6d499156-928e-4409-bf5f-22c5d3061116 - Usuários: lzEnx_mPHIKFTxSiAAAR, d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"Room created: room-6d499156-928e-4409-bf5f-22c5d3061116","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"User updated: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"User updated: d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-6d499156-928e-4409-bf5f-22c5d3061116","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"🔄 Usuário d0R8UKJHVcz8KqJTAAAP removido da sala room-397fe103-779e-4ddd-b6ef-57b53a957df6 e colocado na fila A (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"lzEnx_mPHIKFTxSiAAAR enviando offer para d0R8UKJHVcz8KqJTAAAP","service":"websocket-server","timestamp":"2025-06-22 15:19:48"}
+{"level":"info","message":"Nova conexão: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:49"}
+{"level":"info","message":"User created: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:49"}
+{"level":"info","message":"Usuário aZGAOaeekEvu5k8bAAAT adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Usuário aZGAOaeekEvu5k8bAAAT entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"⏳ Usuário aZGAOaeekEvu5k8bAAAT aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"tuiAZO-sS_AZNtVUAAAL desconectado","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"User set offline: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Usuário tuiAZO-sS_AZNtVUAAAL adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"✅ Match possível! Usuário A: aZGAOaeekEvu5k8bAAAT, Usuário B: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"🎯 Match criado! Sala: room-36c959ad-c820-430e-9748-3a658bc9e52e - Usuários: aZGAOaeekEvu5k8bAAAT, tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Room created: room-36c959ad-c820-430e-9748-3a658bc9e52e","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"User updated: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"User updated: tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-36c959ad-c820-430e-9748-3a658bc9e52e","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"🔄 Usuário tuiAZO-sS_AZNtVUAAAL removido da sala room-ce317b9d-4cbd-46be-87d6-3342a8208967 e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"aZGAOaeekEvu5k8bAAAT enviando offer para tuiAZO-sS_AZNtVUAAAL","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Nova conexão: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"User created: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:19:50"}
+{"level":"info","message":"Usuário 6DgAfrsMU9aekioWAAAV adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"Usuário 6DgAfrsMU9aekioWAAAV entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"⏳ Usuário 6DgAfrsMU9aekioWAAAV aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:51"}
+{"level":"info","message":"lzEnx_mPHIKFTxSiAAAR desconectado","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"User set offline: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"Usuário lzEnx_mPHIKFTxSiAAAR adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"✅ Match possível! Usuário A: 6DgAfrsMU9aekioWAAAV, Usuário B: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"🎯 Match criado! Sala: room-591c23b5-101b-4802-af3a-827c860477e3 - Usuários: 6DgAfrsMU9aekioWAAAV, lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"Room created: room-591c23b5-101b-4802-af3a-827c860477e3","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"User updated: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"User updated: lzEnx_mPHIKFTxSiAAAR","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-591c23b5-101b-4802-af3a-827c860477e3","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"🔄 Usuário lzEnx_mPHIKFTxSiAAAR removido da sala room-6d499156-928e-4409-bf5f-22c5d3061116 e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:19:52"}
+{"level":"info","message":"Nova conexão: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:19:53"}
+{"level":"info","message":"User created: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:19:53"}
+{"level":"info","message":"Usuário Gn9CK41YEmLf-DFuAAAX adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"Usuário Gn9CK41YEmLf-DFuAAAX entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"⏳ Usuário Gn9CK41YEmLf-DFuAAAX aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:54"}
+{"level":"info","message":"aZGAOaeekEvu5k8bAAAT desconectado","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"User set offline: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"Usuário aZGAOaeekEvu5k8bAAAT adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"✅ Match possível! Usuário A: Gn9CK41YEmLf-DFuAAAX, Usuário B: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"🎯 Match criado! Sala: room-87ef76bf-db64-4a75-8ab2-a4654a5ebeff - Usuários: Gn9CK41YEmLf-DFuAAAX, aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"Room created: room-87ef76bf-db64-4a75-8ab2-a4654a5ebeff","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"User updated: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"User updated: aZGAOaeekEvu5k8bAAAT","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-87ef76bf-db64-4a75-8ab2-a4654a5ebeff","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"🔄 Usuário aZGAOaeekEvu5k8bAAAT removido da sala room-36c959ad-c820-430e-9748-3a658bc9e52e e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"Nova conexão: AbmEqEWxgLSoG2dYAAAZ","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"User created: AbmEqEWxgLSoG2dYAAAZ","service":"websocket-server","timestamp":"2025-06-22 15:19:55"}
+{"level":"info","message":"Usuário AbmEqEWxgLSoG2dYAAAZ adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"Usuário AbmEqEWxgLSoG2dYAAAZ entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"⏳ Usuário AbmEqEWxgLSoG2dYAAAZ aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:19:56"}
+{"level":"info","message":"🗑️ Sala room-397fe103-779e-4ddd-b6ef-57b53a957df6 removida (vazia)","service":"websocket-server","timestamp":"2025-06-22 15:20:03"}
+{"level":"info","message":"Usuário Ba_5_VpapyhxgoXuAAAN solicitou próximo usuário","service":"websocket-server","timestamp":"2025-06-22 15:20:03"}
+{"level":"info","message":"AbmEqEWxgLSoG2dYAAAZ desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:07"}
+{"level":"info","message":"User set offline: AbmEqEWxgLSoG2dYAAAZ","service":"websocket-server","timestamp":"2025-06-22 15:20:08"}
+{"level":"info","message":"Usuário AbmEqEWxgLSoG2dYAAAZ removido das filas","service":"websocket-server","timestamp":"2025-06-22 15:20:08"}
+{"level":"info","message":"Nova conexão: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:09"}
+{"level":"info","message":"User created: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:09"}
+{"level":"info","message":"Usuário -E7S_5TVCKIyCybgAAAb adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"Usuário -E7S_5TVCKIyCybgAAAb entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"⏳ Usuário -E7S_5TVCKIyCybgAAAb aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:10"}
+{"level":"info","message":"Gn9CK41YEmLf-DFuAAAX desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:11"}
+{"level":"info","message":"User set offline: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:20:11"}
+{"level":"info","message":"Nova conexão: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"Usuário Gn9CK41YEmLf-DFuAAAX adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"✅ Match possível! Usuário A: -E7S_5TVCKIyCybgAAAb, Usuário B: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"User created: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"🎯 Match criado! Sala: room-07d24e59-19fb-4262-8fff-3e971881a94c - Usuários: -E7S_5TVCKIyCybgAAAb, Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"Room created: room-07d24e59-19fb-4262-8fff-3e971881a94c","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"User updated: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"User updated: Gn9CK41YEmLf-DFuAAAX","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-07d24e59-19fb-4262-8fff-3e971881a94c","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"🔄 Usuário Gn9CK41YEmLf-DFuAAAX removido da sala room-87ef76bf-db64-4a75-8ab2-a4654a5ebeff e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:20:12"}
+{"level":"info","message":"Usuário b8BpzNjlZCVgVk9-AAAd adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"Usuário b8BpzNjlZCVgVk9-AAAd entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"⏳ Usuário b8BpzNjlZCVgVk9-AAAd aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:13"}
+{"level":"info","message":"6DgAfrsMU9aekioWAAAV desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"User set offline: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"Usuário 6DgAfrsMU9aekioWAAAV adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"✅ Match possível! Usuário A: b8BpzNjlZCVgVk9-AAAd, Usuário B: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"🎯 Match criado! Sala: room-e7ec5337-e6ef-4b79-9fd7-a126825eec0a - Usuários: b8BpzNjlZCVgVk9-AAAd, 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"Room created: room-e7ec5337-e6ef-4b79-9fd7-a126825eec0a","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"User updated: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"User updated: 6DgAfrsMU9aekioWAAAV","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-e7ec5337-e6ef-4b79-9fd7-a126825eec0a","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"🔄 Usuário 6DgAfrsMU9aekioWAAAV removido da sala room-591c23b5-101b-4802-af3a-827c860477e3 e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"Nova conexão: p5zBCAYCYjMXhSCmAAAf","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"User created: p5zBCAYCYjMXhSCmAAAf","service":"websocket-server","timestamp":"2025-06-22 15:20:20"}
+{"level":"info","message":"Usuário p5zBCAYCYjMXhSCmAAAf adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"Usuário p5zBCAYCYjMXhSCmAAAf entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"⏳ Usuário p5zBCAYCYjMXhSCmAAAf aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:21"}
+{"level":"info","message":"-E7S_5TVCKIyCybgAAAb desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"User set offline: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"Usuário -E7S_5TVCKIyCybgAAAb adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"✅ Match possível! Usuário A: p5zBCAYCYjMXhSCmAAAf, Usuário B: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"🎯 Match criado! Sala: room-c1b8f44f-5bde-4097-ae62-f153932c3a6d - Usuários: p5zBCAYCYjMXhSCmAAAf, -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"Room created: room-c1b8f44f-5bde-4097-ae62-f153932c3a6d","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"User updated: p5zBCAYCYjMXhSCmAAAf","service":"websocket-server","timestamp":"2025-06-22 15:20:27"}
+{"level":"info","message":"User updated: -E7S_5TVCKIyCybgAAAb","service":"websocket-server","timestamp":"2025-06-22 15:20:28"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-c1b8f44f-5bde-4097-ae62-f153932c3a6d","service":"websocket-server","timestamp":"2025-06-22 15:20:28"}
+{"level":"info","message":"🔄 Usuário -E7S_5TVCKIyCybgAAAb removido da sala room-07d24e59-19fb-4262-8fff-3e971881a94c e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:20:28"}
+{"level":"info","message":"Nova conexão: ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:20:28"}
+{"level":"info","message":"User created: ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:20:28"}
+{"level":"info","message":"Usuário ubE_Wde9das5j-XEAAAh adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"Usuário ubE_Wde9das5j-XEAAAh entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"⏳ Usuário ubE_Wde9das5j-XEAAAh aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:29"}
+{"level":"info","message":"b8BpzNjlZCVgVk9-AAAd desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"User set offline: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"Usuário b8BpzNjlZCVgVk9-AAAd adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"✅ Match possível! Usuário A: ubE_Wde9das5j-XEAAAh, Usuário B: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"🎯 Match criado! Sala: room-66a5a711-9a63-4d9e-8613-c2698f5a83f4 - Usuários: ubE_Wde9das5j-XEAAAh, b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"Room created: room-66a5a711-9a63-4d9e-8613-c2698f5a83f4","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"User updated: ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"User updated: b8BpzNjlZCVgVk9-AAAd","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-66a5a711-9a63-4d9e-8613-c2698f5a83f4","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"🔄 Usuário b8BpzNjlZCVgVk9-AAAd removido da sala room-e7ec5337-e6ef-4b79-9fd7-a126825eec0a e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:20:30"}
+{"level":"info","message":"Nova conexão: 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:31"}
+{"level":"info","message":"User created: 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:31"}
+{"level":"info","message":"Usuário 2eBSAccX__oBYHYCAAAj adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"Usuário 2eBSAccX__oBYHYCAAAj entrou na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"📊 Status das filas - A: 1, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"⏳ Usuário 2eBSAccX__oBYHYCAAAj aguardando na fila A","service":"websocket-server","timestamp":"2025-06-22 15:20:32"}
+{"level":"info","message":"Ba_5_VpapyhxgoXuAAAN desconectado","service":"websocket-server","timestamp":"2025-06-22 15:20:36"}
+{"level":"info","message":"User set offline: Ba_5_VpapyhxgoXuAAAN","service":"websocket-server","timestamp":"2025-06-22 15:20:36"}
+{"level":"info","message":"Usuário Ba_5_VpapyhxgoXuAAAN removido das filas","service":"websocket-server","timestamp":"2025-06-22 15:20:36"}
+{"level":"info","message":"Nova conexão: _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:36"}
+{"level":"info","message":"User created: _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:36"}
+{"level":"info","message":"Usuário _fQGlDNjP8OmpaArAAAl adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:20:37"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:20:37"}
+{"level":"info","message":"✅ Match possível! Usuário A: 2eBSAccX__oBYHYCAAAj, Usuário B: _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:37"}
+{"level":"info","message":"🎯 Match criado! Sala: room-da3f2780-a132-4d4f-8801-c20c7f928b5b - Usuários: 2eBSAccX__oBYHYCAAAj, _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"Room created: room-da3f2780-a132-4d4f-8801-c20c7f928b5b","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"User updated: 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"User updated: _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-da3f2780-a132-4d4f-8801-c20c7f928b5b","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"Usuário _fQGlDNjP8OmpaArAAAl entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"🎯 Usuário _fQGlDNjP8OmpaArAAAl está em match ativo na sala room-da3f2780-a132-4d4f-8801-c20c7f928b5b","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando offer para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando offer para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj enviando candidate para _fQGlDNjP8OmpaArAAAl","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando answer para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"_fQGlDNjP8OmpaArAAAl enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:20:38"}
+{"level":"info","message":"ubE_Wde9das5j-XEAAAh desconectado","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"User set offline: ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"Usuário ubE_Wde9das5j-XEAAAh adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"🔄 Usuário ubE_Wde9das5j-XEAAAh removido da sala room-66a5a711-9a63-4d9e-8613-c2698f5a83f4 e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:21:19"}
+{"level":"info","message":"Nova conexão: 51eNecy41Ss1sBUgAAAn","service":"websocket-server","timestamp":"2025-06-22 15:21:20"}
+{"level":"info","message":"User created: 51eNecy41Ss1sBUgAAAn","service":"websocket-server","timestamp":"2025-06-22 15:21:20"}
+{"level":"info","message":"Usuário 51eNecy41Ss1sBUgAAAn adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"✅ Match possível! Usuário A: ubE_Wde9das5j-XEAAAh, Usuário B: 51eNecy41Ss1sBUgAAAn","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"🎯 Match criado! Sala: room-b7ace720-1101-4f72-97df-76b139b3f2c1 - Usuários: ubE_Wde9das5j-XEAAAh, 51eNecy41Ss1sBUgAAAn","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"Room created: room-b7ace720-1101-4f72-97df-76b139b3f2c1","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"User updated: ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"User updated: 51eNecy41Ss1sBUgAAAn","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-b7ace720-1101-4f72-97df-76b139b3f2c1","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"Usuário 51eNecy41Ss1sBUgAAAn entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"🎯 Usuário 51eNecy41Ss1sBUgAAAn está em match ativo na sala room-b7ace720-1101-4f72-97df-76b139b3f2c1","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando offer para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"51eNecy41Ss1sBUgAAAn enviando candidate para ubE_Wde9das5j-XEAAAh","service":"websocket-server","timestamp":"2025-06-22 15:21:21"}
+{"level":"info","message":"2eBSAccX__oBYHYCAAAj desconectado","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"User set offline: 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"Usuário 2eBSAccX__oBYHYCAAAj adicionado à fila A. Posição: 1 (A: 1, B: 0)","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"❌ Nenhum match possível - Fila A: 1, Fila B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"🔄 Usuário 2eBSAccX__oBYHYCAAAj removido da sala room-da3f2780-a132-4d4f-8801-c20c7f928b5b e colocado na fila B (balanceamento)","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"Nova conexão: elt0mlWSN-UqEaWGAAAp","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"User created: elt0mlWSN-UqEaWGAAAp","service":"websocket-server","timestamp":"2025-06-22 15:21:22"}
+{"level":"info","message":"Usuário elt0mlWSN-UqEaWGAAAp adicionado à fila B. Posição: 1 (A: 1, B: 1)","service":"websocket-server","timestamp":"2025-06-22 15:21:23"}
+{"level":"info","message":"🔍 Verificando match... Fila A: 1, Fila B: 1","service":"websocket-server","timestamp":"2025-06-22 15:21:23"}
+{"level":"info","message":"✅ Match possível! Usuário A: 2eBSAccX__oBYHYCAAAj, Usuário B: elt0mlWSN-UqEaWGAAAp","service":"websocket-server","timestamp":"2025-06-22 15:21:23"}
+{"level":"info","message":"🎯 Match criado! Sala: room-7d543651-4d38-4502-a68d-5296a722984d - Usuários: 2eBSAccX__oBYHYCAAAj, elt0mlWSN-UqEaWGAAAp","service":"websocket-server","timestamp":"2025-06-22 15:21:23"}
+{"level":"info","message":"📊 Filas após match - A: 0, B: 0","service":"websocket-server","timestamp":"2025-06-22 15:21:23"}
+{"level":"info","message":"Room created: room-7d543651-4d38-4502-a68d-5296a722984d","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"User updated: 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"User updated: elt0mlWSN-UqEaWGAAAp","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"Match processado com sucesso! Sala: room-7d543651-4d38-4502-a68d-5296a722984d","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"Usuário elt0mlWSN-UqEaWGAAAp entrou na fila B","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"📊 Status das filas - A: 0, B: 0, Balanceado: true","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"🎯 Usuário elt0mlWSN-UqEaWGAAAp está em match ativo na sala room-7d543651-4d38-4502-a68d-5296a722984d","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando offer para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"elt0mlWSN-UqEaWGAAAp enviando candidate para 2eBSAccX__oBYHYCAAAj","service":"websocket-server","timestamp":"2025-06-22 15:21:24"}
+{"level":"info","message":"Usuário test-socket-id adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:36:39"}
+{"level":"info","message":"Match criado: socket1 <-> socket2 (Sala: room_1750617399919_r13kadf0l)","service":"omegle-clone","timestamp":"2025-06-22 15:36:39"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 15:37:24"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 15:37:24"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 15:37:24"}
+{"level":"info","message":"Nova conexão: Iuqv7fAqGn4fBSViAAAB","service":"omegle-clone","timestamp":"2025-06-22 15:38:08"}
+{"level":"info","message":"Usuário Iuqv7fAqGn4fBSViAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:38:08"}
+{"level":"info","message":"Nova conexão: 4v9Laya2uqMgsxyMAAAD","service":"omegle-clone","timestamp":"2025-06-22 15:38:13"}
+{"level":"info","message":"Usuário 4v9Laya2uqMgsxyMAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:38:13"}
+{"level":"info","message":"Match criado: Iuqv7fAqGn4fBSViAAAB <-> 4v9Laya2uqMgsxyMAAAD (Sala: room_1750617493465_f61hv1rm7)","service":"omegle-clone","timestamp":"2025-06-22 15:38:13"}
+{"level":"info","message":"Usuário Iuqv7fAqGn4fBSViAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 15:38:39"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 15:40:26"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 15:40:26"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 15:40:26"}
+{"level":"info","message":"Nova conexão: 4cXbP1G_A-znh4_aAAAB","service":"omegle-clone","timestamp":"2025-06-22 15:40:44"}
+{"level":"info","message":"Usuário 4cXbP1G_A-znh4_aAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:40:44"}
+{"level":"info","message":"Nova conexão: kJl_qbiYk7rZzgC_AAAD","service":"omegle-clone","timestamp":"2025-06-22 15:40:48"}
+{"level":"info","message":"Usuário kJl_qbiYk7rZzgC_AAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:40:48"}
+{"level":"info","message":"Match criado: 4cXbP1G_A-znh4_aAAAB <-> kJl_qbiYk7rZzgC_AAAD (Sala: room_1750617648671_jmqdu8xry)","service":"omegle-clone","timestamp":"2025-06-22 15:40:48"}
+{"level":"info","message":"Nova conexão: JrIQAvgEhitpXBxcAAAF","service":"omegle-clone","timestamp":"2025-06-22 15:40:53"}
+{"level":"info","message":"Usuário JrIQAvgEhitpXBxcAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:40:53"}
+{"level":"info","message":"Usuário kJl_qbiYk7rZzgC_AAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 15:41:13"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 15:43:02"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 15:43:02"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 15:43:02"}
+{"level":"info","message":"Nova conexão: rRZ9wOh-zADPk23JAAAB","service":"omegle-clone","timestamp":"2025-06-22 15:43:20"}
+{"level":"info","message":"Usuário rRZ9wOh-zADPk23JAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:43:20"}
+{"level":"info","message":"Nova conexão: OnuPoo1EbRqSy4-ZAAAD","service":"omegle-clone","timestamp":"2025-06-22 15:43:23"}
+{"level":"info","message":"Usuário OnuPoo1EbRqSy4-ZAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:43:23"}
+{"level":"info","message":"Match criado: rRZ9wOh-zADPk23JAAAB <-> OnuPoo1EbRqSy4-ZAAAD (Sala: room_1750617803284_6ou09dcyp)","service":"omegle-clone","timestamp":"2025-06-22 15:43:23"}
+{"level":"info","message":"Nova conexão: A9y3NGwHte8-Lt7NAAAF","service":"omegle-clone","timestamp":"2025-06-22 15:43:28"}
+{"level":"info","message":"Usuário A9y3NGwHte8-Lt7NAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:43:28"}
+{"level":"info","message":"Usuário rRZ9wOh-zADPk23JAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 15:43:31"}
+{"level":"info","message":"Match criado: A9y3NGwHte8-Lt7NAAAF <-> OnuPoo1EbRqSy4-ZAAAD (Sala: room_1750617811759_vfcfwnvc2)","service":"omegle-clone","timestamp":"2025-06-22 15:43:31"}
+{"level":"info","message":"Usuário rRZ9wOh-zADPk23JAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:43:31"}
+{"level":"info","message":"Nova conexão: kCDy_MvWX_X4s6q2AAAH","service":"omegle-clone","timestamp":"2025-06-22 15:43:54"}
+{"level":"info","message":"Usuário kCDy_MvWX_X4s6q2AAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:43:54"}
+{"level":"info","message":"Match criado: rRZ9wOh-zADPk23JAAAB <-> kCDy_MvWX_X4s6q2AAAH (Sala: room_1750617834248_yb03n2uta)","service":"omegle-clone","timestamp":"2025-06-22 15:43:54"}
+{"level":"info","message":"Nova conexão: tbCWFVFvg_YmwMVpAAAJ","service":"omegle-clone","timestamp":"2025-06-22 15:44:01"}
+{"level":"info","message":"Usuário tbCWFVFvg_YmwMVpAAAJ adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:44:01"}
+{"level":"info","message":"Nova conexão: 6pHYQmwfl3m0OxEBAAAL","service":"omegle-clone","timestamp":"2025-06-22 15:44:10"}
+{"level":"info","message":"Usuário 6pHYQmwfl3m0OxEBAAAL adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:44:10"}
+{"level":"info","message":"Match criado: tbCWFVFvg_YmwMVpAAAJ <-> 6pHYQmwfl3m0OxEBAAAL (Sala: room_1750617850152_lihq8l8yg)","service":"omegle-clone","timestamp":"2025-06-22 15:44:10"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 15:53:15"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 15:53:15"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 15:53:15"}
+{"level":"info","message":"Nova conexão: mnxC84sGoiQpSqDAAAAB","service":"omegle-clone","timestamp":"2025-06-22 15:53:49"}
+{"level":"info","message":"Usuário mnxC84sGoiQpSqDAAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:53:49"}
+{"level":"info","message":"Nova conexão: m91uGylFz8ydTKpHAAAD","service":"omegle-clone","timestamp":"2025-06-22 15:53:53"}
+{"level":"info","message":"Usuário m91uGylFz8ydTKpHAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:53:53"}
+{"level":"info","message":"Match criado: mnxC84sGoiQpSqDAAAAB <-> m91uGylFz8ydTKpHAAAD (Sala: room_1750618433103_nr10rbxbj)","service":"omegle-clone","timestamp":"2025-06-22 15:53:53"}
+{"level":"info","message":"Nova conexão: U0wL_xw3e4rVtMT4AAAF","service":"omegle-clone","timestamp":"2025-06-22 15:54:00"}
+{"level":"info","message":"Usuário U0wL_xw3e4rVtMT4AAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:54:00"}
+{"level":"info","message":"Usuário mnxC84sGoiQpSqDAAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 15:54:06"}
+{"level":"info","message":"Match criado: U0wL_xw3e4rVtMT4AAAF <-> m91uGylFz8ydTKpHAAAD (Sala: room_1750618446324_reu2ezemx)","service":"omegle-clone","timestamp":"2025-06-22 15:54:06"}
+{"level":"info","message":"Usuário mnxC84sGoiQpSqDAAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:54:06"}
+{"level":"info","message":"Usuário U0wL_xw3e4rVtMT4AAAF desconectado","service":"omegle-clone","timestamp":"2025-06-22 15:54:13"}
+{"level":"info","message":"Match criado: mnxC84sGoiQpSqDAAAAB <-> m91uGylFz8ydTKpHAAAD (Sala: room_1750618453167_uir3m8xty)","service":"omegle-clone","timestamp":"2025-06-22 15:54:13"}
+{"level":"info","message":"Usuário m91uGylFz8ydTKpHAAAD desconectado","service":"omegle-clone","timestamp":"2025-06-22 15:54:18"}
+{"level":"info","message":"Usuário mnxC84sGoiQpSqDAAAAB desconectado","service":"omegle-clone","timestamp":"2025-06-22 15:54:26"}
+{"level":"info","message":"Nova conexão: HZbAPo6yS2BiU8VOAAAH","service":"omegle-clone","timestamp":"2025-06-22 15:54:44"}
+{"level":"info","message":"Usuário HZbAPo6yS2BiU8VOAAAH adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:54:44"}
+{"level":"info","message":"Nova conexão: owbIF5Yw4CEQuEc2AAAJ","service":"omegle-clone","timestamp":"2025-06-22 15:54:56"}
+{"level":"info","message":"Usuário owbIF5Yw4CEQuEc2AAAJ adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:54:56"}
+{"level":"info","message":"Match criado: HZbAPo6yS2BiU8VOAAAH <-> owbIF5Yw4CEQuEc2AAAJ (Sala: room_1750618496212_n7on3cfnc)","service":"omegle-clone","timestamp":"2025-06-22 15:54:56"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 15:59:24"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 15:59:24"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 15:59:24"}
+{"level":"info","message":"Nova conexão: MiM4dSGzw984q8nAAAAB","service":"omegle-clone","timestamp":"2025-06-22 15:59:39"}
+{"level":"info","message":"Usuário MiM4dSGzw984q8nAAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 15:59:39"}
+{"level":"info","message":"Nova conexão: opirQ7DusC6FShLPAAAD","service":"omegle-clone","timestamp":"2025-06-22 15:59:45"}
+{"level":"info","message":"Usuário opirQ7DusC6FShLPAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 15:59:45"}
+{"level":"info","message":"Match criado: MiM4dSGzw984q8nAAAAB <-> opirQ7DusC6FShLPAAAD (Sala: room_1750618785188_tpkr0dlea)","service":"omegle-clone","timestamp":"2025-06-22 15:59:45"}
+{"level":"info","message":"Nova conexão: q0rmIq3tAaWfyo_wAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:00:39"}
+{"level":"info","message":"Usuário q0rmIq3tAaWfyo_wAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:00:39"}
+{"level":"info","message":"Usuário MiM4dSGzw984q8nAAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:00:51"}
+{"level":"info","message":"Match criado: q0rmIq3tAaWfyo_wAAAF <-> opirQ7DusC6FShLPAAAD (Sala: room_1750618851121_yovxc0r36)","service":"omegle-clone","timestamp":"2025-06-22 16:00:51"}
+{"level":"info","message":"Usuário MiM4dSGzw984q8nAAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:00:51"}
+{"level":"info","message":"Usuário q0rmIq3tAaWfyo_wAAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:01:19"}
+{"level":"info","message":"Match criado: MiM4dSGzw984q8nAAAAB <-> opirQ7DusC6FShLPAAAD (Sala: room_1750618879006_jqvctzdp2)","service":"omegle-clone","timestamp":"2025-06-22 16:01:19"}
+{"level":"info","message":"Usuário q0rmIq3tAaWfyo_wAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:01:19"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:05:52"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:05:52"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:05:52"}
+{"level":"info","message":"Nova conexão: X85PH9qLRscAb6_CAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:06:25"}
+{"level":"info","message":"Usuário X85PH9qLRscAb6_CAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:06:25"}
+{"level":"info","message":"Nova conexão: J54rIS815ATkcZgGAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:06:28"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:06:28"}
+{"level":"info","message":"Match criado: X85PH9qLRscAb6_CAAAB <-> J54rIS815ATkcZgGAAAD (Sala: room_1750619188568_ospkcabpk)","service":"omegle-clone","timestamp":"2025-06-22 16:06:28"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:06:38"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:06:38"}
+{"level":"info","message":"Match criado: X85PH9qLRscAb6_CAAAB <-> J54rIS815ATkcZgGAAAD (Sala: room_1750619198176_7csgkz92b)","service":"omegle-clone","timestamp":"2025-06-22 16:06:38"}
+{"level":"info","message":"Nova conexão: 8-48Sr_sOX4UJLQQAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:06:47"}
+{"level":"info","message":"Usuário 8-48Sr_sOX4UJLQQAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:06:47"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:06:50"}
+{"level":"info","message":"Match criado: 8-48Sr_sOX4UJLQQAAAF <-> X85PH9qLRscAb6_CAAAB (Sala: room_1750619210710_9a1jfmz89)","service":"omegle-clone","timestamp":"2025-06-22 16:06:50"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:06:50"}
+{"level":"info","message":"Usuário X85PH9qLRscAb6_CAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:07:32"}
+{"level":"info","message":"Usuário X85PH9qLRscAb6_CAAAB adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:07:32"}
+{"level":"info","message":"Match criado: J54rIS815ATkcZgGAAAD <-> X85PH9qLRscAb6_CAAAB (Sala: room_1750619252875_igawtn1es)","service":"omegle-clone","timestamp":"2025-06-22 16:07:32"}
+{"level":"info","message":"Usuário 8-48Sr_sOX4UJLQQAAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:08:33"}
+{"level":"info","message":"Usuário 8-48Sr_sOX4UJLQQAAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:08:33"}
+{"level":"info","message":"Match criado: X85PH9qLRscAb6_CAAAB <-> 8-48Sr_sOX4UJLQQAAAF (Sala: room_1750619313496_l41b16p1y)","service":"omegle-clone","timestamp":"2025-06-22 16:08:33"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:09:02"}
+{"level":"info","message":"Usuário J54rIS815ATkcZgGAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:09:02"}
+{"level":"info","message":"Match criado: X85PH9qLRscAb6_CAAAB <-> J54rIS815ATkcZgGAAAD (Sala: room_1750619342060_e6o55f9d6)","service":"omegle-clone","timestamp":"2025-06-22 16:09:02"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:12:37"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:12:37"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:12:37"}
+{"level":"info","message":"Nova conexão: 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:12:49"}
+{"level":"info","message":"Usuário 1YBJJHOFvsWSjdCvAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:12:49"}
+{"level":"info","message":"Nova conexão: mB-OSJYh61H27btRAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:12:57"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:12:57"}
+{"level":"info","message":"Match criado: 1YBJJHOFvsWSjdCvAAAB <-> mB-OSJYh61H27btRAAAD (Sala: room_1750619577774_352omcy11)","service":"omegle-clone","timestamp":"2025-06-22 16:12:57"}
+{"level":"info","message":"Nova conexão: cLx-S778hHUiasX2AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:13:06"}
+{"level":"info","message":"Usuário cLx-S778hHUiasX2AAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:13:06"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Removendo usuário mB-OSJYh61H27btRAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Notificando parceiro 1YBJJHOFvsWSjdCvAAAB sobre desconexão de mB-OSJYh61H27btRAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Parceiro 1YBJJHOFvsWSjdCvAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Match criado: cLx-S778hHUiasX2AAAF <-> 1YBJJHOFvsWSjdCvAAAB (Sala: room_1750619591236_qm8nejtj3)","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Conexões removidas para mB-OSJYh61H27btRAAAD e 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:13:11"}
+{"level":"info","message":"Usuário 1YBJJHOFvsWSjdCvAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:13:37"}
+{"level":"info","message":"Usuário 1YBJJHOFvsWSjdCvAAAB adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:13:37"}
+{"level":"info","message":"Match criado: mB-OSJYh61H27btRAAAD <-> 1YBJJHOFvsWSjdCvAAAB (Sala: room_1750619617272_2wa8dusih)","service":"omegle-clone","timestamp":"2025-06-22 16:13:37"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Removendo usuário mB-OSJYh61H27btRAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Notificando parceiro 1YBJJHOFvsWSjdCvAAAB sobre desconexão de mB-OSJYh61H27btRAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Parceiro 1YBJJHOFvsWSjdCvAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Conexões removidas para mB-OSJYh61H27btRAAAD e 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Match criado: 1YBJJHOFvsWSjdCvAAAB <-> mB-OSJYh61H27btRAAAD (Sala: room_1750619622098_fg6cqcuja)","service":"omegle-clone","timestamp":"2025-06-22 16:13:42"}
+{"level":"info","message":"Usuário cLx-S778hHUiasX2AAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Removendo usuário cLx-S778hHUiasX2AAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Notificando parceiro 1YBJJHOFvsWSjdCvAAAB sobre desconexão de cLx-S778hHUiasX2AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Parceiro 1YBJJHOFvsWSjdCvAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Conexões removidas para cLx-S778hHUiasX2AAAF e 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Usuário cLx-S778hHUiasX2AAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Match criado: 1YBJJHOFvsWSjdCvAAAB <-> cLx-S778hHUiasX2AAAF (Sala: room_1750619635217_lhmptbtpf)","service":"omegle-clone","timestamp":"2025-06-22 16:13:55"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Removendo usuário mB-OSJYh61H27btRAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Notificando parceiro 1YBJJHOFvsWSjdCvAAAB sobre desconexão de mB-OSJYh61H27btRAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Parceiro 1YBJJHOFvsWSjdCvAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Conexões removidas para mB-OSJYh61H27btRAAAD e 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Usuário mB-OSJYh61H27btRAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Match criado: 1YBJJHOFvsWSjdCvAAAB <-> mB-OSJYh61H27btRAAAD (Sala: room_1750619649277_voef66ni9)","service":"omegle-clone","timestamp":"2025-06-22 16:14:09"}
+{"level":"info","message":"Usuário cLx-S778hHUiasX2AAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Removendo usuário cLx-S778hHUiasX2AAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Notificando parceiro 1YBJJHOFvsWSjdCvAAAB sobre desconexão de cLx-S778hHUiasX2AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Parceiro 1YBJJHOFvsWSjdCvAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Conexões removidas para cLx-S778hHUiasX2AAAF e 1YBJJHOFvsWSjdCvAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Usuário cLx-S778hHUiasX2AAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"Match criado: 1YBJJHOFvsWSjdCvAAAB <-> cLx-S778hHUiasX2AAAF (Sala: room_1750619664030_q8tb0i6h8)","service":"omegle-clone","timestamp":"2025-06-22 16:14:24"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:18:11"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:18:11"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:18:11"}
+{"level":"info","message":"Nova conexão: LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:18:39"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:18:39"}
+{"level":"info","message":"Nova conexão: Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:18:45"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:18:45"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: LNaNdWqwai5NUhQCAAAB, Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:18:45"}
+{"level":"info","message":"Match criado: LNaNdWqwai5NUhQCAAAB <-> Nz9xZx783u8-iHZkAAAD (Sala: room_1750619925857_rx3aaq3by)","service":"omegle-clone","timestamp":"2025-06-22 16:18:45"}
+{"level":"info","message":"Nova conexão: DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:18:50"}
+{"level":"info","message":"Usuário DyGRiadtOdrcwqA8AAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:18:50"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Removendo usuário Nz9xZx783u8-iHZkAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Notificando parceiro LNaNdWqwai5NUhQCAAAB sobre desconexão de Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Parceiro LNaNdWqwai5NUhQCAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: DyGRiadtOdrcwqA8AAAF, LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Match criado: DyGRiadtOdrcwqA8AAAF <-> LNaNdWqwai5NUhQCAAAB (Sala: room_1750619940144_jaz9mdbqa)","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Conexões removidas para Nz9xZx783u8-iHZkAAAD e LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:19:00"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:15"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:19:15"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: Nz9xZx783u8-iHZkAAAD, LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:15"}
+{"level":"info","message":"Match criado: Nz9xZx783u8-iHZkAAAD <-> LNaNdWqwai5NUhQCAAAB (Sala: room_1750619955282_ynz2564pz)","service":"omegle-clone","timestamp":"2025-06-22 16:19:15"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Removendo usuário LNaNdWqwai5NUhQCAAAB da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Notificando parceiro Nz9xZx783u8-iHZkAAAD sobre desconexão de LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Parceiro Nz9xZx783u8-iHZkAAAD adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Conexões removidas para LNaNdWqwai5NUhQCAAAB e Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: Nz9xZx783u8-iHZkAAAD, LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Match criado: Nz9xZx783u8-iHZkAAAD <-> LNaNdWqwai5NUhQCAAAB (Sala: room_1750619967176_hf0r4y8rx)","service":"omegle-clone","timestamp":"2025-06-22 16:19:27"}
+{"level":"info","message":"Usuário DyGRiadtOdrcwqA8AAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Removendo usuário DyGRiadtOdrcwqA8AAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Notificando parceiro LNaNdWqwai5NUhQCAAAB sobre desconexão de DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Parceiro LNaNdWqwai5NUhQCAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Conexões removidas para DyGRiadtOdrcwqA8AAAF e LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Usuário DyGRiadtOdrcwqA8AAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: LNaNdWqwai5NUhQCAAAB, DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Match criado: LNaNdWqwai5NUhQCAAAB <-> DyGRiadtOdrcwqA8AAAF (Sala: room_1750619974652_wrn2sk0a2)","service":"omegle-clone","timestamp":"2025-06-22 16:19:34"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Removendo usuário Nz9xZx783u8-iHZkAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Notificando parceiro LNaNdWqwai5NUhQCAAAB sobre desconexão de Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Parceiro LNaNdWqwai5NUhQCAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Conexões removidas para Nz9xZx783u8-iHZkAAAD e LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: LNaNdWqwai5NUhQCAAAB, Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Match criado: LNaNdWqwai5NUhQCAAAB <-> Nz9xZx783u8-iHZkAAAD (Sala: room_1750619983082_emu73a5kk)","service":"omegle-clone","timestamp":"2025-06-22 16:19:43"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Removendo usuário Nz9xZx783u8-iHZkAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Notificando parceiro LNaNdWqwai5NUhQCAAAB sobre desconexão de Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Parceiro LNaNdWqwai5NUhQCAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Conexões removidas para Nz9xZx783u8-iHZkAAAD e LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Usuário Nz9xZx783u8-iHZkAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: LNaNdWqwai5NUhQCAAAB, Nz9xZx783u8-iHZkAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Match criado: LNaNdWqwai5NUhQCAAAB <-> Nz9xZx783u8-iHZkAAAD (Sala: room_1750619988535_7ggacfeut)","service":"omegle-clone","timestamp":"2025-06-22 16:19:48"}
+{"level":"info","message":"Usuário DyGRiadtOdrcwqA8AAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Removendo usuário DyGRiadtOdrcwqA8AAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Notificando parceiro LNaNdWqwai5NUhQCAAAB sobre desconexão de DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Parceiro LNaNdWqwai5NUhQCAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Conexões removidas para DyGRiadtOdrcwqA8AAAF e LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Usuário DyGRiadtOdrcwqA8AAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: LNaNdWqwai5NUhQCAAAB, DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Match criado: LNaNdWqwai5NUhQCAAAB <-> DyGRiadtOdrcwqA8AAAF (Sala: room_1750620003726_afmmonvqk)","service":"omegle-clone","timestamp":"2025-06-22 16:20:03"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Removendo usuário LNaNdWqwai5NUhQCAAAB da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Notificando parceiro DyGRiadtOdrcwqA8AAAF sobre desconexão de LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Parceiro DyGRiadtOdrcwqA8AAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Conexões removidas para LNaNdWqwai5NUhQCAAAB e DyGRiadtOdrcwqA8AAAF","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Usuário LNaNdWqwai5NUhQCAAAB adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: DyGRiadtOdrcwqA8AAAF, LNaNdWqwai5NUhQCAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"Match criado: DyGRiadtOdrcwqA8AAAF <-> LNaNdWqwai5NUhQCAAAB (Sala: room_1750620020563_mix5iqhyn)","service":"omegle-clone","timestamp":"2025-06-22 16:20:20"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Nova conexão: NPhigvvDsmneS0SSAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Usuário NPhigvvDsmneS0SSAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Nova conexão: By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: NPhigvvDsmneS0SSAAAB, By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Match criado: NPhigvvDsmneS0SSAAAB <-> By5lABm5Do9O3seMAAAD (Sala: room_1750620317606_8qz7oedp7)","service":"omegle-clone","timestamp":"2025-06-22 16:25:17"}
+{"level":"info","message":"Nova conexão: FiiDPtK6YZFRScNeAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:25:20"}
+{"level":"info","message":"Usuário FiiDPtK6YZFRScNeAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:25:20"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Removendo usuário By5lABm5Do9O3seMAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Notificando parceiro NPhigvvDsmneS0SSAAAB sobre desconexão de By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Parceiro NPhigvvDsmneS0SSAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Usuário NPhigvvDsmneS0SSAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Conexões removidas para By5lABm5Do9O3seMAAAD e NPhigvvDsmneS0SSAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: FiiDPtK6YZFRScNeAAAF, NPhigvvDsmneS0SSAAAB, By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Match criado: FiiDPtK6YZFRScNeAAAF <-> NPhigvvDsmneS0SSAAAB (Sala: room_1750620340407_rfw3bdqg3)","service":"omegle-clone","timestamp":"2025-06-22 16:25:40"}
+{"level":"info","message":"Usuário FiiDPtK6YZFRScNeAAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Removendo usuário FiiDPtK6YZFRScNeAAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Notificando parceiro NPhigvvDsmneS0SSAAAB sobre desconexão de FiiDPtK6YZFRScNeAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Parceiro NPhigvvDsmneS0SSAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Usuário NPhigvvDsmneS0SSAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Conexões removidas para FiiDPtK6YZFRScNeAAAF e NPhigvvDsmneS0SSAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Usuário FiiDPtK6YZFRScNeAAAF adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: By5lABm5Do9O3seMAAAD, NPhigvvDsmneS0SSAAAB, FiiDPtK6YZFRScNeAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Match criado: By5lABm5Do9O3seMAAAD <-> NPhigvvDsmneS0SSAAAB (Sala: room_1750620358310_2zeb60vfc)","service":"omegle-clone","timestamp":"2025-06-22 16:25:58"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Removendo usuário By5lABm5Do9O3seMAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Notificando parceiro NPhigvvDsmneS0SSAAAB sobre desconexão de By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Parceiro NPhigvvDsmneS0SSAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Usuário NPhigvvDsmneS0SSAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Conexões removidas para By5lABm5Do9O3seMAAAD e NPhigvvDsmneS0SSAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: FiiDPtK6YZFRScNeAAAF, NPhigvvDsmneS0SSAAAB, By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Match criado: FiiDPtK6YZFRScNeAAAF <-> NPhigvvDsmneS0SSAAAB (Sala: room_1750620375040_19rggt6ip)","service":"omegle-clone","timestamp":"2025-06-22 16:26:15"}
+{"level":"info","message":"Nova conexão: JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:30"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:26:30"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:26:30"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: By5lABm5Do9O3seMAAAD, JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:30"}
+{"level":"info","message":"Match criado: By5lABm5Do9O3seMAAAD <-> JzUlCZ9MswhkqAK7AAAH (Sala: room_1750620390370_rf942j6sr)","service":"omegle-clone","timestamp":"2025-06-22 16:26:30"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Removendo usuário JzUlCZ9MswhkqAK7AAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Notificando parceiro By5lABm5Do9O3seMAAAD sobre desconexão de JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Parceiro By5lABm5Do9O3seMAAAD adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD aguardando na fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Conexões removidas para JzUlCZ9MswhkqAK7AAAH e By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: By5lABm5Do9O3seMAAAD, JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Match criado: By5lABm5Do9O3seMAAAD <-> JzUlCZ9MswhkqAK7AAAH (Sala: room_1750620396305_xrzv3nss6)","service":"omegle-clone","timestamp":"2025-06-22 16:26:36"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Removendo usuário JzUlCZ9MswhkqAK7AAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Notificando parceiro By5lABm5Do9O3seMAAAD sobre desconexão de JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Parceiro By5lABm5Do9O3seMAAAD adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD aguardando na fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Conexões removidas para JzUlCZ9MswhkqAK7AAAH e By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: By5lABm5Do9O3seMAAAD, JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Match criado: By5lABm5Do9O3seMAAAD <-> JzUlCZ9MswhkqAK7AAAH (Sala: room_1750620398799_l9p8z4dte)","service":"omegle-clone","timestamp":"2025-06-22 16:26:38"}
+{"level":"info","message":"Usuário By5lABm5Do9O3seMAAAD desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"Removendo usuário By5lABm5Do9O3seMAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"Notificando parceiro JzUlCZ9MswhkqAK7AAAH sobre desconexão de By5lABm5Do9O3seMAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"Parceiro JzUlCZ9MswhkqAK7AAAH adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"Usuário JzUlCZ9MswhkqAK7AAAH aguardando na fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"Conexões removidas para By5lABm5Do9O3seMAAAD e JzUlCZ9MswhkqAK7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:26:48"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:30:49"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:30:50"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:30:50"}
+{"level":"info","message":"Nova conexão: t4rmd0yXvXgSmkbwAAAC","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Usuário t4rmd0yXvXgSmkbwAAAC adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Nova conexão: DNJLx008QX9JGuCAAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Usuário DNJLx008QX9JGuCAAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: t4rmd0yXvXgSmkbwAAAC, DNJLx008QX9JGuCAAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Match criado: t4rmd0yXvXgSmkbwAAAC <-> DNJLx008QX9JGuCAAAAD (Sala: room_1750620676276_ov5giv27z)","service":"omegle-clone","timestamp":"2025-06-22 16:31:16"}
+{"level":"info","message":"Nova conexão: H25loaljwCWYxvjaAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Usuário H25loaljwCWYxvjaAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Nova conexão: IgMuxrO5fZqm1ibzAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Usuário IgMuxrO5fZqm1ibzAAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: H25loaljwCWYxvjaAAAF, IgMuxrO5fZqm1ibzAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"Match criado: H25loaljwCWYxvjaAAAF <-> IgMuxrO5fZqm1ibzAAAH (Sala: room_1750620686788_utp7o0591)","service":"omegle-clone","timestamp":"2025-06-22 16:31:26"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:35:17"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:35:17"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:35:17"}
+{"level":"info","message":"Nova conexão: ILYPfWM7oGt4xJxUAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:35:28"}
+{"level":"info","message":"Usuário ILYPfWM7oGt4xJxUAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:35:28"}
+{"level":"info","message":"Nova conexão: -g-zTIbSJj89mTVnAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:35:33"}
+{"level":"info","message":"Usuário -g-zTIbSJj89mTVnAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:35:33"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:35:33"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: ILYPfWM7oGt4xJxUAAAB, -g-zTIbSJj89mTVnAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:35:33"}
+{"level":"info","message":"Match criado: ILYPfWM7oGt4xJxUAAAB <-> -g-zTIbSJj89mTVnAAAD (Sala: room_1750620933972_s8h5q7ftv)","service":"omegle-clone","timestamp":"2025-06-22 16:35:33"}
+{"level":"info","message":"Nova conexão: 4fR4ydX31WCxlxOxAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:35:58"}
+{"level":"info","message":"Usuário 4fR4ydX31WCxlxOxAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:35:58"}
+{"level":"info","message":"Usuário -g-zTIbSJj89mTVnAAAD solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Removendo usuário -g-zTIbSJj89mTVnAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Notificando parceiro ILYPfWM7oGt4xJxUAAAB sobre desconexão de -g-zTIbSJj89mTVnAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Parceiro ILYPfWM7oGt4xJxUAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Usuário ILYPfWM7oGt4xJxUAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Conexões removidas para -g-zTIbSJj89mTVnAAAD e ILYPfWM7oGt4xJxUAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Usuário -g-zTIbSJj89mTVnAAAD adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: 4fR4ydX31WCxlxOxAAAF, ILYPfWM7oGt4xJxUAAAB, -g-zTIbSJj89mTVnAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Match criado: 4fR4ydX31WCxlxOxAAAF <-> ILYPfWM7oGt4xJxUAAAB (Sala: room_1750620964876_fglng24sm)","service":"omegle-clone","timestamp":"2025-06-22 16:36:04"}
+{"level":"info","message":"Usuário 4fR4ydX31WCxlxOxAAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Removendo usuário 4fR4ydX31WCxlxOxAAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Notificando parceiro ILYPfWM7oGt4xJxUAAAB sobre desconexão de 4fR4ydX31WCxlxOxAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Parceiro ILYPfWM7oGt4xJxUAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Usuário ILYPfWM7oGt4xJxUAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Conexões removidas para 4fR4ydX31WCxlxOxAAAF e ILYPfWM7oGt4xJxUAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Usuário 4fR4ydX31WCxlxOxAAAF adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: -g-zTIbSJj89mTVnAAAD, ILYPfWM7oGt4xJxUAAAB, 4fR4ydX31WCxlxOxAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Match criado: -g-zTIbSJj89mTVnAAAD <-> ILYPfWM7oGt4xJxUAAAB (Sala: room_1750620974455_b0ag1w491)","service":"omegle-clone","timestamp":"2025-06-22 16:36:14"}
+{"level":"info","message":"Usuário -g-zTIbSJj89mTVnAAAD desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Removendo usuário -g-zTIbSJj89mTVnAAAD da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Notificando parceiro ILYPfWM7oGt4xJxUAAAB sobre desconexão de -g-zTIbSJj89mTVnAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Parceiro ILYPfWM7oGt4xJxUAAAB adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Usuário ILYPfWM7oGt4xJxUAAAB aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Conexões removidas para -g-zTIbSJj89mTVnAAAD e ILYPfWM7oGt4xJxUAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:37:09"}
+{"level":"info","message":"Usuário 4fR4ydX31WCxlxOxAAAF desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:37:16"}
+{"level":"info","message":"Nova conexão: 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:37:22"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:37:22"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:37:22"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: ILYPfWM7oGt4xJxUAAAB, 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:37:22"}
+{"level":"info","message":"Match criado: ILYPfWM7oGt4xJxUAAAB <-> 1TuKTTko75fdq-o7AAAH (Sala: room_1750621042340_izlc5ll98)","service":"omegle-clone","timestamp":"2025-06-22 16:37:22"}
+{"level":"info","message":"Nova conexão: mvHomsczXiUkREpzAAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:37:24"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:37:24"}
+{"level":"info","message":"Usuário ILYPfWM7oGt4xJxUAAAB desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Removendo usuário ILYPfWM7oGt4xJxUAAAB da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Notificando parceiro 1TuKTTko75fdq-o7AAAH sobre desconexão de ILYPfWM7oGt4xJxUAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Parceiro 1TuKTTko75fdq-o7AAAH adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Conexões removidas para ILYPfWM7oGt4xJxUAAAB e 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:37:32"}
+{"level":"info","message":"Nova conexão: kWCnX6nzav4kvr1wAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:37:37"}
+{"level":"info","message":"Usuário kWCnX6nzav4kvr1wAAAL adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:37:37"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:37:37"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: mvHomsczXiUkREpzAAAJ, 1TuKTTko75fdq-o7AAAH, kWCnX6nzav4kvr1wAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:37:37"}
+{"level":"info","message":"Match criado: mvHomsczXiUkREpzAAAJ <-> 1TuKTTko75fdq-o7AAAH (Sala: room_1750621057545_1g2auszh2)","service":"omegle-clone","timestamp":"2025-06-22 16:37:37"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Removendo usuário 1TuKTTko75fdq-o7AAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Notificando parceiro mvHomsczXiUkREpzAAAJ sobre desconexão de 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Parceiro mvHomsczXiUkREpzAAAJ adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Conexões removidas para 1TuKTTko75fdq-o7AAAH e mvHomsczXiUkREpzAAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: kWCnX6nzav4kvr1wAAAL, mvHomsczXiUkREpzAAAJ, 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Match criado: kWCnX6nzav4kvr1wAAAL <-> mvHomsczXiUkREpzAAAJ (Sala: room_1750621067269_kwvtj5jw3)","service":"omegle-clone","timestamp":"2025-06-22 16:37:47"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Removendo usuário mvHomsczXiUkREpzAAAJ da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Notificando parceiro kWCnX6nzav4kvr1wAAAL sobre desconexão de mvHomsczXiUkREpzAAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Parceiro kWCnX6nzav4kvr1wAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Usuário kWCnX6nzav4kvr1wAAAL aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Conexões removidas para mvHomsczXiUkREpzAAAJ e kWCnX6nzav4kvr1wAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: 1TuKTTko75fdq-o7AAAH, kWCnX6nzav4kvr1wAAAL, mvHomsczXiUkREpzAAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Match criado: 1TuKTTko75fdq-o7AAAH <-> kWCnX6nzav4kvr1wAAAL (Sala: room_1750621076735_s3eenu2no)","service":"omegle-clone","timestamp":"2025-06-22 16:37:56"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Removendo usuário 1TuKTTko75fdq-o7AAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Notificando parceiro kWCnX6nzav4kvr1wAAAL sobre desconexão de 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Parceiro kWCnX6nzav4kvr1wAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Usuário kWCnX6nzav4kvr1wAAAL aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Conexões removidas para 1TuKTTko75fdq-o7AAAH e kWCnX6nzav4kvr1wAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: mvHomsczXiUkREpzAAAJ, kWCnX6nzav4kvr1wAAAL, 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Match criado: mvHomsczXiUkREpzAAAJ <-> kWCnX6nzav4kvr1wAAAL (Sala: room_1750621085301_196ox5oju)","service":"omegle-clone","timestamp":"2025-06-22 16:38:05"}
+{"level":"info","message":"Usuário kWCnX6nzav4kvr1wAAAL desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Removendo usuário kWCnX6nzav4kvr1wAAAL da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Notificando parceiro mvHomsczXiUkREpzAAAJ sobre desconexão de kWCnX6nzav4kvr1wAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Parceiro mvHomsczXiUkREpzAAAJ adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Conexões removidas para kWCnX6nzav4kvr1wAAAL e mvHomsczXiUkREpzAAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:38:13"}
+{"level":"info","message":"Usuário mvHomsczXiUkREpzAAAJ desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:38:19"}
+{"level":"info","message":"Nova conexão: U9RXdM90cnm93eZTAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:38:31"}
+{"level":"info","message":"Usuário U9RXdM90cnm93eZTAAAN adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:38:31"}
+{"level":"info","message":"Tentando match com 2 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:38:31"}
+{"level":"info","message":"Tentando fazer match com 2 usuários na fila: 1TuKTTko75fdq-o7AAAH, U9RXdM90cnm93eZTAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:38:31"}
+{"level":"info","message":"Match criado: 1TuKTTko75fdq-o7AAAH <-> U9RXdM90cnm93eZTAAAN (Sala: room_1750621111082_459lr2de0)","service":"omegle-clone","timestamp":"2025-06-22 16:38:31"}
+{"level":"info","message":"Nova conexão: qaGHPPT8hC0hvMQTAAAP","service":"omegle-clone","timestamp":"2025-06-22 16:38:41"}
+{"level":"info","message":"Usuário qaGHPPT8hC0hvMQTAAAP adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:38:41"}
+{"level":"info","message":"Usuário U9RXdM90cnm93eZTAAAN solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Removendo usuário U9RXdM90cnm93eZTAAAN da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Notificando parceiro 1TuKTTko75fdq-o7AAAH sobre desconexão de U9RXdM90cnm93eZTAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Parceiro 1TuKTTko75fdq-o7AAAH adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Conexões removidas para U9RXdM90cnm93eZTAAAN e 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Usuário U9RXdM90cnm93eZTAAAN adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: qaGHPPT8hC0hvMQTAAAP, 1TuKTTko75fdq-o7AAAH, U9RXdM90cnm93eZTAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Match criado: qaGHPPT8hC0hvMQTAAAP <-> 1TuKTTko75fdq-o7AAAH (Sala: room_1750621126530_2kha6q71o)","service":"omegle-clone","timestamp":"2025-06-22 16:38:46"}
+{"level":"info","message":"Usuário 1TuKTTko75fdq-o7AAAH desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Removendo usuário 1TuKTTko75fdq-o7AAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Notificando parceiro qaGHPPT8hC0hvMQTAAAP sobre desconexão de 1TuKTTko75fdq-o7AAAH","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Parceiro qaGHPPT8hC0hvMQTAAAP adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Usuário qaGHPPT8hC0hvMQTAAAP aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Conexões removidas para 1TuKTTko75fdq-o7AAAH e qaGHPPT8hC0hvMQTAAAP","service":"omegle-clone","timestamp":"2025-06-22 16:39:18"}
+{"level":"info","message":"Nova conexão: u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:39:23"}
+{"level":"info","message":"Usuário u6TqV6F5_MDJokCvAAAR adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:39:23"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:39:23"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: U9RXdM90cnm93eZTAAAN, qaGHPPT8hC0hvMQTAAAP, u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:39:23"}
+{"level":"info","message":"Match criado: U9RXdM90cnm93eZTAAAN <-> qaGHPPT8hC0hvMQTAAAP (Sala: room_1750621163474_zz2xug8mq)","service":"omegle-clone","timestamp":"2025-06-22 16:39:23"}
+{"level":"info","message":"Usuário U9RXdM90cnm93eZTAAAN desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Removendo usuário U9RXdM90cnm93eZTAAAN da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Notificando parceiro qaGHPPT8hC0hvMQTAAAP sobre desconexão de U9RXdM90cnm93eZTAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Parceiro qaGHPPT8hC0hvMQTAAAP adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Usuário qaGHPPT8hC0hvMQTAAAP aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Conexões removidas para U9RXdM90cnm93eZTAAAN e qaGHPPT8hC0hvMQTAAAP","service":"omegle-clone","timestamp":"2025-06-22 16:39:27"}
+{"level":"info","message":"Nova conexão: fpvrRBWYj55BxxfmAAAT","service":"omegle-clone","timestamp":"2025-06-22 16:39:30"}
+{"level":"info","message":"Usuário fpvrRBWYj55BxxfmAAAT adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:39:30"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:39:30"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: u6TqV6F5_MDJokCvAAAR, qaGHPPT8hC0hvMQTAAAP, fpvrRBWYj55BxxfmAAAT","service":"omegle-clone","timestamp":"2025-06-22 16:39:30"}
+{"level":"info","message":"Match criado: u6TqV6F5_MDJokCvAAAR <-> qaGHPPT8hC0hvMQTAAAP (Sala: room_1750621170042_yz0w62u8h)","service":"omegle-clone","timestamp":"2025-06-22 16:39:30"}
+{"level":"info","message":"Usuário qaGHPPT8hC0hvMQTAAAP desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Removendo usuário qaGHPPT8hC0hvMQTAAAP da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Notificando parceiro u6TqV6F5_MDJokCvAAAR sobre desconexão de qaGHPPT8hC0hvMQTAAAP","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Parceiro u6TqV6F5_MDJokCvAAAR adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Usuário u6TqV6F5_MDJokCvAAAR aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Conexões removidas para qaGHPPT8hC0hvMQTAAAP e u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:39:36"}
+{"level":"info","message":"Nova conexão: ybFvw3PDrMye7qkgAAAV","service":"omegle-clone","timestamp":"2025-06-22 16:39:39"}
+{"level":"info","message":"Usuário ybFvw3PDrMye7qkgAAAV adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:39:39"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:39:39"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: fpvrRBWYj55BxxfmAAAT, u6TqV6F5_MDJokCvAAAR, ybFvw3PDrMye7qkgAAAV","service":"omegle-clone","timestamp":"2025-06-22 16:39:39"}
+{"level":"info","message":"Match criado: fpvrRBWYj55BxxfmAAAT <-> u6TqV6F5_MDJokCvAAAR (Sala: room_1750621179560_8cq7mo3j8)","service":"omegle-clone","timestamp":"2025-06-22 16:39:39"}
+{"level":"info","message":"Usuário u6TqV6F5_MDJokCvAAAR solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Removendo usuário u6TqV6F5_MDJokCvAAAR da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Notificando parceiro fpvrRBWYj55BxxfmAAAT sobre desconexão de u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Parceiro fpvrRBWYj55BxxfmAAAT adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Usuário fpvrRBWYj55BxxfmAAAT aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Conexões removidas para u6TqV6F5_MDJokCvAAAR e fpvrRBWYj55BxxfmAAAT","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Usuário u6TqV6F5_MDJokCvAAAR adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: ybFvw3PDrMye7qkgAAAV, fpvrRBWYj55BxxfmAAAT, u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Match criado: ybFvw3PDrMye7qkgAAAV <-> fpvrRBWYj55BxxfmAAAT (Sala: room_1750621191480_d2r1muqow)","service":"omegle-clone","timestamp":"2025-06-22 16:39:51"}
+{"level":"info","message":"Usuário fpvrRBWYj55BxxfmAAAT solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Removendo usuário fpvrRBWYj55BxxfmAAAT da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Notificando parceiro ybFvw3PDrMye7qkgAAAV sobre desconexão de fpvrRBWYj55BxxfmAAAT","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Parceiro ybFvw3PDrMye7qkgAAAV adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Usuário ybFvw3PDrMye7qkgAAAV aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Conexões removidas para fpvrRBWYj55BxxfmAAAT e ybFvw3PDrMye7qkgAAAV","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Usuário fpvrRBWYj55BxxfmAAAT adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: u6TqV6F5_MDJokCvAAAR, ybFvw3PDrMye7qkgAAAV, fpvrRBWYj55BxxfmAAAT","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Match criado: u6TqV6F5_MDJokCvAAAR <-> ybFvw3PDrMye7qkgAAAV (Sala: room_1750621197769_knbnxglma)","service":"omegle-clone","timestamp":"2025-06-22 16:39:57"}
+{"level":"info","message":"Usuário ybFvw3PDrMye7qkgAAAV solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Removendo usuário ybFvw3PDrMye7qkgAAAV da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Notificando parceiro u6TqV6F5_MDJokCvAAAR sobre desconexão de ybFvw3PDrMye7qkgAAAV","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Parceiro u6TqV6F5_MDJokCvAAAR adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Usuário u6TqV6F5_MDJokCvAAAR aguardando na fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Conexões removidas para ybFvw3PDrMye7qkgAAAV e u6TqV6F5_MDJokCvAAAR","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Usuário ybFvw3PDrMye7qkgAAAV adicionado à fila. Total: 3","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Tentando match com 3 usuários disponíveis","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Tentando fazer match com 3 usuários na fila: fpvrRBWYj55BxxfmAAAT, u6TqV6F5_MDJokCvAAAR, ybFvw3PDrMye7qkgAAAV","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"Match criado: fpvrRBWYj55BxxfmAAAT <-> u6TqV6F5_MDJokCvAAAR (Sala: room_1750621203808_4gsnsyd22)","service":"omegle-clone","timestamp":"2025-06-22 16:40:03"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:41:19"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:41:19"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:41:19"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 16:43:50"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 16:43:50"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 16:43:50"}
+{"level":"info","message":"Nova conexão: 3XZhQuBf6p4UGi8QAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:44:11"}
+{"level":"info","message":"Usuário 3XZhQuBf6p4UGi8QAAAB adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:44:11"}
+{"level":"info","message":"Nova conexão: BGNFrty0TtVpDoLSAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:44:33"}
+{"level":"info","message":"Usuário BGNFrty0TtVpDoLSAAAD adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:44:33"}
+{"level":"info","message":"Match criado: 3XZhQuBf6p4UGi8QAAAB <-> BGNFrty0TtVpDoLSAAAD (Sala: room_1750621473069_abnmqq3xq)","service":"omegle-clone","timestamp":"2025-06-22 16:44:33"}
+{"level":"info","message":"Usuário 3XZhQuBf6p4UGi8QAAAB desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:44:53"}
+{"level":"info","message":"Removendo usuário 3XZhQuBf6p4UGi8QAAAB da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:44:53"}
+{"level":"info","message":"Notificando parceiro BGNFrty0TtVpDoLSAAAD sobre desconexão de 3XZhQuBf6p4UGi8QAAAB","service":"omegle-clone","timestamp":"2025-06-22 16:44:53"}
+{"level":"info","message":"Parceiro BGNFrty0TtVpDoLSAAAD adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:44:53"}
+{"level":"info","message":"Conexões removidas para 3XZhQuBf6p4UGi8QAAAB e BGNFrty0TtVpDoLSAAAD","service":"omegle-clone","timestamp":"2025-06-22 16:44:53"}
+{"level":"info","message":"Usuário BGNFrty0TtVpDoLSAAAD desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:45:00"}
+{"level":"info","message":"Nova conexão: VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:45:05"}
+{"level":"info","message":"Usuário VQWteWUccu5rzADhAAAF adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:45:05"}
+{"level":"info","message":"Nova conexão: 3U6kHuZ4IXXUxLKZAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:45:11"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:45:11"}
+{"level":"info","message":"Match criado: VQWteWUccu5rzADhAAAF <-> 3U6kHuZ4IXXUxLKZAAAH (Sala: room_1750621511297_0h1rkmudg)","service":"omegle-clone","timestamp":"2025-06-22 16:45:11"}
+{"level":"info","message":"Nova conexão: KXqSPn4Vo0pi5ti4AAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:45:17"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:45:17"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Removendo usuário 3U6kHuZ4IXXUxLKZAAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Notificando parceiro VQWteWUccu5rzADhAAAF sobre desconexão de 3U6kHuZ4IXXUxLKZAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Parceiro VQWteWUccu5rzADhAAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Match criado: KXqSPn4Vo0pi5ti4AAAJ <-> VQWteWUccu5rzADhAAAF (Sala: room_1750621529248_74j09nxj4)","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Conexões removidas para 3U6kHuZ4IXXUxLKZAAAH e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:45:29"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Removendo usuário KXqSPn4Vo0pi5ti4AAAJ da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Notificando parceiro VQWteWUccu5rzADhAAAF sobre desconexão de KXqSPn4Vo0pi5ti4AAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Parceiro VQWteWUccu5rzADhAAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Match criado: 3U6kHuZ4IXXUxLKZAAAH <-> VQWteWUccu5rzADhAAAF (Sala: room_1750621543205_vikoej2o7)","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Conexões removidas para KXqSPn4Vo0pi5ti4AAAJ e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:45:43"}
+{"level":"info","message":"Usuário VQWteWUccu5rzADhAAAF solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:45:49"}
+{"level":"info","message":"Usuário VQWteWUccu5rzADhAAAF adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:45:49"}
+{"level":"info","message":"Match criado: KXqSPn4Vo0pi5ti4AAAJ <-> VQWteWUccu5rzADhAAAF (Sala: room_1750621549068_gka14m8ot)","service":"omegle-clone","timestamp":"2025-06-22 16:45:49"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Removendo usuário 3U6kHuZ4IXXUxLKZAAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Notificando parceiro VQWteWUccu5rzADhAAAF sobre desconexão de 3U6kHuZ4IXXUxLKZAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Parceiro VQWteWUccu5rzADhAAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Conexões removidas para 3U6kHuZ4IXXUxLKZAAAH e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Match criado: VQWteWUccu5rzADhAAAF <-> 3U6kHuZ4IXXUxLKZAAAH (Sala: room_1750621557089_2ty3x5oac)","service":"omegle-clone","timestamp":"2025-06-22 16:45:57"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Removendo usuário KXqSPn4Vo0pi5ti4AAAJ da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Notificando parceiro VQWteWUccu5rzADhAAAF sobre desconexão de KXqSPn4Vo0pi5ti4AAAJ","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Parceiro VQWteWUccu5rzADhAAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Conexões removidas para KXqSPn4Vo0pi5ti4AAAJ e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Match criado: VQWteWUccu5rzADhAAAF <-> KXqSPn4Vo0pi5ti4AAAJ (Sala: room_1750621564192_vlk6peu6w)","service":"omegle-clone","timestamp":"2025-06-22 16:46:04"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Removendo usuário 3U6kHuZ4IXXUxLKZAAAH da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Notificando parceiro VQWteWUccu5rzADhAAAF sobre desconexão de 3U6kHuZ4IXXUxLKZAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Parceiro VQWteWUccu5rzADhAAAF adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Conexões removidas para 3U6kHuZ4IXXUxLKZAAAH e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Match criado: VQWteWUccu5rzADhAAAF <-> 3U6kHuZ4IXXUxLKZAAAH (Sala: room_1750621573609_727vycz1u)","service":"omegle-clone","timestamp":"2025-06-22 16:46:13"}
+{"level":"info","message":"Usuário VQWteWUccu5rzADhAAAF desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:46:30"}
+{"level":"info","message":"Removendo usuário VQWteWUccu5rzADhAAAF da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:46:30"}
+{"level":"info","message":"Notificando parceiro 3U6kHuZ4IXXUxLKZAAAH sobre desconexão de VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:46:30"}
+{"level":"info","message":"Parceiro 3U6kHuZ4IXXUxLKZAAAH adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:46:30"}
+{"level":"info","message":"Conexões removidas para VQWteWUccu5rzADhAAAF e 3U6kHuZ4IXXUxLKZAAAH","service":"omegle-clone","timestamp":"2025-06-22 16:46:30"}
+{"level":"info","message":"Usuário 3U6kHuZ4IXXUxLKZAAAH desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:46:34"}
+{"level":"info","message":"Nova conexão: QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:46:41"}
+{"level":"info","message":"Usuário QbhEIRkW3tPI2a_aAAAL adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:46:41"}
+{"level":"info","message":"Nova conexão: PZ29lkP3PzTH5k0tAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:46:46"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:46:46"}
+{"level":"info","message":"Match criado: QbhEIRkW3tPI2a_aAAAL <-> PZ29lkP3PzTH5k0tAAAN (Sala: room_1750621606671_gn5jxgraj)","service":"omegle-clone","timestamp":"2025-06-22 16:46:46"}
+{"level":"info","message":"Usuário KXqSPn4Vo0pi5ti4AAAJ desconectado","service":"omegle-clone","timestamp":"2025-06-22 16:47:05"}
+{"level":"info","message":"Removendo usuário KXqSPn4Vo0pi5ti4AAAJ da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:05"}
+{"level":"info","message":"Conexões removidas para KXqSPn4Vo0pi5ti4AAAJ e VQWteWUccu5rzADhAAAF","service":"omegle-clone","timestamp":"2025-06-22 16:47:05"}
+{"level":"info","message":"Nova conexão: UEzwPLc_r-SBu2N9AAAP","service":"omegle-clone","timestamp":"2025-06-22 16:47:09"}
+{"level":"info","message":"Usuário UEzwPLc_r-SBu2N9AAAP adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:47:09"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Removendo usuário PZ29lkP3PzTH5k0tAAAN da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Notificando parceiro QbhEIRkW3tPI2a_aAAAL sobre desconexão de PZ29lkP3PzTH5k0tAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Parceiro QbhEIRkW3tPI2a_aAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Match criado: UEzwPLc_r-SBu2N9AAAP <-> QbhEIRkW3tPI2a_aAAAL (Sala: room_1750621634309_uktbtc01n)","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Conexões removidas para PZ29lkP3PzTH5k0tAAAN e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:47:14"}
+{"level":"info","message":"Usuário UEzwPLc_r-SBu2N9AAAP solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Removendo usuário UEzwPLc_r-SBu2N9AAAP da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Notificando parceiro QbhEIRkW3tPI2a_aAAAL sobre desconexão de UEzwPLc_r-SBu2N9AAAP","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Parceiro QbhEIRkW3tPI2a_aAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Match criado: PZ29lkP3PzTH5k0tAAAN <-> QbhEIRkW3tPI2a_aAAAL (Sala: room_1750621644980_wbyafvb9w)","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Conexões removidas para UEzwPLc_r-SBu2N9AAAP e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Usuário UEzwPLc_r-SBu2N9AAAP adicionado à fila. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 16:47:24"}
+{"level":"info","message":"Usuário QbhEIRkW3tPI2a_aAAAL solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:30"}
+{"level":"info","message":"Usuário QbhEIRkW3tPI2a_aAAAL adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:47:30"}
+{"level":"info","message":"Match criado: UEzwPLc_r-SBu2N9AAAP <-> QbhEIRkW3tPI2a_aAAAL (Sala: room_1750621650578_v5kjlvdqp)","service":"omegle-clone","timestamp":"2025-06-22 16:47:30"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Removendo usuário PZ29lkP3PzTH5k0tAAAN da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Notificando parceiro QbhEIRkW3tPI2a_aAAAL sobre desconexão de PZ29lkP3PzTH5k0tAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Parceiro QbhEIRkW3tPI2a_aAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Conexões removidas para PZ29lkP3PzTH5k0tAAAN e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Match criado: QbhEIRkW3tPI2a_aAAAL <-> PZ29lkP3PzTH5k0tAAAN (Sala: room_1750621655485_ndyln45v7)","service":"omegle-clone","timestamp":"2025-06-22 16:47:35"}
+{"level":"info","message":"Usuário UEzwPLc_r-SBu2N9AAAP solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Removendo usuário UEzwPLc_r-SBu2N9AAAP da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Notificando parceiro QbhEIRkW3tPI2a_aAAAL sobre desconexão de UEzwPLc_r-SBu2N9AAAP","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Parceiro QbhEIRkW3tPI2a_aAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Conexões removidas para UEzwPLc_r-SBu2N9AAAP e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Usuário UEzwPLc_r-SBu2N9AAAP adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Match criado: QbhEIRkW3tPI2a_aAAAL <-> UEzwPLc_r-SBu2N9AAAP (Sala: room_1750621663952_rbkrv89pb)","service":"omegle-clone","timestamp":"2025-06-22 16:47:43"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN solicitou próximo","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Removendo usuário PZ29lkP3PzTH5k0tAAAN da conexão ativa","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Notificando parceiro QbhEIRkW3tPI2a_aAAAL sobre desconexão de PZ29lkP3PzTH5k0tAAAN","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Parceiro QbhEIRkW3tPI2a_aAAAL adicionado de volta à fila","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Conexões removidas para PZ29lkP3PzTH5k0tAAAN e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"Match criado: QbhEIRkW3tPI2a_aAAAL <-> PZ29lkP3PzTH5k0tAAAN (Sala: room_1750621673072_ybgmf70bu)","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}

@@ -1,283 +1,142 @@
-# WebSocket Video Chat Server
+# 🎯 Stranger Chat
 
-Servidor de video chat P2P usando WebSocket, Redis e MongoDB com arquitetura modular em camadas.
+Uma plataforma completa de chat anônimo com estranhos em tempo real, incluindo chat de texto e vídeo.
 
-## 🏗️ Arquitetura
+## ✨ Características
 
-O projeto segue uma arquitetura em camadas:
+- **Chat de Texto**: Conecte-se com pessoas aleatórias através de mensagens
+- **Chat de Vídeo**: Conecte-se com pessoas através de vídeo e áudio em tempo real
+- **100% Anônimo**: Nenhuma informação pessoal é coletada ou armazenada
+- **Tempo Real**: Comunicação instantânea usando WebSockets e WebRTC
+- **Interface Moderna**: Design responsivo e intuitivo
+- **Botão "Próximo"**: Pule para conversar com outra pessoa facilmente
+- **Sem Registro**: Comece a conversar imediatamente
 
-```
-src/
-├── config/          # Configurações (banco, logger)
-├── infrastructure/  # Conexões com Redis e MongoDB
-├── models/          # Modelos de dados (User, Room)
-├── repositories/    # Camada de acesso a dados
-├── tests/           # Sistema completo de testes
-└── SocketService.js # Serviço principal de WebSocket
-```
-
-## 🧪 Sistema de Testes
-
-### Estrutura de Testes
-
-```
-src/tests/
-├── setup.js                    # Configuração global
-├── *.test.js                   # Testes unitários
-├── integration/                # Testes de integração
-│   └── WebSocketIntegration.test.js
-├── api/                        # Testes de API
-│   └── HealthCheck.test.js
-├── performance/                # Testes de performance
-│   └── LoadTest.test.js
-├── security/                   # Testes de segurança
-│   └── SecurityTest.test.js
-├── edge-cases/                 # Casos extremos
-│   └── EdgeCases.test.js
-├── mocks/                      # Testes com mocks
-│   └── MockTests.test.js
-└── e2e/                        # Testes end-to-end
-    └── EndToEnd.test.js
-```
-
-### Tipos de Testes
-
-#### 1. **Testes Unitários** (`src/tests/*.test.js`)
-- Testam componentes isolados
-- Repositórios (UserRepository, RoomRepository)
-- Conexões (Redis, MongoDB)
-- Modelos (User, Room)
-
-#### 2. **Testes de Integração** (`src/tests/integration/`)
-- Testam comunicação entre componentes
-- WebSocket com múltiplos clientes
-- Troca de mensagens WebRTC
-- Fluxos de conexão/desconexão
-
-#### 3. **Testes de API** (`src/tests/api/`)
-- Endpoints de health check
-- Validação de respostas HTTP
-- Status do sistema
-
-#### 4. **Testes de Performance** (`src/tests/performance/`)
-- Múltiplas conexões simultâneas
-- Processamento de mensagens
-- Estabilidade com reconexões
-
-#### 5. **Testes de Segurança** (`src/tests/security/`)
-- Validação de payloads maliciosos
-- Proteção contra injeção de SQL
-- Limitação de tamanho de mensagens
-- Validação de IDs de socket
-
-#### 6. **Testes de Edge Cases** (`src/tests/edge-cases/`)
-- Dados vazios ou nulos
-- Caracteres especiais
-- IDs muito longos
-- Operações simultâneas
-- Falhas de conexão
-
-#### 7. **Testes com Mocks** (`src/tests/mocks/`)
-- Isolamento de componentes
-- Simulação de falhas
-- Testes sem dependências externas
-
-#### 8. **Testes End-to-End** (`src/tests/e2e/`)
-- Fluxos completos de video chat
-- Múltiplas salas simultâneas
-- Reconexão de clientes
-
-## 🚀 Como Executar os Testes
+## 🚀 Como Usar
 
 ### Instalação
+
 ```bash
+# Clone o repositório
+git clone <url-do-repositorio>
+cd stranger-chat
+
+# Instale as dependências
 npm install
+
+# Inicie o servidor
+npm start
 ```
 
-### Comandos de Teste
+### Desenvolvimento
 
 ```bash
-# Todos os testes
+# Modo desenvolvimento com auto-reload
+npm run dev
+
+# Executar testes
 npm test
-
-# Testes em modo watch
-npm run test:watch
-
-# Testes com cobertura
-npm run test:coverage
-
-# Testes específicos
-npm run test:unit          # Apenas testes unitários
-npm run test:integration   # Apenas testes de integração
-npm run test:api           # Apenas testes de API
-npm run test:performance   # Apenas testes de performance
-npm run test:security      # Apenas testes de segurança
-npm run test:e2e           # Apenas testes end-to-end
-npm run test:edge          # Apenas edge cases
-npm run test:mocks         # Apenas testes com mocks
 ```
 
-### Configuração de Ambiente
+## 📱 Como Funciona
 
-Crie um arquivo `.env` na raiz do projeto:
+### Chat de Texto (`/chat`)
+1. **Iniciar Chat**: Clique no botão "Iniciar Chat" para começar
+2. **Procurando**: O sistema procura alguém online para conversar
+3. **Conectado**: Quando encontrar alguém, você pode começar a conversar
+4. **Próximo**: Use o botão "Próximo" para conversar com outra pessoa
+5. **Parar**: Use o botão "Parar" para encerrar a sessão
 
-```env
-# Configurações do Redis
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_PASSWORD=your_password
+### Chat de Vídeo (`/video-chat`)
+1. **Permitir Acesso**: Autorize o acesso à câmera e microfone
+2. **Iniciar Vídeo**: Clique em "Iniciar Vídeo" para começar
+3. **Procurando**: O sistema procura alguém online para conversar
+4. **Conectado**: Quando encontrar alguém, o vídeo e áudio serão ativados
+5. **Chat**: Você pode conversar por texto enquanto faz vídeo
+6. **Próximo**: Use o botão "Próximo" para conversar com outra pessoa
 
-# Configurações do MongoDB
-MONGO_URL=mongodb://localhost:27017/websocket_chat
+## 🛠️ Tecnologias
 
-# Configurações da Aplicação
-NODE_ENV=test
-PORT=3333
+- **Backend**: Node.js + Express + Socket.IO
+- **Frontend**: HTML5 + CSS3 + JavaScript Vanilla
+- **Comunicação**: WebSockets em tempo real
+- **Vídeo**: WebRTC para comunicação P2P
+- **Estilo**: CSS customizado com gradientes e animações
+
+## 📊 API Endpoints
+
+- `GET /` - Página inicial com menu
+- `GET /chat` - Chat de texto
+- `GET /video-chat` - Chat de vídeo
+- `GET /health` - Status do servidor
+- `GET /api/stats` - Estatísticas em tempo real
+
+## 🔧 Estrutura do Projeto
+
+```
+stranger-chat/
+├── src/
+│   ├── OmegleServer.js    # Servidor principal
+│   └── config/
+│       └── logger.js      # Configuração de logs
+├── public/
+│   ├── index.html         # Página inicial com menu
+│   ├── chat.html          # Chat de texto
+│   ├── video-chat.html    # Chat de vídeo
+│   └── js/
+│       ├── omegle.js      # Lógica do chat de texto
+│       └── video-chat.js  # Lógica do chat de vídeo
+├── index.js               # Ponto de entrada
+└── package.json
 ```
 
-### Executando Testes Específicos
+## 🎨 Interface
 
+- **Página Inicial**: Menu elegante para escolher entre chat de texto e vídeo
+- **Chat de Texto**: Interface limpa com mensagens em tempo real
+- **Chat de Vídeo**: Layout com vídeos lado a lado e chat integrado
+- **Design Responsivo**: Funciona perfeitamente em desktop e mobile
+- **Animações Suaves**: Transições e efeitos visuais modernos
+
+## 🔒 Segurança
+
+- Chat completamente anônimo
+- Sem armazenamento de mensagens
+- Conexões temporárias
+- Sem necessidade de registro
+- WebRTC P2P para vídeo (sem servidor intermediário)
+
+## 🚀 Deploy
+
+### Local
 ```bash
-# Teste específico
-npm test -- --testNamePattern="deve criar um usuário"
-
-# Teste com arquivo específico
-npm test -- UserRepository.test.js
-
-# Teste com verbose
-npm test -- --verbose
-
-# Teste com timeout personalizado
-npm test -- --testTimeout=60000
+npm start
 ```
 
-## 📊 Cobertura de Testes
-
-Para gerar relatório de cobertura:
-
+### Produção
 ```bash
-npm run test:coverage
+# Configure a variável PORT se necessário
+PORT=3000 npm start
 ```
 
-Isso irá gerar:
-- Relatório no terminal
-- Arquivos HTML em `coverage/`
-- Relatório detalhado por arquivo
+## 📝 Licença
 
-## 🔧 Configuração do Jest
+MIT License - veja o arquivo LICENSE para detalhes.
 
-O Jest está configurado no `package.json`:
+## 🤝 Contribuição
 
-```json
-{
-  "jest": {
-    "testEnvironment": "node",
-    "testMatch": ["**/tests/**/*.test.js"],
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/tests/**"
-    ],
-    "setupFilesAfterEnv": ["<rootDir>/src/tests/setup.js"],
-    "testTimeout": 30000
-  }
-}
-```
+Contribuições são bem-vindas! Sinta-se à vontade para:
 
-## 🐛 Debugging de Testes
+1. Fazer um fork do projeto
+2. Criar uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abrir um Pull Request
 
-### Logs Detalhados
-```bash
-# Habilitar logs detalhados
-DEBUG=* npm test
+## 📞 Suporte
 
-# Logs específicos do Jest
-npm test -- --verbose
-```
+Se você encontrar algum problema ou tiver sugestões, abra uma issue no GitHub.
 
-### Teste Individual
-```bash
-# Executar apenas um teste
-npm test -- --testNamePattern="nome do teste"
-```
+---
 
-### Timeout Personalizado
-```bash
-# Aumentar timeout para testes lentos
-npm test -- --testTimeout=60000
-```
-
-## 📈 Métricas de Qualidade
-
-### Cobertura Mínima Recomendada
-- **Linhas de código**: 80%
-- **Funções**: 85%
-- **Branches**: 75%
-
-### Tipos de Teste por Prioridade
-1. **Alta**: Testes unitários e de integração
-2. **Média**: Testes de API e segurança
-3. **Baixa**: Testes de performance e edge cases
-
-## 🚨 Troubleshooting
-
-### Problemas Comuns
-
-1. **Timeout em testes de integração**
-   - Aumentar `testTimeout` no Jest
-   - Verificar conexões com Redis/MongoDB
-
-2. **Falhas de conexão**
-   - Verificar se Redis e MongoDB estão rodando
-   - Checar configurações no `.env`
-
-3. **Testes lentos**
-   - Usar mocks para testes unitários
-   - Separar testes de integração
-
-4. **Vazamentos de memória**
-   - Verificar `afterAll` e `afterEach`
-   - Fechar conexões adequadamente
-
-### Dicas de Performance
-
-- Execute testes unitários primeiro
-- Use `--runInBand` para testes sequenciais
-- Configure `--maxWorkers` para paralelização
-- Use mocks para testes isolados
-
-## 📝 Contribuindo
-
-### Adicionando Novos Testes
-
-1. Crie o arquivo na pasta apropriada
-2. Siga o padrão de nomenclatura `*.test.js`
-3. Use `describe` e `it` do Jest
-4. Adicione `beforeAll`, `afterAll` quando necessário
-5. Execute `npm test` para verificar
-
-### Padrões de Teste
-
-```javascript
-describe('Nome do Componente', () => {
-  beforeAll(async () => {
-    // Setup
-  });
-
-  afterAll(async () => {
-    // Cleanup
-  });
-
-  it('deve fazer algo específico', async () => {
-    // Arrange
-    // Act
-    // Assert
-  });
-});
-```
-
-## 🔗 Links Úteis
-
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [Socket.IO Testing](https://socket.io/docs/v4/testing/)
-- [MongoDB Testing](https://docs.mongodb.com/drivers/node/current/fundamentals/testing/)
-- [Redis Testing](https://redis.io/topics/testing) 
+**Divirta-se conversando com estranhos! 🎉** 

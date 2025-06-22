@@ -1,9 +1,10 @@
 const SERVER_PORT = process.env.PORT || 3000;
-const App = require('./src/App');
+const OmegleServer = require('./src/OmegleServer');
 
-// Inicia o servidor
-const server = App(SERVER_PORT);
+// Inicia o servidor Omegle
+const server = new OmegleServer(SERVER_PORT);
+server.start();
 
-console.log(`🚀 Servidor iniciado na porta ${SERVER_PORT}`);
+console.log(`🚀 Servidor Omegle iniciado na porta ${SERVER_PORT}`);
 console.log(`📊 API disponível em: http://localhost:${SERVER_PORT}`);
-console.log(`🎯 Matchmaking stats: http://localhost:${SERVER_PORT}/api/matchmaking/stats`);
+console.log(`🎯 Estatísticas: http://localhost:${SERVER_PORT}/api/stats`);

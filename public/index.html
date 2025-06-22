@@ -4,159 +4,289 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/tailwind.css"/>
-    <link type="text/css" rel="stylesheet" href="css/video.css"/>
-
-    <title>Video Chat - Conecte-se com amigos e colegas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Stranger Chat - Conecte-se com Estranhos</title>
 
     <!-- Meta tags de SEO -->
-    <meta name="description" content="Junte-se ao Video Chat P2P, uma plataforma segura e sem complicação para comunicação via vídeo com amigos e colegas." />
-    <meta name="keywords" content="video chat, comunicação, video, chat ao vivo, plataforma p2p" />
-    <meta name="author" content="Seu Nome ou Nome da Empresa" />
-    <meta property="og:title" content="Video Chat - Conecte-se com amigos e colegas" />
-    <meta property="og:description" content="Junte-se ao Video Chat P2P para uma experiência de video comunicação segura e divertida." />
-    <meta property="og:image" content="https://www.flaticon.com/br/icones-gratis/camera-de-video" />
-    <meta property="og:url" content="https://strangers-camchat.com" />
+    <meta name="description" content="Conecte-se com pessoas aleatórias em tempo real. Chat anônimo e seguro com texto e vídeo." />
+    <meta name="keywords" content="chat, estranhos, anônimo, conversa, vídeo, omegle" />
+    <meta name="author" content="Stranger Chat" />
+    <meta property="og:title" content="Stranger Chat - Conecte-se com Estranhos" />
+    <meta property="og:description" content="Conecte-se com pessoas aleatórias em tempo real." />
+    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:url" content="https://stranger-chat.com" />
     <meta name="robots" content="index, follow" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .menu-card.chat-text::before {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .menu-card.chat-video::before {
+            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+        }
+
+        .menu-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .menu-card.chat-text .menu-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .menu-card.chat-video .menu-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .menu-card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .menu-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .menu-card.chat-video .menu-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .features h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            padding: 20px;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-r from-blue-900 to-blue-700">
-    <!-- Tela de Carregamento -->
-    <div id="loading" class="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-        <div class="flex justify-center items-center w-28 h-28 border-8 border-t-8 border-blue-500 rounded-full animate-spin border-t-transparent shadow-2xl mb-6">
-            <div class="w-20 h-20 border-8 border-t-8 border-blue-600 rounded-full animate-spin border-t-transparent"></div>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 Stranger Chat</h1>
+            <p>Conecte-se com pessoas aleatórias em tempo real. Chat anônimo e seguro com texto e vídeo.</p>
         </div>
-        <div class="text-white text-center">
-            <h2 class="text-2xl font-semibold mb-2">🎯 Procurando Usuários...</h2>
-            <p class="text-lg opacity-90">Sistema de matchmaking ativo</p>
-            <div class="status-message text-white text-center mt-4 text-lg"></div>
-        </div>
-    </div>
 
-    <!-- Tela de Falha -->
-    <div id="fail" class="hide">
-        <div class="row">
-            <div class="col s12 m4 offset-m4">
-                <div class="card bg-pink-600 text-white">
-                    <div class="card-content">
-                        <p>Não conseguimos conectar, verifique seu microfone e câmera.</p>
-                    </div>
+        <!-- Menu Principal -->
+        <div class="menu-container">
+            <!-- Chat de Texto -->
+            <div class="menu-card chat-text" onclick="window.location.href='/chat'">
+                <div class="menu-icon">
+                    <i class="material-icons">chat</i>
+                </div>
+                <h2>Chat com Estranhos</h2>
+                <p>Conecte-se com pessoas aleatórias através de mensagens de texto. Conversas anônimas e seguras em tempo real.</p>
+                <a href="/chat" class="menu-btn">
+                    <i class="material-icons">arrow_forward</i>
+                    Começar Chat
+                </a>
+            </div>
+
+            <!-- Chat de Vídeo -->
+            <div class="menu-card chat-video" onclick="window.location.href='/video-chat'">
+                <div class="menu-icon">
+                    <i class="material-icons">videocam</i>
+                </div>
+                <h2>Chat de Vídeo</h2>
+                <p>Conecte-se com pessoas através de vídeo e áudio. Veja e converse com estranhos em tempo real.</p>
+                <a href="/video-chat" class="menu-btn">
+                    <i class="material-icons">arrow_forward</i>
+                    Iniciar Vídeo
+                </a>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h3>✨ Por que escolher o Stranger Chat?</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="material-icons">security</i>
+                    <h4>100% Anônimo</h4>
+                    <p>Nenhuma informação pessoal é coletada ou armazenada</p>
+                </div>
+                <div class="feature-item">
+                    <i class="material-icons">flash_on</i>
+                    <h4>Tempo Real</h4>
+                    <p>Conexões instantâneas com pessoas de todo o mundo</p>
+                </div>
+                <div class="feature-item">
+                    <i class="material-icons">smartphone</i>
+                    <h4>Responsivo</h4>
+                    <p>Funciona perfeitamente em desktop e dispositivos móveis</p>
+                </div>
+                <div class="feature-item">
+                    <i class="material-icons">block</i>
+                    <h4>Fácil de Pular</h4>
+                    <p>Botão "Próximo" para encontrar novas pessoas rapidamente</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Tela de Conexão -->
-    <div id="connect" class="flex items-center justify-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-        <div class="w-full max-w-3xl bg-blue-800 shadow-lg rounded-lg overflow-hidden">
-            <div class="bg-blue-900 text-white p-6 text-center rounded-t-lg">
-                <h2 class="text-3xl font-semibold mb-2">Bem-vindo ao Video Chat P2P</h2>
-                <p class="text-lg mb-4">Junte-se aos seus amigos ou colegas para uma experiência segura e divertida!</p>
-            </div>
-            <div class="p-8 bg-blue-800">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Formulário -->
-                    <div class="flex flex-col items-center justify-center space-y-4">
-                        <form id="roomForm" class="w-full max-w-md">
-                            <div class="mb-4">
-                                <input type="text" id="username" placeholder="Seu nome (opcional)" 
-                                       class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" 
-                                       maxlength="20">
-                            </div>
-                            <div class="mb-4">
-                                <button type="submit" class="w-full py-3 px-5 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 transition ease-in-out duration-300">
-                                    🎯 Entrar na Fila de Matchmaking
-                                </button>
-                            </div>
-                        </form>
-                        <div class="text-white text-sm text-center">
-                            <p>✨ Sistema de filas inteligente</p>
-                            <p>🔄 Conecta 4 usuários automaticamente</p>
-                            <p>⚡ Match instantâneo quando possível</p>
-                        </div>
-                    </div>
-
-                    <!-- Pré-visualização do vídeo -->
-                    <div class="flex justify-center items-center">
-                        <div class="videoWrapper w-full max-w-xs">
-                            <video id="preview-player" class="w-full h-auto rounded-lg shadow-lg" autoplay muted></video>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Stranger Chat. Conectando pessoas, preservando privacidade.</p>
         </div>
     </div>
-
-    <div id="players" class="hide">
-        <!-- Navegação -->
-        <nav class="bg-blue-900 p-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-white text-xl font-semibold">Video Chat</h1>
-                <div class="flex items-center space-x-4">
-                    <div id="room-status" class="text-white text-sm bg-blue-700 px-3 py-1 rounded-full">
-                        🎯 Sala Ativa
-                    </div>
-                    <a id="leave" class="text-white text-lg hover:text-blue-300">
-                        <i class="material-icons">exit_to_app</i>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    
-        <!-- Área de Vídeo e Chat -->
-<div class="flex flex-col md:flex-row p-4 space-y-4 md:space-y-0">
-    <!-- Área de Vídeos -->
-    <div class="flex flex-row gap-4 w-full md:w-3/4">
-        <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
-            <video id="local-player" class="w-full h-auto rounded-lg" autoplay muted></video>
-        </div>
-        <div class="w-1/2 bg-blue-800 p-4 rounded-lg shadow-lg">
-            <video id="players-row" class="w-full h-auto rounded-lg" autoplay></video>
-        </div>
-    </div>
-
-    <!-- Área de Chat -->
-    <div class="w-full md:w-1/4 bg-blue-800 p-4 rounded-lg shadow-lg">
-        <!-- Formulário de envio de mensagens -->
-        <form id="chatForm" class="w-full">
-            <input id="inputChatMessage" type="text" placeholder="Digite sua mensagem..." class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required>
-            <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
-                <i class="material-icons">send</i> Enviar
-            </button>
-        </form>
-
-        <!-- Área para mensagens -->
-        <div id="message-printer" class="bg-blue-700 p-3 rounded-lg h-48 overflow-y-auto mt-4">
-            <!-- As mensagens aparecerão aqui -->
-        </div>
-
-        <!-- Botão Próximo -->
-        <div class="mt-4 flex justify-center">
-            <button id="nextButton" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition duration-200">
-                Próximo
-            </button>
-        </div>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Mensagem de erro -->
-    <div id="error-message" class="hide" style="background-color: #f44336; color: white; padding: 10px; margin: 10px 0; border-radius: 5px; text-align: center;"></div>
-
-    <script type="text/javascript" src="js/message-channel-fix.js"></script>
-    <script type="text/javascript" src="js/debug.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/webrtc-helper.js"></script>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/page.js"></script>
-    <script type="text/javascript" src="js/peer.js"></script>
-    <script type="text/javascript" src="js/user.js"></script>
-    <script type="text/javascript" src="js/seo.js"></script>
-
 </body>
 </html>
