@@ -1,19 +1,15 @@
-const { RTCPeerConnection } = window;
+ const { RTCPeerConnection } = window;
 
 function createPeer(user) {
-    const rtcConfiguration = {
-        iceServers: [
-            {
-                urls: 'stun:stun.l.google.com:19302'
-            }
-        ]
-    };
-
-    var pc = new RTCPeerConnection(rtcConfiguration);
+    const pc = createStablePeerConnection(user.id);
 
     pc.onicecandidate = function(event) {
         if (!event.candidate) {
             return;
+        }
+
+        if (CONFIG.DEBUG.showIceCandidates) {
+            log('debug', `ICE candidate para ${user.id}:`, event.candidate);
         }
 
         socket.emit('candidate', {
@@ -38,38 +34,75 @@ function createPeer(user) {
         setupDataChannel(user.dc);
     };
 
+    // Adicionar logs para debug
+    if (CONFIG.DEBUG.showConnectionStates) {
+        pc.onconnectionstatechange = function() {
+            log('info', `Connection state for user ${user.id}:`, pc.connectionState);
+        };
+
+        pc.oniceconnectionstatechange = function() {
+            log('info', `ICE connection state for user ${user.id}:`, pc.iceConnectionState);
+        };
+
+        pc.onsignalingstatechange = function() {
+            log('info', `Signaling state for user ${user.id}:`, pc.signalingState);
+        };
+    }
+
     return pc;
 }
 
 function createOffer(user, socket) {
-    user.dc = user.pc.createDataChannel('chat');
-    setupDataChannel(user.dc);
+    // Verificar se já existe uma conexão ativa
+    if (user.pc && user.pc.connectionState === 'connected') {
+        log('warn', `Conexão já estabelecida com ${user.id}`);
+        return;
+    }
 
-    user.pc.createOffer().then(function(offer) {
-        const h264Offer = enforceH264Codec(offer.sdp);
-        user.pc.setLocalDescription({ type: 'offer', sdp: h264Offer }).then(function() {
+    try {
+        user.dc = user.pc.createDataChannel('chat');
+        setupDataChannel(user.dc);
+
+        user.pc.createOffer().then(function(offer) {
+            const h264Offer = enforceH264Codec(offer.sdp);
+            return user.pc.setLocalDescription({ type: 'offer', sdp: h264Offer });
+        }).then(function() {
             socket.emit('offer', {
                 id: user.id,
                 offer: user.pc.localDescription
             });
+            log('info', `Offer criado para ${user.id}`);
+        }).catch(function(error) {
+            log('error', 'Erro ao criar offer:', error);
         });
-    }).catch(console.error);
+    } catch (error) {
+        log('error', 'Erro ao criar data channel:', error);
+    }
 }
 
 function answerPeer(user, offer, socket) {
+    // Verificar se já existe uma conexão ativa
+    if (user.pc && user.pc.connectionState === 'connected') {
+        log('warn', `Conexão já estabelecida com ${user.id}`);
+        return;
+    }
+
     const h264Offer = enforceH264Codec(offer.sdp);
 
     user.pc.setRemoteDescription({ type: 'offer', sdp: h264Offer }).then(function() {
-        user.pc.createAnswer().then(function(answer) {
-            const h264Answer = enforceH264Codec(answer.sdp);
-            user.pc.setLocalDescription({ type: 'answer', sdp: h264Answer }).then(function() {
-                socket.emit('answer', {
-                    id: user.id,
-                    answer: user.pc.localDescription
-                });
-            });
+        return user.pc.createAnswer();
+    }).then(function(answer) {
+        const h264Answer = enforceH264Codec(answer.sdp);
+        return user.pc.setLocalDescription({ type: 'answer', sdp: h264Answer });
+    }).then(function() {
+        socket.emit('answer', {
+            id: user.id,
+            answer: user.pc.localDescription
         });
-    }).catch(console.error);
+        log('info', `Answer criado para ${user.id}`);
+    }).catch(function(error) {
+        log('error', 'Erro ao criar answer:', error);
+    });
 }
 
 function enforceH264Codec(sdp) {
@@ -94,13 +127,22 @@ function enforceH264Codec(sdp) {
 }
 
 function setupDataChannel(dataChannel) {
-    dataChannel.onopen = checkDataChannelState;
-    dataChannel.onclose = checkDataChannelState;
+    dataChannel.onopen = function() {
+        log('info', 'Data channel opened');
+        checkDataChannelState({ type: 'open' });
+    };
+    dataChannel.onclose = function() {
+        log('info', 'Data channel closed');
+        checkDataChannelState({ type: 'close' });
+    };
     dataChannel.onmessage = function(e) {
         addMessage(e.data);
+    };
+    dataChannel.onerror = function(error) {
+        log('error', 'Data channel error:', error);
     };
 }
 
 function checkDataChannelState(event) {
-    console.log('WebRTC channel state is:', event.type);
-}
+    log('info', 'WebRTC channel state is:', event.type);
+} 

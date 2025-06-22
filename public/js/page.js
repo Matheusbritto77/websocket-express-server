@@ -20,10 +20,12 @@ function showForm() {
 }
 
 function showPlayers() {
+    console.log('Mostrando interface da sala...');
     hidePanel('loading')
     hidePanel('fail')
     hidePanel('connect')
     showPanel('players')
+    console.log('Interface da sala exibida');
 }
 
 function addVideoPlayer(stream) {
@@ -32,6 +34,16 @@ function addVideoPlayer(stream) {
 
     // Atribuir o stream de mídia ao elemento de vídeo existente
     videoElement.srcObject = stream;
+    
+    // Garantir que o vídeo seja reproduzido
+    videoElement.onloadedmetadata = function() {
+        videoElement.play().catch(function(error) {
+            console.log('Erro ao reproduzir vídeo:', error);
+        });
+    };
+    
+    // Log para debug
+    console.log('Vídeo adicionado:', stream);
 }
 
 

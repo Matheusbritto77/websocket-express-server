@@ -1,17 +1,73 @@
 {
   "name": "api-p2p-video-chat",
   "version": "1.0.0",
-  "description": "Create rooms using websocket to help users connect using webrtc",
+  "description": "WebSocket server for P2P video chat with matchmaking system",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "test:unit": "jest src/tests/*.test.js",
+    "test:api": "jest src/tests/api/",
+    "test:integration": "jest src/tests/integration/",
+    "test:e2e": "jest src/tests/e2e/",
+    "test:security": "jest src/tests/security/",
+    "test:edge-cases": "jest src/tests/edge-cases/",
+    "test:mocks": "jest src/tests/mocks/",
+    "test:matchmaking": "jest src/tests/MatchmakingService.test.js",
+    "test:performance": "jest src/tests/performance/",
+    "test:frontend": "jest tests/frontend/",
+    "test:frontend:unit": "jest tests/frontend/unit/",
+    "test:frontend:integration": "jest tests/frontend/integration/",
+    "test:frontend:e2e": "jest tests/frontend/e2e/",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "websocket",
+    "video-chat",
+    "p2p",
+    "webrtc",
+    "matchmaking",
+    "redis",
+    "mongodb"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1",
-    "uuid": "^11.0.5"
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0",
+    "redis": "^4.6.10",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
+    "supertest": "^6.3.3",
+    "uuid": "^9.0.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "jest": "^29.6.2",
+    "jsdom": "^22.1.0",
+    "nodemon": "^3.0.1",
+    "puppeteer": "^21.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/frontend/setup.js"
+    ],
+    "testTimeout": 30000,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "public/js/**/*.js",
+      "!src/tests/**",
+      "!src/config/**",
+      "!tests/**"
+    ],
+    "moduleNameMapping": {
+      "^@/(.*)$": "<rootDir>/public/js/$1"
+    }
   }
 }

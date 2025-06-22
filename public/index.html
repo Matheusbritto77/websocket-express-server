@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link type="text/css" rel="stylesheet" href="css/tailwind.css"/>
     <link type="text/css" rel="stylesheet" href="css/video.css"/>
 
-    <head>
-        <title>Video Chat - Conecte-se com amigos e colegas</title>
-    
-        <!-- Meta tags de SEO -->
-        <meta name="description" content="Junte-se ao Video Chat P2P, uma plataforma segura e sem complicação para comunicação via vídeo com amigos e colegas." />
-        <meta name="keywords" content="video chat, comunicação, video, chat ao vivo, plataforma p2p" />
-        <meta name="author" content="Seu Nome ou Nome da Empresa" />
-        <meta property="og:title" content="Video Chat - Conecte-se com amigos e colegas" />
-        <meta property="og:description" content="Junte-se ao Video Chat P2P para uma experiência de video comunicação segura e divertida." />
-        <meta property="og:image" content="https://www.flaticon.com/br/icones-gratis/camera-de-video" />
-        <meta property="og:url" content="https://strangers-camchat.com" />
-        <meta name="robots" content="index, follow" />
-       
-    
-       
-    
+    <title>Video Chat - Conecte-se com amigos e colegas</title>
+
+    <!-- Meta tags de SEO -->
+    <meta name="description" content="Junte-se ao Video Chat P2P, uma plataforma segura e sem complicação para comunicação via vídeo com amigos e colegas." />
+    <meta name="keywords" content="video chat, comunicação, video, chat ao vivo, plataforma p2p" />
+    <meta name="author" content="Seu Nome ou Nome da Empresa" />
+    <meta property="og:title" content="Video Chat - Conecte-se com amigos e colegas" />
+    <meta property="og:description" content="Junte-se ao Video Chat P2P para uma experiência de video comunicação segura e divertida." />
+    <meta property="og:image" content="https://www.flaticon.com/br/icones-gratis/camera-de-video" />
+    <meta property="og:url" content="https://strangers-camchat.com" />
+    <meta name="robots" content="index, follow" />
 </head>
 <body class="bg-gradient-to-r from-blue-900 to-blue-700">
     <!-- Tela de Carregamento -->
-    <div id="loading" class="flex justify-center items-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-        <div class="flex justify-center items-center w-28 h-28 border-8 border-t-8 border-blue-500 rounded-full animate-spin border-t-transparent shadow-2xl">
+    <div id="loading" class="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
+        <div class="flex justify-center items-center w-28 h-28 border-8 border-t-8 border-blue-500 rounded-full animate-spin border-t-transparent shadow-2xl mb-6">
             <div class="w-20 h-20 border-8 border-t-8 border-blue-600 rounded-full animate-spin border-t-transparent"></div>
+        </div>
+        <div class="text-white text-center">
+            <h2 class="text-2xl font-semibold mb-2">🎯 Procurando Usuários...</h2>
+            <p class="text-lg opacity-90">Sistema de matchmaking ativo</p>
+            <div class="status-message text-white text-center mt-4 text-lg"></div>
         </div>
     </div>
 
@@ -60,12 +61,21 @@
                     <div class="flex flex-col items-center justify-center space-y-4">
                         <form id="roomForm" class="w-full max-w-md">
                             <div class="mb-4">
+                                <input type="text" id="username" placeholder="Seu nome (opcional)" 
+                                       class="w-full p-3 mb-4 rounded-lg bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" 
+                                       maxlength="20">
+                            </div>
+                            <div class="mb-4">
                                 <button type="submit" class="w-full py-3 px-5 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 transition ease-in-out duration-300">
-                                    Entrar na Sala
+                                    🎯 Entrar na Fila de Matchmaking
                                 </button>
                             </div>
                         </form>
-                        <p class="text-white text-sm">Precisa de ajuda? Entre em contato com o suporte.</p>
+                        <div class="text-white text-sm text-center">
+                            <p>✨ Sistema de filas inteligente</p>
+                            <p>🔄 Conecta 4 usuários automaticamente</p>
+                            <p>⚡ Match instantâneo quando possível</p>
+                        </div>
                     </div>
 
                     <!-- Pré-visualização do vídeo -->
@@ -84,9 +94,14 @@
         <nav class="bg-blue-900 p-4">
             <div class="flex justify-between items-center">
                 <h1 class="text-white text-xl font-semibold">Video Chat</h1>
-                <a id="leave" class="text-white text-lg hover:text-blue-300">
-                    <i class="material-icons">exit_to_app</i>
-                </a>
+                <div class="flex items-center space-x-4">
+                    <div id="room-status" class="text-white text-sm bg-blue-700 px-3 py-1 rounded-full">
+                        🎯 Sala Ativa
+                    </div>
+                    <a id="leave" class="text-white text-lg hover:text-blue-300">
+                        <i class="material-icons">exit_to_app</i>
+                    </a>
+                </div>
             </div>
         </nav>
     
@@ -126,13 +141,22 @@
     </div>
 </div>
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    </div>
+
+    <!-- Mensagem de erro -->
+    <div id="error-message" class="hide" style="background-color: #f44336; color: white; padding: 10px; margin: 10px 0; border-radius: 5px; text-align: center;"></div>
+
+    <script type="text/javascript" src="js/message-channel-fix.js"></script>
+    <script type="text/javascript" src="js/debug.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/webrtc-helper.js"></script>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <script src="js/user.js"></script>
-    <script src="js/peer.js"></script>
-    <script src="js/page.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/seo.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
+    <script type="text/javascript" src="js/peer.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/seo.js"></script>
 
 </body>
 </html>
