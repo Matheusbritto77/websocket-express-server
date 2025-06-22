@@ -1,0 +1,20 @@
+# Configurações do Servidor
+PORT=3000
+
+# Redis Configuration
+REDIS_EXTERNAL_URL=redis://default:Setcel2@@@168.231.95.211:6379
+REDIS_PASSWORD=Setcel2@@
+REDIS_DB=0
+
+# MongoDB Configuration (Opcional)
+MONGO_EXTERNAL_URL=mongodb://localhost:27017/chatdb
+
+# PostgreSQL Configuration
+PG_EXTERNAL_HOST=168.231.95.211
+PG_EXTERNAL_PORT=5432
+PG_DATABASE=postgresSocket
+PG_USER=PostgresSocker2D@
+PG_PASSWORD=Setcel2@@
+
+# Logging
+LOG_LEVEL=debug 

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Contador Online</title>
+    <link rel="stylesheet" href="/css/online-counter.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-info p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h2>🧪 Teste do Contador Online</h2>
+        <p>Esta página testa se o contador de usuários online está funcionando corretamente.</p>
+        <p>O widget deve aparecer no canto superior direito da tela.</p>
+        
+        <div id="api-status" class="status">
+            <strong>Status da API:</strong> <span id="api-status-text">Testando...</span>
+        </div>
+        
+        <div id="socket-status" class="status">
+            <strong>Status do Socket:</strong> <span id="socket-status-text">Testando...</span>
+        </div>
+        
+        <div id="widget-status" class="status">
+            <strong>Status do Widget:</strong> <span id="widget-status-text">Testando...</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="/js/online-counter.js"></script>
+    
+    <script>
+        // Teste da API
+        async function testAPI() {
+            try {
+                const response = await fetch('/api/online');
+                const data = await response.json();
+                
+                document.getElementById('api-status').className = 'status success';
+                document.getElementById('api-status-text').textContent = 
+                    `✅ API funcionando - ${data.totalOnline} online, ${data.textChatWaiting} aguardando texto, ${data.videoChatWaiting} aguardando vídeo`;
+                
+                console.log('API Response:', data);
+            } catch (error) {
+                document.getElementById('api-status').className = 'status error';
+                document.getElementById('api-status-text').textContent = 
+                    `❌ Erro na API: ${error.message}`;
+                console.error('API Error:', error);
+            }
+        }
+
+        // Teste do Socket
+        function testSocket() {
+            const socket = io({
+                query: { type: 'stats_only' }
+            });
+
+            socket.on('connect', () => {
+                document.getElementById('socket-status').className = 'status success';
+                document.getElementById('socket-status-text').textContent = 
+                    `✅ Socket conectado (ID: ${socket.id})`;
+            });
+
+            socket.on('disconnect', () => {
+                document.getElementById('socket-status').className = 'status error';
+                document.getElementById('socket-status-text').textContent = 
+                    '❌ Socket desconectado';
+            });
+
+            socket.on('online_stats', (data) => {
+                document.getElementById('socket-status').className = 'status success';
+                document.getElementById('socket-status-text').textContent = 
+                    `✅ Recebendo dados via socket: ${data.onlineCount} online`;
+                console.log('Socket Data:', data);
+            });
+
+            socket.on('online_count', (data) => {
+                document.getElementById('socket-status').className = 'status success';
+                document.getElementById('socket-status-text').textContent = 
+                    `✅ Recebendo contagem via socket: ${data.count} online`;
+                console.log('Socket Count:', data);
+            });
+        }
+
+        // Teste do Widget
+        function testWidget() {
+            setTimeout(() => {
+                const widget = document.getElementById('online-widget');
+                if (widget) {
+                    document.getElementById('widget-status').className = 'status success';
+                    document.getElementById('widget-status-text').textContent = 
+                        '✅ Widget criado e visível';
+                } else {
+                    document.getElementById('widget-status').className = 'status error';
+                    document.getElementById('widget-status-text').textContent = 
+                        '❌ Widget não encontrado';
+                }
+            }, 1000);
+        }
+
+        // Executar testes quando a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            testAPI();
+            testSocket();
+            testWidget();
+            
+            // Testar API novamente a cada 5 segundos
+            setInterval(testAPI, 5000);
+        });
+    </script>
+</body>
+</html> 

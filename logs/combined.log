@@ -4336,3 +4336,93 @@
 {"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR desconectado do chat text","service":"omegle-clone","timestamp":"2025-06-22 19:55:59"}
 {"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR removido. Total online: 2","service":"omegle-clone","timestamp":"2025-06-22 19:55:59"}
 {"level":"info","message":"Nova conexão: rULu6568vxX1_iIYAAAT","service":"omegle-clone","timestamp":"2025-06-22 19:56:00"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 20:34:34"}
+{"level":"info","message":"Nova conexão: 3z25uxCiVdPqIpO3AAAB","service":"omegle-clone","timestamp":"2025-06-22 20:35:09"}
+{"level":"info","message":"Nova conexão: PMlXqrfwd_xnr-ajAAAD","service":"omegle-clone","timestamp":"2025-06-22 20:35:12"}
+{"level":"info","message":"Nova conexão: APoa8QM8hw9-NbPqAAAF","service":"omegle-clone","timestamp":"2025-06-22 20:35:21"}
+{"level":"info","message":"Usuário APoa8QM8hw9-NbPqAAAF entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:35:21"}
+{"level":"info","message":"Usuário APoa8QM8hw9-NbPqAAAF adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:35:21"}
+{"level":"info","message":"Nova conexão: sLktNqUJzqwstFkaAAAH","service":"omegle-clone","timestamp":"2025-06-22 20:35:36"}
+{"level":"info","message":"Nova conexão: _yn-dxL3T61YKuj8AAAJ","service":"omegle-clone","timestamp":"2025-06-22 20:35:39"}
+{"level":"info","message":"Nova conexão: q0Fz0ERLnB3wzQzOAAAL","service":"omegle-clone","timestamp":"2025-06-22 20:35:43"}
+{"level":"info","message":"Usuário q0Fz0ERLnB3wzQzOAAAL entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:35:43"}
+{"level":"info","message":"Usuário q0Fz0ERLnB3wzQzOAAAL adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:35:43"}
+{"level":"info","message":"Match criado: APoa8QM8hw9-NbPqAAAF e q0Fz0ERLnB3wzQzOAAAL no chat video (sala: video_room_1750635343315_0we95r66m)","service":"omegle-clone","timestamp":"2025-06-22 20:35:43"}
+{"level":"info","message":"Nova conexão: WLKrHYB2V0Bvp7WNAAAN","service":"omegle-clone","timestamp":"2025-06-22 20:36:51"}
+{"level":"info","message":"Nova conexão: Kh6IGRgoE3WRxsN-AAAP","service":"omegle-clone","timestamp":"2025-06-22 20:36:55"}
+{"level":"info","message":"Usuário Kh6IGRgoE3WRxsN-AAAP entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:36:55"}
+{"level":"info","message":"Usuário Kh6IGRgoE3WRxsN-AAAP adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:36:55"}
+{"level":"info","message":"Usuário q0Fz0ERLnB3wzQzOAAAL adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:37:01"}
+{"level":"info","message":"Match criado: Kh6IGRgoE3WRxsN-AAAP e q0Fz0ERLnB3wzQzOAAAL no chat video (sala: video_room_1750635421431_h4u667k5r)","service":"omegle-clone","timestamp":"2025-06-22 20:37:01"}
+{"level":"info","message":"Usuário q0Fz0ERLnB3wzQzOAAAL adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:37:16"}
+{"level":"info","message":"Usuário Kh6IGRgoE3WRxsN-AAAP adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:37:36"}
+{"level":"info","message":"Match criado: q0Fz0ERLnB3wzQzOAAAL e Kh6IGRgoE3WRxsN-AAAP no chat video (sala: video_room_1750635456682_9sqwnzj20)","service":"omegle-clone","timestamp":"2025-06-22 20:37:36"}
+{"level":"info","message":"Usuário APoa8QM8hw9-NbPqAAAF adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:37:45"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Nova conexão: 2SjvV56RPip8ibZUAAAD","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Nova conexão: rve08amjJb5FT7uCAAAE","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Nova conexão: g8wl3gKNH165IfnQAAAF","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Nova conexão: px6xlRYRViNzdyKoAAAH","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Usuário g8wl3gKNH165IfnQAAAF entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Nova conexão: x0SI3yOBymg1QemZAAAJ","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Usuário g8wl3gKNH165IfnQAAAF adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Usuário x0SI3yOBymg1QemZAAAJ entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:39:18"}
+{"level":"info","message":"Usuário x0SI3yOBymg1QemZAAAJ adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:39:19"}
+{"level":"info","message":"Match criado: g8wl3gKNH165IfnQAAAF e x0SI3yOBymg1QemZAAAJ no chat video (sala: video_room_1750635559026_h53tdgsb6)","service":"omegle-clone","timestamp":"2025-06-22 20:39:19"}
+{"level":"info","message":"Nova conexão: xnzpJTDT3CJIk1AhAAAL","service":"omegle-clone","timestamp":"2025-06-22 20:39:21"}
+{"level":"info","message":"Usuário xnzpJTDT3CJIk1AhAAAL entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:39:21"}
+{"level":"info","message":"Usuário xnzpJTDT3CJIk1AhAAAL adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:39:22"}
+{"level":"info","message":"Usuário g8wl3gKNH165IfnQAAAF desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:39:27"}
+{"level":"info","message":"Nova conexão: imMAjmZ8Fn3bohVWAAAN","service":"omegle-clone","timestamp":"2025-06-22 20:39:28"}
+{"level":"info","message":"Usuário xnzpJTDT3CJIk1AhAAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:39:36"}
+{"level":"info","message":"Nova conexão: ayBxWoVWnoB5bmOTAAAP","service":"omegle-clone","timestamp":"2025-06-22 20:39:37"}
+{"level":"info","message":"Usuário x0SI3yOBymg1QemZAAAJ desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:39:49"}
+{"level":"info","message":"Nova conexão: qP9KInhuFfzdlg7lAAAR","service":"omegle-clone","timestamp":"2025-06-22 20:39:49"}
+{"level":"info","message":"Nova conexão: Y8e2dx5C9k1xBpnRAAAT","service":"omegle-clone","timestamp":"2025-06-22 20:39:53"}
+{"level":"info","message":"Usuário Y8e2dx5C9k1xBpnRAAAT entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:39:53"}
+{"level":"info","message":"Usuário Y8e2dx5C9k1xBpnRAAAT adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:39:53"}
+{"level":"info","message":"Nova conexão: f2Q5NGph_CYeLj-6AAAV","service":"omegle-clone","timestamp":"2025-06-22 20:39:58"}
+{"level":"info","message":"Usuário f2Q5NGph_CYeLj-6AAAV entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:39:58"}
+{"level":"info","message":"Usuário f2Q5NGph_CYeLj-6AAAV adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:39:58"}
+{"level":"info","message":"Match criado: Y8e2dx5C9k1xBpnRAAAT e f2Q5NGph_CYeLj-6AAAV no chat video (sala: video_room_1750635598654_xj380i0y6)","service":"omegle-clone","timestamp":"2025-06-22 20:39:58"}
+{"level":"info","message":"Usuário f2Q5NGph_CYeLj-6AAAV adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:40:13"}
+{"level":"info","message":"Nova conexão: 1hKgT6HebLR2W_hIAAAX","service":"omegle-clone","timestamp":"2025-06-22 20:40:22"}
+{"level":"info","message":"Usuário 1hKgT6HebLR2W_hIAAAX entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:40:22"}
+{"level":"info","message":"Usuário 1hKgT6HebLR2W_hIAAAX adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:40:22"}
+{"level":"info","message":"Match criado: f2Q5NGph_CYeLj-6AAAV e 1hKgT6HebLR2W_hIAAAX no chat video (sala: video_room_1750635622418_bw0izrlvn)","service":"omegle-clone","timestamp":"2025-06-22 20:40:22"}
+{"level":"info","message":"Usuário Y8e2dx5C9k1xBpnRAAAT adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:40:32"}
+{"level":"info","message":"Usuário 1hKgT6HebLR2W_hIAAAX adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:40:40"}
+{"level":"info","message":"Match criado: Y8e2dx5C9k1xBpnRAAAT e 1hKgT6HebLR2W_hIAAAX no chat video (sala: video_room_1750635640162_0ngng02s5)","service":"omegle-clone","timestamp":"2025-06-22 20:40:40"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Nova conexão: -tmF_6aDXKgstNtAAAAC","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Nova conexão: GL3ypSUQuchPDYwRAAAD","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Nova conexão: bHm5STP2WshVjL5HAAAG","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Nova conexão: 2nSOsttndcyVdxrkAAAH","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Nova conexão: wY8YwuywW67LiGKmAAAJ","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Usuário bHm5STP2WshVjL5HAAAG entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Usuário 2nSOsttndcyVdxrkAAAH entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:22"}
+{"level":"info","message":"Usuário bHm5STP2WshVjL5HAAAG adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Usuário 2nSOsttndcyVdxrkAAAH adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Match criado: bHm5STP2WshVjL5HAAAG e 2nSOsttndcyVdxrkAAAH no chat video (sala: video_room_1750635683053_yvfn9s43a)","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Nova conexão: VN_Yya2t_zuQ2d-AAAAL","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Usuário VN_Yya2t_zuQ2d-AAAAL entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Usuário VN_Yya2t_zuQ2d-AAAAL adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:41:23"}
+{"level":"info","message":"Usuário VN_Yya2t_zuQ2d-AAAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:41:31"}
+{"level":"info","message":"Nova conexão: p0ocRAGqoTUv8wP0AAAN","service":"omegle-clone","timestamp":"2025-06-22 20:41:32"}
+{"level":"info","message":"Usuário bHm5STP2WshVjL5HAAAG desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:41:35"}
+{"level":"info","message":"Nova conexão: OiqOicPHvgz21e6QAAAP","service":"omegle-clone","timestamp":"2025-06-22 20:41:36"}
+{"level":"info","message":"Usuário 2nSOsttndcyVdxrkAAAH desconectou","service":"omegle-clone","timestamp":"2025-06-22 20:41:39"}
+{"level":"info","message":"Nova conexão: bjcodmFhOKYvmRvKAAAR","service":"omegle-clone","timestamp":"2025-06-22 20:41:41"}
+{"level":"info","message":"Nova conexão: 27i8QKXxe0q1sYZ1AAAT","service":"omegle-clone","timestamp":"2025-06-22 20:41:43"}
+{"level":"info","message":"Usuário 27i8QKXxe0q1sYZ1AAAT entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:44"}
+{"level":"info","message":"Usuário 27i8QKXxe0q1sYZ1AAAT adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:41:44"}
+{"level":"info","message":"Nova conexão: EeysjmyOdKqKCzOHAAAV","service":"omegle-clone","timestamp":"2025-06-22 20:41:49"}
+{"level":"info","message":"Usuário EeysjmyOdKqKCzOHAAAV entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:49"}
+{"level":"info","message":"Usuário EeysjmyOdKqKCzOHAAAV adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:41:49"}
+{"level":"info","message":"Match criado: 27i8QKXxe0q1sYZ1AAAT e EeysjmyOdKqKCzOHAAAV no chat video (sala: video_room_1750635709560_1m5g4kqu6)","service":"omegle-clone","timestamp":"2025-06-22 20:41:49"}
+{"level":"info","message":"Nova conexão: nzm3tqJVfI2yVGtJAAAX","service":"omegle-clone","timestamp":"2025-06-22 20:41:54"}
+{"level":"info","message":"Nova conexão: sTNGaO1JMktKzn6NAAAZ","service":"omegle-clone","timestamp":"2025-06-22 20:41:57"}
+{"level":"info","message":"Usuário sTNGaO1JMktKzn6NAAAZ entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 20:41:57"}
+{"level":"info","message":"Usuário sTNGaO1JMktKzn6NAAAZ adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 20:41:57"}
+{"level":"info","message":"Usuário EeysjmyOdKqKCzOHAAAV adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 20:42:01"}
+{"level":"info","message":"Match criado: sTNGaO1JMktKzn6NAAAZ e EeysjmyOdKqKCzOHAAAV no chat video (sala: video_room_1750635721900_86m5ehysg)","service":"omegle-clone","timestamp":"2025-06-22 20:42:02"}

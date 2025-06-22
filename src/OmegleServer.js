@@ -3,6 +3,9 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
 const logger = require('./config/logger');
+const redisService = require('./services/RedisService');
+const User = require('./models/User');
+const ChatRoom = require('./models/ChatRoom');
 
 class OmegleServer {
     constructor(port = 3000) {
@@ -30,6 +33,33 @@ class OmegleServer {
         this.setupMiddleware();
         this.setupRoutes();
         this.setupSocketHandlers();
+        
+        // Inicializar serviços
+        this.initializeServices();
+    }
+
+    async initializeServices() {
+        try {
+            console.log('🔄 Inicializando serviços do OmegleServer...');
+            
+            // Inicializar Redis Service
+            await redisService.initialize();
+            console.log('✅ Redis Service inicializado');
+            
+            // Configurar limpeza periódica de dados
+            setInterval(async () => {
+                await redisService.cleanupExpiredData();
+            }, 300000); // A cada 5 minutos
+            
+            // Configurar broadcast periódico das estatísticas online
+            setInterval(async () => {
+                await this.broadcastOnlineCount();
+            }, 10000); // A cada 10 segundos
+            
+            console.log('✅ Todos os serviços inicializados com sucesso');
+        } catch (error) {
+            console.error('❌ Erro ao inicializar serviços:', error);
+        }
     }
 
     setupMiddleware() {
@@ -39,15 +69,27 @@ class OmegleServer {
 
     setupRoutes() {
         // Health check
-        this.app.get('/health', (req, res) => {
-            res.json({ 
-                status: 'UP', 
-                timestamp: new Date().toISOString(),
-                textChatWaitingUsers: this.textChatWaitingUsers.length,
-                videoChatWaitingUsers: this.videoChatWaitingUsers.length,
-                textChatConnections: this.textChatConnections.size,
-                videoChatConnections: this.videoChatConnections.size
-            });
+        this.app.get('/health', async (req, res) => {
+            try {
+                const redisHealth = await redisService.healthCheck();
+                const stats = await this.getOnlineStats();
+                
+                res.json({ 
+                    status: 'UP', 
+                    timestamp: new Date().toISOString(),
+                    redis: redisHealth ? 'connected' : 'disconnected',
+                    textChatWaitingUsers: this.textChatWaitingUsers.length,
+                    videoChatWaitingUsers: this.videoChatWaitingUsers.length,
+                    textChatConnections: this.textChatConnections.size,
+                    videoChatConnections: this.videoChatConnections.size,
+                    onlineUsers: stats.onlineCount
+                });
+            } catch (error) {
+                res.status(500).json({ 
+                    status: 'ERROR', 
+                    error: error.message 
+                });
+            }
         });
 
         // Página inicial
@@ -65,24 +107,100 @@ class OmegleServer {
             res.sendFile(path.join(__dirname, '../public/video-chat.html'));
         });
 
+        // Teste do contador online
+        this.app.get('/test-online', (req, res) => {
+            res.sendFile(path.join(__dirname, '../test-online-counter.html'));
+        });
+
         // Estatísticas
-        this.app.get('/api/stats', (req, res) => {
-            res.json({
-                textChat: {
-                    waitingUsers: this.textChatWaitingUsers.length,
-                    activeConnections: this.textChatConnections.size
-                },
-                videoChat: {
-                    waitingUsers: this.videoChatWaitingUsers.length,
-                    activeConnections: this.videoChatConnections.size
-                },
-                timestamp: new Date().toISOString()
-            });
+        this.app.get('/api/stats', async (req, res) => {
+            try {
+                // Tentar obter estatísticas do cache Redis
+                let stats = await redisService.getCachedStats();
+                
+                if (!stats) {
+                    // Se não há cache, calcular estatísticas
+                    stats = {
+                        textChat: {
+                            waitingUsers: this.textChatWaitingUsers.length,
+                            activeConnections: this.textChatConnections.size
+                        },
+                        videoChat: {
+                            waitingUsers: this.videoChatWaitingUsers.length,
+                            activeConnections: this.videoChatConnections.size
+                        },
+                        onlineUsers: await redisService.getOnlineCount(),
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    // Cachear estatísticas por 5 minutos
+                    await redisService.cacheStats(stats);
+                }
+                
+                res.json(stats);
+            } catch (error) {
+                logger.error('Erro ao obter estatísticas:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
         });
 
         // Estatísticas de usuários online
-        this.app.get('/api/online', (req, res) => {
-            res.json(this.getOnlineStats());
+        this.app.get('/api/online', async (req, res) => {
+            try {
+                const stats = await this.getOnlineStats();
+                res.json({
+                    totalOnline: stats.onlineCount,
+                    textChatWaiting: stats.textWaiting,
+                    videoChatWaiting: stats.videoWaiting,
+                    textActive: stats.textActive,
+                    videoActive: stats.videoActive,
+                    timestamp: stats.timestamp
+                });
+            } catch (error) {
+                logger.error('Erro ao obter estatísticas online:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter dados do MongoDB
+        this.app.get('/api/users', async (req, res) => {
+            try {
+                const databaseManager = require('./config/database');
+                const mongoConnection = databaseManager.getMongoConnection();
+                
+                if (!mongoConnection) {
+                    return res.status(503).json({ 
+                        error: 'MongoDB não disponível',
+                        message: 'Serviço temporariamente indisponível'
+                    });
+                }
+                
+                const users = await User.find().limit(100).sort({ createdAt: -1 });
+                res.json(users);
+            } catch (error) {
+                logger.error('Erro ao buscar usuários:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        this.app.get('/api/rooms', async (req, res) => {
+            try {
+                const databaseManager = require('./config/database');
+                const mongoConnection = databaseManager.getMongoConnection();
+                
+                if (!mongoConnection) {
+                    return res.status(503).json({ 
+                        error: 'MongoDB não disponível',
+                        message: 'Serviço temporariamente indisponível'
+                    });
+                }
+                
+                const rooms = await ChatRoom.find().limit(100).sort({ createdAt: -1 });
+                res.json(rooms);
+            } catch (error) {
+                logger.error('Erro ao buscar salas:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
         });
     }
 
@@ -133,7 +251,7 @@ class OmegleServer {
         });
     }
 
-    handleJoinChat(socket, data) {
+    async handleJoinChat(socket, data) {
         const chatType = data.type; // 'text' ou 'video'
         
         if (chatType !== 'text' && chatType !== 'video') {
@@ -141,262 +259,495 @@ class OmegleServer {
             return;
         }
         
-        // Define o tipo de chat para este socket
-        this.socketChatType.set(socket.id, chatType);
-        
-        logger.info(`Usuário ${socket.id} entrou no chat ${chatType}`);
-        
-        // Adiciona à fila apropriada
-        this.addToWaitingQueue(socket, chatType);
-    }
-
-    addToWaitingQueue(socket, chatType) {
-        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
-        
-        // Adiciona à fila de espera apenas o id se não estiver presente
-        if (!waitingQueue.includes(socket.id)) {
-            waitingQueue.push(socket.id);
-            logger.info(`Usuário ${socket.id} adicionado à fila de ${chatType}. Total: ${waitingQueue.length}`);
+        try {
+            // Verificar rate limit
+            const rateLimitKey = `join_chat:${socket.id}`;
+            const isAllowed = await redisService.checkRateLimit(rateLimitKey, 10, 60000); // 10 tentativas por minuto
+            
+            if (!isAllowed) {
+                socket.emit('error', { message: 'Muitas tentativas de conexão. Tente novamente em alguns minutos.' });
+                return;
+            }
+            
+            // Define o tipo de chat para este socket
+            this.socketChatType.set(socket.id, chatType);
+            
+            logger.info(`Usuário ${socket.id} entrou no chat ${chatType}`);
+            
+            // Adiciona à fila apropriada
+            await this.addToWaitingQueue(socket, chatType);
+            
+        } catch (error) {
+            logger.error('Erro ao processar join_chat:', error);
+            socket.emit('error', { message: 'Erro interno do servidor' });
         }
-
-        // Notifica o usuário
-        socket.emit('status', { 
-            type: 'waiting', 
-            message: `Procurando alguém para conversar no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}...`,
-            position: waitingQueue.length,
-            chatType: chatType
-        });
-
-        // Tenta fazer match
-        this.tryMatch(chatType);
     }
 
-    tryMatch(chatType) {
-        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
-        const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
-        
-        // Se há pelo menos 2 usuários esperando, faz o match
-        if (waitingQueue.length >= 2) {
-            const user1 = waitingQueue.shift();
-            const user2 = waitingQueue.shift();
+    async addToWaitingQueue(socket, chatType) {
+        try {
+            // Adicionar à fila Redis
+            await redisService.addToWaitingQueue(socket.id, chatType);
             
-            const roomId = `${chatType}_room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
             
-            // Cria a conexão
-            connections.set(user1, { partnerId: user2, roomId, type: chatType });
-            connections.set(user2, { partnerId: user1, roomId, type: chatType });
-            
-            // Notifica os usuários
-            const socket1 = this.io.sockets.sockets.get(user1);
-            const socket2 = this.io.sockets.sockets.get(user2);
-            
-            if (socket1) {
-                socket1.emit('status', { 
-                    type: 'connected', 
-                    message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
-                    roomId,
-                    partnerId: user2,
-                    chatType: chatType
-                });
+            // Adiciona à fila de espera apenas o id se não estiver presente
+            if (!waitingQueue.includes(socket.id)) {
+                waitingQueue.push(socket.id);
+                logger.info(`Usuário ${socket.id} adicionado à fila de ${chatType}. Total: ${waitingQueue.length}`);
             }
+
+            // Notifica o usuário
+            socket.emit('status', { 
+                type: 'waiting', 
+                message: `Procurando alguém para conversar no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}...`,
+                position: waitingQueue.length,
+                chatType: chatType
+            });
+
+            // Tenta fazer match
+            await this.tryMatch(chatType);
             
-            if (socket2) {
-                socket2.emit('status', { 
-                    type: 'connected', 
-                    message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
-                    roomId,
-                    partnerId: user1,
-                    chatType: chatType
-                });
+        } catch (error) {
+            logger.error('Erro ao adicionar à fila de espera:', error);
+        }
+    }
+
+    async tryMatch(chatType) {
+        try {
+            const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
+            const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
+            
+            // Se há pelo menos 2 usuários esperando, faz o match
+            if (waitingQueue.length >= 2) {
+                const user1 = waitingQueue.shift();
+                const user2 = waitingQueue.shift();
+                
+                const roomId = `${chatType}_room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+                
+                // Criar sala no Redis
+                await redisService.createChatRoom(roomId, user1, user2);
+                
+                // Criar sala no MongoDB
+                try {
+                    const chatRoom = new ChatRoom({
+                        roomId,
+                        user1: { socketId: user1, joinedAt: Date.now() },
+                        user2: { socketId: user2, joinedAt: Date.now() },
+                        chatType,
+                        status: 'active',
+                        stats: { startedAt: Date.now() }
+                    });
+                    await chatRoom.save();
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para salvar sala:', mongoError.message);
+                }
+                
+                // Cria a conexão
+                connections.set(user1, { partnerId: user2, roomId, type: chatType });
+                connections.set(user2, { partnerId: user1, roomId, type: chatType });
+                
+                // Notifica os usuários
+                const socket1 = this.io.sockets.sockets.get(user1);
+                const socket2 = this.io.sockets.sockets.get(user2);
+                
+                if (socket1) {
+                    socket1.emit('status', { 
+                        type: 'connected', 
+                        message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
+                        roomId,
+                        partnerId: user2,
+                        chatType: chatType
+                    });
+                }
+                
+                if (socket2) {
+                    socket2.emit('status', { 
+                        type: 'connected', 
+                        message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
+                        roomId,
+                        partnerId: user1,
+                        chatType: chatType
+                    });
+                }
+                
+                logger.info(`Match criado: ${user1} e ${user2} no chat ${chatType} (sala: ${roomId})`);
+                
+                // Remover da fila Redis
+                await redisService.removeFromWaitingQueue(user1, chatType);
+                await redisService.removeFromWaitingQueue(user2, chatType);
             }
-            
-            logger.info(`Match criado no chat ${chatType}: ${user1} <-> ${user2} (Sala: ${roomId})`);
+        } catch (error) {
+            logger.error('Erro ao tentar fazer match:', error);
         }
     }
 
     getConnection(socketId) {
-        // Verifica primeiro nas conexões de texto
-        let connection = this.textChatConnections.get(socketId);
-        if (connection) return connection;
+        const textConnection = this.textChatConnections.get(socketId);
+        if (textConnection) return textConnection;
         
-        // Se não encontrou, verifica nas conexões de vídeo
-        connection = this.videoChatConnections.get(socketId);
-        return connection;
+        const videoConnection = this.videoChatConnections.get(socketId);
+        if (videoConnection) return videoConnection;
+        
+        return null;
     }
 
-    handleMessage(socket, data) {
-        const connection = this.getConnection(socket.id);
-        if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém' });
-            return;
-        }
-        
-        const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
-        if (partnerSocket) {
-            partnerSocket.emit('message', {
-                text: data.text,
-                timestamp: new Date().toISOString(),
-                from: socket.id
-            });
+    async handleMessage(socket, data) {
+        try {
+            const connection = this.getConnection(socket.id);
+            if (!connection) {
+                socket.emit('error', { message: 'Você não está em uma conversa ativa' });
+                return;
+            }
+            
+            const { text } = data;
+            if (!text || text.trim().length === 0) {
+                return;
+            }
+            
+            // Verificar rate limit para mensagens
+            const rateLimitKey = `messages:${socket.id}`;
+            const isAllowed = await redisService.checkRateLimit(rateLimitKey, 60, 60000); // 60 mensagens por minuto
+            
+            if (!isAllowed) {
+                socket.emit('error', { message: 'Muitas mensagens. Aguarde um momento.' });
+                return;
+            }
+            
+            const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+            if (partnerSocket) {
+                // Enviar mensagem para o parceiro
+                partnerSocket.emit('message', {
+                    text: text.trim(),
+                    timestamp: Date.now()
+                });
+                
+                // Confirmar recebimento para o remetente
+                socket.emit('message_sent', {
+                    text: text.trim(),
+                    timestamp: Date.now()
+                });
+                
+                // Armazenar mensagem no Redis
+                await redisService.storeMessage(connection.roomId, {
+                    text: text.trim(),
+                    sender: socket.id,
+                    timestamp: Date.now()
+                });
+                
+                // Atualizar sala no MongoDB
+                try {
+                    await ChatRoom.findOneAndUpdate(
+                        { roomId: connection.roomId },
+                        { 
+                            $push: { 
+                                messages: {
+                                    text: text.trim(),
+                                    sender: socket.id,
+                                    timestamp: Date.now()
+                                }
+                            },
+                            $inc: { 'stats.messageCount': 1 }
+                        }
+                    );
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para salvar mensagem:', mongoError.message);
+                }
+                
+                logger.info(`Mensagem enviada de ${socket.id} para ${connection.partnerId} na sala ${connection.roomId}`);
+            } else {
+                socket.emit('error', { message: 'Seu parceiro desconectou' });
+                this.handleNext(socket);
+            }
+        } catch (error) {
+            logger.error('Erro ao processar mensagem:', error);
+            socket.emit('error', { message: 'Erro interno do servidor' });
         }
     }
 
-    handleWebRTCOffer(socket, data) {
-        const connection = this.videoChatConnections.get(socket.id);
-        if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
-            return;
-        }
-        
-        const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
-        if (partnerSocket) {
-            partnerSocket.emit('offer', {
-                offer: data.offer,
-                from: socket.id
-            });
-        }
-    }
-
-    handleWebRTCAnswer(socket, data) {
-        const connection = this.videoChatConnections.get(socket.id);
-        if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
-            return;
-        }
-        
-        const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
-        if (partnerSocket) {
-            partnerSocket.emit('answer', {
-                answer: data.answer,
-                from: socket.id
-            });
+    async handleWebRTCOffer(socket, data) {
+        try {
+            const connection = this.getConnection(socket.id);
+            if (!connection) {
+                socket.emit('error', { message: 'Você não está em uma conversa ativa' });
+                return;
+            }
+            
+            const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+            if (partnerSocket) {
+                partnerSocket.emit('offer', data);
+                
+                // Armazenar offer no MongoDB
+                try {
+                    await ChatRoom.findOneAndUpdate(
+                        { roomId: connection.roomId },
+                        { 'webrtc.offer': data }
+                    );
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para salvar offer:', mongoError.message);
+                }
+            }
+        } catch (error) {
+            logger.error('Erro ao processar WebRTC offer:', error);
         }
     }
 
-    handleWebRTCCandidate(socket, data) {
-        const connection = this.videoChatConnections.get(socket.id);
-        if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
-            return;
-        }
-        
-        const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
-        if (partnerSocket) {
-            partnerSocket.emit('candidate', {
-                candidate: data.candidate,
-                from: socket.id
-            });
+    async handleWebRTCAnswer(socket, data) {
+        try {
+            const connection = this.getConnection(socket.id);
+            if (!connection) {
+                socket.emit('error', { message: 'Você não está em uma conversa ativa' });
+                return;
+            }
+            
+            const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+            if (partnerSocket) {
+                partnerSocket.emit('answer', data);
+                
+                // Armazenar answer no MongoDB
+                try {
+                    await ChatRoom.findOneAndUpdate(
+                        { roomId: connection.roomId },
+                        { 'webrtc.answer': data }
+                    );
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para salvar answer:', mongoError.message);
+                }
+            }
+        } catch (error) {
+            logger.error('Erro ao processar WebRTC answer:', error);
         }
     }
 
-    handleNext(socket) {
-        const chatType = this.socketChatType.get(socket.id);
-        logger.info(`Usuário ${socket.id} solicitou próximo no chat ${chatType}`);
-        
-        // Remove da conexão atual e retorna para a fila
-        this.removeFromActiveConnection(socket.id, chatType);
-        
-        // Adiciona de volta à fila
-        this.addToWaitingQueue(socket, chatType);
+    async handleWebRTCCandidate(socket, data) {
+        try {
+            const connection = this.getConnection(socket.id);
+            if (!connection) {
+                socket.emit('error', { message: 'Você não está em uma conversa ativa' });
+                return;
+            }
+            
+            const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+            if (partnerSocket) {
+                partnerSocket.emit('candidate', data);
+                
+                // Armazenar candidate no MongoDB
+                try {
+                    await ChatRoom.findOneAndUpdate(
+                        { roomId: connection.roomId },
+                        { $push: { 'webrtc.candidates': data } }
+                    );
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para salvar candidate:', mongoError.message);
+                }
+            }
+        } catch (error) {
+            logger.error('Erro ao processar WebRTC candidate:', error);
+        }
     }
 
-    handleDisconnect(socket, isStatsOnly) {
-        const chatType = this.socketChatType.get(socket.id);
-        logger.info(`Usuário ${socket.id} desconectado do chat ${chatType}`);
-        
-        // Remove da fila de espera apropriada
-        if (chatType === 'text') {
-            this.textChatWaitingUsers = this.textChatWaitingUsers.filter(id => id !== socket.id);
-        } else if (chatType === 'video') {
-            this.videoChatWaitingUsers = this.videoChatWaitingUsers.filter(id => id !== socket.id);
+    async handleNext(socket) {
+        try {
+            const connection = this.getConnection(socket.id);
+            if (connection) {
+                const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+                if (partnerSocket) {
+                    partnerSocket.emit('partner_left', { message: 'Seu parceiro saiu da conversa' });
+                }
+                
+                // Remover conexão
+                this.removeFromActiveConnection(socket.id, connection.type);
+                
+                // Finalizar sala no MongoDB
+                try {
+                    await ChatRoom.findOneAndUpdate(
+                        { roomId: connection.roomId },
+                        { 
+                            status: 'ended',
+                            'stats.endedAt': Date.now()
+                        }
+                    );
+                } catch (mongoError) {
+                    console.log('⚠️ MongoDB não disponível para finalizar sala:', mongoError.message);
+                }
+                
+                // Deletar sala do Redis
+                await redisService.deleteChatRoom(connection.roomId);
+            }
+            
+            // Adicionar de volta à fila de espera
+            const chatType = this.socketChatType.get(socket.id);
+            if (chatType) {
+                await this.addToWaitingQueue(socket, chatType);
+            }
+        } catch (error) {
+            logger.error('Erro ao processar next:', error);
         }
-        
-        // Remove de conexões ativas
-        this.removeFromActiveConnection(socket.id, chatType);
-        
-        // Remove o tipo de chat
-        this.socketChatType.delete(socket.id);
-        
-        // Remove do contador de usuários online apenas se não for apenas para estatísticas
-        if (!isStatsOnly) {
-            this.removeOnlineUser(socket.id);
+    }
+
+    async handleDisconnect(socket, isStatsOnly) {
+        try {
+            if (!isStatsOnly) {
+                // Remover usuário online
+                this.removeOnlineUser(socket.id);
+                
+                // Remover da fila de espera
+                const chatType = this.socketChatType.get(socket.id);
+                if (chatType) {
+                    await redisService.removeFromWaitingQueue(socket.id, chatType);
+                    
+                    const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
+                    const index = waitingQueue.indexOf(socket.id);
+                    if (index > -1) {
+                        waitingQueue.splice(index, 1);
+                    }
+                }
+                
+                // Remover conexão ativa
+                const connection = this.getConnection(socket.id);
+                if (connection) {
+                    const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
+                    if (partnerSocket) {
+                        partnerSocket.emit('partner_left', { message: 'Seu parceiro desconectou' });
+                    }
+                    
+                    this.removeFromActiveConnection(socket.id, connection.type);
+                    
+                    // Finalizar sala no MongoDB
+                    try {
+                        await ChatRoom.findOneAndUpdate(
+                            { roomId: connection.roomId },
+                            { 
+                                status: 'ended',
+                                'stats.endedAt': Date.now()
+                            }
+                        );
+                    } catch (mongoError) {
+                        console.log('⚠️ MongoDB não disponível para finalizar sala:', mongoError.message);
+                    }
+                    
+                    // Deletar sala do Redis
+                    await redisService.deleteChatRoom(connection.roomId);
+                }
+                
+                // Limpar tipo de chat
+                this.socketChatType.delete(socket.id);
+                
+                logger.info(`Usuário ${socket.id} desconectou`);
+            }
+        } catch (error) {
+            logger.error('Erro ao processar desconexão:', error);
         }
     }
 
     removeFromActiveConnection(socketId, chatType) {
         const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
-        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
-        
-        const connection = connections.get(socketId);
-        if (connection) {
-            logger.info(`Removendo usuário ${socketId} da conexão ativa do chat ${chatType}`);
-            
-            // Notifica o parceiro sobre a desconexão
-            const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
-            if (partnerSocket) {
-                logger.info(`Notificando parceiro ${connection.partnerId} sobre desconexão de ${socketId}`);
-                partnerSocket.emit('status', { 
-                    type: 'partner_disconnected', 
-                    message: `Seu parceiro desconectou do chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}. Procurando novo usuário...`,
-                    chatType: chatType
-                });
+        connections.delete(socketId);
+    }
 
-                // Adiciona o parceiro de volta à fila
-                if (!waitingQueue.includes(connection.partnerId)) {
-                    waitingQueue.push(connection.partnerId);
-                    logger.info(`Parceiro ${connection.partnerId} adicionado de volta à fila do chat ${chatType}`);
-                }
-            }
-
-            // Remove as conexões
-            connections.delete(socketId);
-            connections.delete(connection.partnerId);
+    async addOnlineUser(socketId) {
+        try {
+            this.onlineUsers.add(socketId);
             
-            logger.info(`Conexões removidas para ${socketId} e ${connection.partnerId} no chat ${chatType}`);
+            // Adicionar ao Redis
+            await redisService.addOnlineUser(socketId, {
+                connectedAt: Date.now()
+            });
             
-            // Tenta fazer match para o parceiro se ele foi adicionado à fila
-            if (partnerSocket && waitingQueue.includes(connection.partnerId)) {
-                this.tryMatch(chatType);
+            // Criar ou atualizar usuário no MongoDB
+            try {
+                await User.findOneAndUpdate(
+                    { socketId },
+                    { 
+                        socketId,
+                        isOnline: true,
+                        lastSeen: Date.now()
+                    },
+                    { upsert: true, new: true }
+                );
+            } catch (mongoError) {
+                console.log('⚠️ MongoDB não disponível para salvar usuário:', mongoError.message);
             }
+            
+            // Broadcast contagem online
+            this.broadcastOnlineCount();
+        } catch (error) {
+            logger.error('Erro ao adicionar usuário online:', error);
         }
     }
 
-    addOnlineUser(socketId) {
-        this.onlineUsers.add(socketId);
-        this.broadcastOnlineCount();
-        logger.info(`Usuário ${socketId} adicionado. Total online: ${this.onlineUsers.size}`);
+    async removeOnlineUser(socketId) {
+        try {
+            this.onlineUsers.delete(socketId);
+            
+            // Remover do Redis
+            await redisService.removeOnlineUser(socketId);
+            
+            // Atualizar usuário no MongoDB
+            try {
+                await User.findOneAndUpdate(
+                    { socketId },
+                    { 
+                        isOnline: false,
+                        lastSeen: Date.now()
+                    }
+                );
+            } catch (mongoError) {
+                console.log('⚠️ MongoDB não disponível para atualizar usuário:', mongoError.message);
+            }
+            
+            // Broadcast contagem online
+            this.broadcastOnlineCount();
+        } catch (error) {
+            logger.error('Erro ao remover usuário online:', error);
+        }
     }
 
-    removeOnlineUser(socketId) {
-        this.onlineUsers.delete(socketId);
-        this.broadcastOnlineCount();
-        logger.info(`Usuário ${socketId} removido. Total online: ${this.onlineUsers.size}`);
+    async broadcastOnlineCount() {
+        try {
+            const onlineCount = await redisService.getOnlineCount();
+            const stats = await this.getOnlineStats();
+            
+            console.log(`📊 Broadcast - Online: ${onlineCount}, Stats:`, stats);
+            
+            // Emitir tanto online_count quanto online_stats para compatibilidade
+            this.io.emit('online_count', { count: onlineCount });
+            this.io.emit('online_stats', stats);
+        } catch (error) {
+            logger.error('Erro ao broadcast contagem online:', error);
+        }
     }
 
-    broadcastOnlineCount() {
-        const stats = this.getOnlineStats();
-        this.io.emit('online_stats', stats);
-    }
-
-    getOnlineStats() {
-        return {
-            totalOnline: this.onlineUsers.size,
-            textChatWaiting: this.textChatWaitingUsers.length,
-            videoChatWaiting: this.videoChatWaitingUsers.length,
-            textChatConnected: this.textChatConnections.size,
-            videoChatConnected: this.videoChatConnections.size,
-            timestamp: new Date().toISOString()
-        };
+    async getOnlineStats() {
+        try {
+            const onlineCount = await redisService.getOnlineCount();
+            const textWaiting = await redisService.getWaitingCount('text');
+            const videoWaiting = await redisService.getWaitingCount('video');
+            
+            return {
+                onlineCount,
+                textWaiting,
+                videoWaiting,
+                textActive: this.textChatConnections.size,
+                videoActive: this.videoChatConnections.size,
+                timestamp: new Date().toISOString()
+            };
+        } catch (error) {
+            logger.error('Erro ao obter estatísticas online:', error);
+            return {
+                onlineCount: 0,
+                textWaiting: 0,
+                videoWaiting: 0,
+                textActive: 0,
+                videoActive: 0,
+                timestamp: new Date().toISOString()
+            };
+        }
     }
 
     start() {
         this.server.listen(this.port, () => {
-            logger.info(`🚀 Servidor Omegle iniciado na porta ${this.port}`);
-            logger.info(`📊 API disponível em: http://localhost:${this.port}`);
-            logger.info(`🎯 Estatísticas: http://localhost:${this.port}/api/stats`);
+            logger.info(`Servidor Omegle iniciado na porta ${this.port}`);
         });
-        
-        return this.server;
     }
 }
 

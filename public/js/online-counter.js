@@ -79,18 +79,24 @@ class OnlineCounter {
 
     updateStats(data) {
         if (this.counterElement) {
-            this.counterElement.textContent = data.totalOnline;
+            // Verificar se é o formato antigo ou novo
+            const onlineCount = data.totalOnline || data.onlineCount || 0;
+            this.counterElement.textContent = onlineCount;
         }
 
         const textWaiting = document.getElementById('text-waiting');
         const videoWaiting = document.getElementById('video-waiting');
 
         if (textWaiting) {
-            textWaiting.textContent = data.textChatWaiting;
+            // Verificar se é o formato antigo ou novo
+            const textCount = data.textChatWaiting || data.textWaiting || 0;
+            textWaiting.textContent = textCount;
         }
 
         if (videoWaiting) {
-            videoWaiting.textContent = data.videoChatWaiting;
+            // Verificar se é o formato antigo ou novo
+            const videoCount = data.videoChatWaiting || data.videoWaiting || 0;
+            videoWaiting.textContent = videoCount;
         }
 
         // Adiciona animação de atualização
