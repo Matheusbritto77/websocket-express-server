@@ -13,9 +13,16 @@ class OmegleServer {
             cors: { origin: '*', methods: ['GET', 'POST'] }
         });
         
-        // Fila de espera simples (como o Omegle)
-        this.waitingUsers = [];
-        this.activeConnections = new Map(); // socketId -> { partnerId, roomId }
+        // Filas separadas para chat de texto e chat com vídeo
+        this.textChatWaitingUsers = [];
+        this.videoChatWaitingUsers = [];
+        
+        // Conexões ativas separadas por tipo
+        this.textChatConnections = new Map(); // socketId -> { partnerId, roomId, type: 'text' }
+        this.videoChatConnections = new Map(); // socketId -> { partnerId, roomId, type: 'video' }
+        
+        // Mapeamento de socket para tipo de chat
+        this.socketChatType = new Map(); // socketId -> 'text' | 'video'
         
         this.setupMiddleware();
         this.setupRoutes();
@@ -33,8 +40,10 @@ class OmegleServer {
             res.json({ 
                 status: 'UP', 
                 timestamp: new Date().toISOString(),
-                waitingUsers: this.waitingUsers.length,
-                activeConnections: this.activeConnections.size
+                textChatWaitingUsers: this.textChatWaitingUsers.length,
+                videoChatWaitingUsers: this.videoChatWaitingUsers.length,
+                textChatConnections: this.textChatConnections.size,
+                videoChatConnections: this.videoChatConnections.size
             });
         });
 
@@ -56,8 +65,14 @@ class OmegleServer {
         // Estatísticas
         this.app.get('/api/stats', (req, res) => {
             res.json({
-                waitingUsers: this.waitingUsers.length,
-                activeConnections: this.activeConnections.size,
+                textChat: {
+                    waitingUsers: this.textChatWaitingUsers.length,
+                    activeConnections: this.textChatConnections.size
+                },
+                videoChat: {
+                    waitingUsers: this.videoChatWaitingUsers.length,
+                    activeConnections: this.videoChatConnections.size
+                },
                 timestamp: new Date().toISOString()
             });
         });
@@ -67,8 +82,10 @@ class OmegleServer {
         this.io.on('connection', (socket) => {
             logger.info(`Nova conexão: ${socket.id}`);
             
-            // Adiciona à fila de espera
-            this.addToWaitingQueue(socket);
+            // Evento para definir o tipo de chat
+            socket.on('join_chat', (data) => {
+                this.handleJoinChat(socket, data);
+            });
             
             // Eventos do chat
             socket.on('message', (data) => {
@@ -100,35 +117,58 @@ class OmegleServer {
         });
     }
 
-    addToWaitingQueue(socket) {
+    handleJoinChat(socket, data) {
+        const chatType = data.type; // 'text' ou 'video'
+        
+        if (chatType !== 'text' && chatType !== 'video') {
+            socket.emit('error', { message: 'Tipo de chat inválido' });
+            return;
+        }
+        
+        // Define o tipo de chat para este socket
+        this.socketChatType.set(socket.id, chatType);
+        
+        logger.info(`Usuário ${socket.id} entrou no chat ${chatType}`);
+        
+        // Adiciona à fila apropriada
+        this.addToWaitingQueue(socket, chatType);
+    }
+
+    addToWaitingQueue(socket, chatType) {
+        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
+        
         // Adiciona à fila de espera apenas o id se não estiver presente
-        if (!this.waitingUsers.includes(socket.id)) {
-            this.waitingUsers.push(socket.id);
-            logger.info(`Usuário ${socket.id} adicionado à fila. Total: ${this.waitingUsers.length}`);
+        if (!waitingQueue.includes(socket.id)) {
+            waitingQueue.push(socket.id);
+            logger.info(`Usuário ${socket.id} adicionado à fila de ${chatType}. Total: ${waitingQueue.length}`);
         }
 
         // Notifica o usuário
         socket.emit('status', { 
             type: 'waiting', 
-            message: 'Procurando alguém para conversar...',
-            position: this.waitingUsers.length
+            message: `Procurando alguém para conversar no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}...`,
+            position: waitingQueue.length,
+            chatType: chatType
         });
 
         // Tenta fazer match
-        this.tryMatch();
+        this.tryMatch(chatType);
     }
 
-    tryMatch() {
+    tryMatch(chatType) {
+        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
+        const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
+        
         // Se há pelo menos 2 usuários esperando, faz o match
-        if (this.waitingUsers.length >= 2) {
-            const user1 = this.waitingUsers.shift();
-            const user2 = this.waitingUsers.shift();
+        if (waitingQueue.length >= 2) {
+            const user1 = waitingQueue.shift();
+            const user2 = waitingQueue.shift();
             
-            const roomId = `room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            const roomId = `${chatType}_room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
             
             // Cria a conexão
-            this.activeConnections.set(user1, { partnerId: user2, roomId });
-            this.activeConnections.set(user2, { partnerId: user1, roomId });
+            connections.set(user1, { partnerId: user2, roomId, type: chatType });
+            connections.set(user2, { partnerId: user1, roomId, type: chatType });
             
             // Notifica os usuários
             const socket1 = this.io.sockets.sockets.get(user1);
@@ -137,27 +177,39 @@ class OmegleServer {
             if (socket1) {
                 socket1.emit('status', { 
                     type: 'connected', 
-                    message: 'Conectado! Você pode começar a conversar.',
+                    message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
                     roomId,
-                    partnerId: user2
+                    partnerId: user2,
+                    chatType: chatType
                 });
             }
             
             if (socket2) {
                 socket2.emit('status', { 
                     type: 'connected', 
-                    message: 'Conectado! Você pode começar a conversar.',
+                    message: `Conectado no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}! Você pode começar a conversar.`,
                     roomId,
-                    partnerId: user1
+                    partnerId: user1,
+                    chatType: chatType
                 });
             }
             
-            logger.info(`Match criado: ${user1} <-> ${user2} (Sala: ${roomId})`);
+            logger.info(`Match criado no chat ${chatType}: ${user1} <-> ${user2} (Sala: ${roomId})`);
         }
     }
 
+    getConnection(socketId) {
+        // Verifica primeiro nas conexões de texto
+        let connection = this.textChatConnections.get(socketId);
+        if (connection) return connection;
+        
+        // Se não encontrou, verifica nas conexões de vídeo
+        connection = this.videoChatConnections.get(socketId);
+        return connection;
+    }
+
     handleMessage(socket, data) {
-        const connection = this.activeConnections.get(socket.id);
+        const connection = this.getConnection(socket.id);
         if (!connection) {
             socket.emit('error', { message: 'Você não está conectado com ninguém' });
             return;
@@ -174,9 +226,9 @@ class OmegleServer {
     }
 
     handleWebRTCOffer(socket, data) {
-        const connection = this.activeConnections.get(socket.id);
+        const connection = this.videoChatConnections.get(socket.id);
         if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém' });
+            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
             return;
         }
         
@@ -190,9 +242,9 @@ class OmegleServer {
     }
 
     handleWebRTCAnswer(socket, data) {
-        const connection = this.activeConnections.get(socket.id);
+        const connection = this.videoChatConnections.get(socket.id);
         if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém' });
+            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
             return;
         }
         
@@ -206,9 +258,9 @@ class OmegleServer {
     }
 
     handleWebRTCCandidate(socket, data) {
-        const connection = this.activeConnections.get(socket.id);
+        const connection = this.videoChatConnections.get(socket.id);
         if (!connection) {
-            socket.emit('error', { message: 'Você não está conectado com ninguém' });
+            socket.emit('error', { message: 'Você não está conectado com ninguém no chat de vídeo' });
             return;
         }
         
@@ -222,29 +274,41 @@ class OmegleServer {
     }
 
     handleNext(socket) {
-        logger.info(`Usuário ${socket.id} solicitou próximo`);
+        const chatType = this.socketChatType.get(socket.id);
+        logger.info(`Usuário ${socket.id} solicitou próximo no chat ${chatType}`);
         
         // Remove da conexão atual
-        this.removeFromActiveConnection(socket.id);
+        this.removeFromActiveConnection(socket.id, chatType);
         
         // Adiciona de volta à fila
-        this.addToWaitingQueue(socket);
+        this.addToWaitingQueue(socket, chatType);
     }
 
     handleDisconnect(socket) {
-        logger.info(`Usuário ${socket.id} desconectado`);
+        const chatType = this.socketChatType.get(socket.id);
+        logger.info(`Usuário ${socket.id} desconectado do chat ${chatType}`);
         
-        // Remove da fila de espera
-        this.waitingUsers = this.waitingUsers.filter(id => id !== socket.id);
+        // Remove da fila de espera apropriada
+        if (chatType === 'text') {
+            this.textChatWaitingUsers = this.textChatWaitingUsers.filter(id => id !== socket.id);
+        } else if (chatType === 'video') {
+            this.videoChatWaitingUsers = this.videoChatWaitingUsers.filter(id => id !== socket.id);
+        }
         
         // Remove de conexões ativas
-        this.removeFromActiveConnection(socket.id);
+        this.removeFromActiveConnection(socket.id, chatType);
+        
+        // Remove o tipo de chat
+        this.socketChatType.delete(socket.id);
     }
 
-    removeFromActiveConnection(socketId) {
-        const connection = this.activeConnections.get(socketId);
+    removeFromActiveConnection(socketId, chatType) {
+        const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
+        const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
+        
+        const connection = connections.get(socketId);
         if (connection) {
-            logger.info(`Removendo usuário ${socketId} da conexão ativa`);
+            logger.info(`Removendo usuário ${socketId} da conexão ativa do chat ${chatType}`);
             
             // Notifica o parceiro sobre a desconexão
             const partnerSocket = this.io.sockets.sockets.get(connection.partnerId);
@@ -252,22 +316,23 @@ class OmegleServer {
                 logger.info(`Notificando parceiro ${connection.partnerId} sobre desconexão de ${socketId}`);
                 partnerSocket.emit('status', { 
                     type: 'partner_disconnected', 
-                    message: 'Seu parceiro desconectou. Procurando novo usuário...' 
+                    message: `Seu parceiro desconectou do chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}. Procurando novo usuário...`,
+                    chatType: chatType
                 });
 
                 // Adiciona o parceiro de volta à fila apenas se não estiver lá
-                if (!this.waitingUsers.includes(connection.partnerId)) {
-                    this.waitingUsers.push(connection.partnerId);
-                    logger.info(`Parceiro ${connection.partnerId} adicionado de volta à fila`);
-                    this.tryMatch();
+                if (!waitingQueue.includes(connection.partnerId)) {
+                    waitingQueue.push(connection.partnerId);
+                    logger.info(`Parceiro ${connection.partnerId} adicionado de volta à fila do chat ${chatType}`);
+                    this.tryMatch(chatType);
                 }
             }
 
             // Remove as conexões
-            this.activeConnections.delete(socketId);
-            this.activeConnections.delete(connection.partnerId);
+            connections.delete(socketId);
+            connections.delete(connection.partnerId);
             
-            logger.info(`Conexões removidas para ${socketId} e ${connection.partnerId}`);
+            logger.info(`Conexões removidas para ${socketId} e ${connection.partnerId} no chat ${chatType}`);
         }
     }
 

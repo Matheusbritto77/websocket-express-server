@@ -59,6 +59,9 @@ class OmegleChat {
         this.socket.on('connect', () => {
             console.log('Conectado ao servidor');
             this.updateStatus('Conectado ao servidor', 'success');
+            
+            // Entra no chat de texto
+            this.socket.emit('join_chat', { type: 'text' });
         });
 
         this.socket.on('disconnect', () => {

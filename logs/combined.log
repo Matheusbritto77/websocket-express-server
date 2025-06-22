@@ -4030,3 +4030,31 @@
 {"level":"info","message":"Conexões removidas para PZ29lkP3PzTH5k0tAAAN e QbhEIRkW3tPI2a_aAAAL","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
 {"level":"info","message":"Usuário PZ29lkP3PzTH5k0tAAAN adicionado à fila. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
 {"level":"info","message":"Match criado: QbhEIRkW3tPI2a_aAAAL <-> PZ29lkP3PzTH5k0tAAAN (Sala: room_1750621673072_ybgmf70bu)","service":"omegle-clone","timestamp":"2025-06-22 16:47:53"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 19:12:43"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 19:12:43"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 19:12:43"}
+{"level":"info","message":"Nova conexão: aUZpWuEGHyzDh96xAAAB","service":"omegle-clone","timestamp":"2025-06-22 19:14:01"}
+{"level":"info","message":"Usuário aUZpWuEGHyzDh96xAAAB entrou no chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:01"}
+{"level":"info","message":"Usuário aUZpWuEGHyzDh96xAAAB adicionado à fila de text. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:14:01"}
+{"level":"info","message":"Nova conexão: 6_AFpVMYzg7J0dahAAAD","service":"omegle-clone","timestamp":"2025-06-22 19:14:07"}
+{"level":"info","message":"Usuário 6_AFpVMYzg7J0dahAAAD entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:07"}
+{"level":"info","message":"Usuário 6_AFpVMYzg7J0dahAAAD adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:14:07"}
+{"level":"info","message":"Nova conexão: XbYa1Gjg5Qedo-2UAAAF","service":"omegle-clone","timestamp":"2025-06-22 19:14:24"}
+{"level":"info","message":"Usuário XbYa1Gjg5Qedo-2UAAAF entrou no chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:24"}
+{"level":"info","message":"Usuário XbYa1Gjg5Qedo-2UAAAF adicionado à fila de text. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 19:14:24"}
+{"level":"info","message":"Match criado no chat text: aUZpWuEGHyzDh96xAAAB <-> XbYa1Gjg5Qedo-2UAAAF (Sala: text_room_1750630464953_8pr866lrn)","service":"omegle-clone","timestamp":"2025-06-22 19:14:24"}
+{"level":"info","message":"Nova conexão: IqL9K_VzFHwx0x5uAAAH","service":"omegle-clone","timestamp":"2025-06-22 19:14:46"}
+{"level":"info","message":"Usuário IqL9K_VzFHwx0x5uAAAH entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:46"}
+{"level":"info","message":"Usuário IqL9K_VzFHwx0x5uAAAH adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 19:14:46"}
+{"level":"info","message":"Match criado no chat video: 6_AFpVMYzg7J0dahAAAD <-> IqL9K_VzFHwx0x5uAAAH (Sala: video_room_1750630486682_exyr34nxy)","service":"omegle-clone","timestamp":"2025-06-22 19:14:46"}
+{"level":"info","message":"Usuário IqL9K_VzFHwx0x5uAAAH desconectado do chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:55"}
+{"level":"info","message":"Removendo usuário IqL9K_VzFHwx0x5uAAAH da conexão ativa do chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:55"}
+{"level":"info","message":"Notificando parceiro 6_AFpVMYzg7J0dahAAAD sobre desconexão de IqL9K_VzFHwx0x5uAAAH","service":"omegle-clone","timestamp":"2025-06-22 19:14:55"}
+{"level":"info","message":"Parceiro 6_AFpVMYzg7J0dahAAAD adicionado de volta à fila do chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:55"}
+{"level":"info","message":"Conexões removidas para IqL9K_VzFHwx0x5uAAAH e 6_AFpVMYzg7J0dahAAAD no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:55"}
+{"level":"info","message":"Usuário 6_AFpVMYzg7J0dahAAAD desconectado do chat video","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
+{"level":"info","message":"Usuário XbYa1Gjg5Qedo-2UAAAF desconectado do chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
+{"level":"info","message":"Removendo usuário XbYa1Gjg5Qedo-2UAAAF da conexão ativa do chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
+{"level":"info","message":"Notificando parceiro aUZpWuEGHyzDh96xAAAB sobre desconexão de XbYa1Gjg5Qedo-2UAAAF","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
+{"level":"info","message":"Parceiro aUZpWuEGHyzDh96xAAAB adicionado de volta à fila do chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
+{"level":"info","message":"Conexões removidas para XbYa1Gjg5Qedo-2UAAAF e aUZpWuEGHyzDh96xAAAB no chat text","service":"omegle-clone","timestamp":"2025-06-22 19:14:57"}
