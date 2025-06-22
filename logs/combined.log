@@ -4303,3 +4303,36 @@
 {"level":"info","message":"Conexões removidas para 1k7N4wmrJZQxhH97AAAJ e txYzDCoSv9EZg_swAAAL no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:46:55"}
 {"level":"info","message":"Match criado no chat video: Z6CXhuvGKxE2nNSdAAAH <-> txYzDCoSv9EZg_swAAAL (Sala: video_room_1750632415583_4c010lkgf)","service":"omegle-clone","timestamp":"2025-06-22 19:46:55"}
 {"level":"info","message":"Usuário 1k7N4wmrJZQxhH97AAAJ adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:46:55"}
+{"level":"info","message":"🚀 Servidor Omegle iniciado na porta 3000","service":"omegle-clone","timestamp":"2025-06-22 19:54:21"}
+{"level":"info","message":"📊 API disponível em: http://localhost:3000","service":"omegle-clone","timestamp":"2025-06-22 19:54:21"}
+{"level":"info","message":"🎯 Estatísticas: http://localhost:3000/api/stats","service":"omegle-clone","timestamp":"2025-06-22 19:54:21"}
+{"level":"info","message":"Nova conexão: BrnfpmTz1uQkMht9AAAB","service":"omegle-clone","timestamp":"2025-06-22 19:54:26"}
+{"level":"info","message":"Nova conexão: MI5IespvLB8bS1wjAAAD","service":"omegle-clone","timestamp":"2025-06-22 19:54:36"}
+{"level":"info","message":"Nova conexão: hFu5ozBIN_zglOsLAAAF","service":"omegle-clone","timestamp":"2025-06-22 19:54:47"}
+{"level":"info","message":"Usuário hFu5ozBIN_zglOsLAAAF adicionado. Total online: 1","service":"omegle-clone","timestamp":"2025-06-22 19:54:47"}
+{"level":"info","message":"Usuário hFu5ozBIN_zglOsLAAAF entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:54:47"}
+{"level":"info","message":"Usuário hFu5ozBIN_zglOsLAAAF adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:54:47"}
+{"level":"info","message":"Nova conexão: a6jYNia9h1bdRXh4AAAH","service":"omegle-clone","timestamp":"2025-06-22 19:55:04"}
+{"level":"info","message":"Usuário a6jYNia9h1bdRXh4AAAH adicionado. Total online: 2","service":"omegle-clone","timestamp":"2025-06-22 19:55:04"}
+{"level":"info","message":"Usuário a6jYNia9h1bdRXh4AAAH entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:55:04"}
+{"level":"info","message":"Usuário a6jYNia9h1bdRXh4AAAH adicionado à fila de video. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 19:55:04"}
+{"level":"info","message":"Match criado no chat video: hFu5ozBIN_zglOsLAAAF <-> a6jYNia9h1bdRXh4AAAH (Sala: video_room_1750632904330_f9rw2pyd3)","service":"omegle-clone","timestamp":"2025-06-22 19:55:04"}
+{"level":"info","message":"Nova conexão: qCxv2BX4A0_L3o9FAAAJ","service":"omegle-clone","timestamp":"2025-06-22 19:55:14"}
+{"level":"info","message":"Nova conexão: AKtiOpCMXrr8QmiRAAAL","service":"omegle-clone","timestamp":"2025-06-22 19:55:23"}
+{"level":"info","message":"Usuário AKtiOpCMXrr8QmiRAAAL adicionado. Total online: 3","service":"omegle-clone","timestamp":"2025-06-22 19:55:23"}
+{"level":"info","message":"Usuário AKtiOpCMXrr8QmiRAAAL entrou no chat video","service":"omegle-clone","timestamp":"2025-06-22 19:55:23"}
+{"level":"info","message":"Usuário AKtiOpCMXrr8QmiRAAAL adicionado à fila de video. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:55:23"}
+{"level":"info","message":"Usuário AKtiOpCMXrr8QmiRAAAL desconectado do chat video","service":"omegle-clone","timestamp":"2025-06-22 19:55:35"}
+{"level":"info","message":"Usuário AKtiOpCMXrr8QmiRAAAL removido. Total online: 2","service":"omegle-clone","timestamp":"2025-06-22 19:55:35"}
+{"level":"info","message":"Usuário qCxv2BX4A0_L3o9FAAAJ desconectado do chat undefined","service":"omegle-clone","timestamp":"2025-06-22 19:55:35"}
+{"level":"info","message":"Nova conexão: LiajKyUjPVptaELmAAAN","service":"omegle-clone","timestamp":"2025-06-22 19:55:36"}
+{"level":"info","message":"Usuário LiajKyUjPVptaELmAAAN desconectado do chat undefined","service":"omegle-clone","timestamp":"2025-06-22 19:55:53"}
+{"level":"info","message":"Nova conexão: LFS0u5zIcFEugDpYAAAP","service":"omegle-clone","timestamp":"2025-06-22 19:55:54"}
+{"level":"info","message":"Nova conexão: 2Bt2-_CotfmrAQJPAAAR","service":"omegle-clone","timestamp":"2025-06-22 19:55:57"}
+{"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR adicionado. Total online: 3","service":"omegle-clone","timestamp":"2025-06-22 19:55:57"}
+{"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR entrou no chat text","service":"omegle-clone","timestamp":"2025-06-22 19:55:57"}
+{"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR adicionado à fila de text. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 19:55:57"}
+{"level":"info","message":"Usuário LFS0u5zIcFEugDpYAAAP desconectado do chat undefined","service":"omegle-clone","timestamp":"2025-06-22 19:55:59"}
+{"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR desconectado do chat text","service":"omegle-clone","timestamp":"2025-06-22 19:55:59"}
+{"level":"info","message":"Usuário 2Bt2-_CotfmrAQJPAAAR removido. Total online: 2","service":"omegle-clone","timestamp":"2025-06-22 19:55:59"}
+{"level":"info","message":"Nova conexão: rULu6568vxX1_iIYAAAT","service":"omegle-clone","timestamp":"2025-06-22 19:56:00"}

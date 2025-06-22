@@ -1,0 +1,125 @@
+/* Widget de Contador de Usuários Online */
+.online-widget {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.online-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.online-counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-icon {
+    font-size: 24px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.counter-content {
+    flex: 1;
+}
+
+.counter-main {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.counter-main span {
+    color: #ff6b6b;
+    font-weight: 700;
+}
+
+.counter-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12px;
+    color: #666;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.detail-item span {
+    font-weight: 500;
+    color: #ff6b6b;
+}
+
+/* Animação de atualização */
+.online-widget.updating {
+    animation: updatePulse 0.5s ease;
+}
+
+@keyframes updatePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .online-widget {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        padding: 12px;
+    }
+    
+    .online-counter {
+        gap: 10px;
+    }
+    
+    .counter-icon {
+        font-size: 20px;
+    }
+    
+    .counter-main {
+        font-size: 16px;
+    }
+    
+    .counter-details {
+        font-size: 11px;
+    }
+}
+
+/* Tema escuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .online-widget {
+        background: rgba(30, 30, 30, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .counter-main {
+        color: #fff;
+    }
+    
+    .counter-details {
+        color: #ccc;
+    }
+} 

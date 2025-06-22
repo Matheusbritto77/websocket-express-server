@@ -24,6 +24,9 @@ class OmegleServer {
         // Mapeamento de socket para tipo de chat
         this.socketChatType = new Map(); // socketId -> 'text' | 'video'
         
+        // Contador de usuários online
+        this.onlineUsers = new Set(); // socketId -> true
+        
         this.setupMiddleware();
         this.setupRoutes();
         this.setupSocketHandlers();
@@ -76,11 +79,24 @@ class OmegleServer {
                 timestamp: new Date().toISOString()
             });
         });
+
+        // Estatísticas de usuários online
+        this.app.get('/api/online', (req, res) => {
+            res.json(this.getOnlineStats());
+        });
     }
 
     setupSocketHandlers() {
         this.io.on('connection', (socket) => {
             logger.info(`Nova conexão: ${socket.id}`);
+            
+            // Verifica se é uma conexão apenas para estatísticas
+            const isStatsOnly = socket.handshake.query.type === 'stats_only';
+            
+            if (!isStatsOnly) {
+                // Adiciona ao contador de usuários online apenas se não for apenas para estatísticas
+                this.addOnlineUser(socket.id);
+            }
             
             // Evento para definir o tipo de chat
             socket.on('join_chat', (data) => {
@@ -112,7 +128,7 @@ class OmegleServer {
             
             // Evento para sair
             socket.on('disconnect', () => {
-                this.handleDisconnect(socket);
+                this.handleDisconnect(socket, isStatsOnly);
             });
         });
     }
@@ -284,7 +300,7 @@ class OmegleServer {
         this.addToWaitingQueue(socket, chatType);
     }
 
-    handleDisconnect(socket) {
+    handleDisconnect(socket, isStatsOnly) {
         const chatType = this.socketChatType.get(socket.id);
         logger.info(`Usuário ${socket.id} desconectado do chat ${chatType}`);
         
@@ -300,6 +316,11 @@ class OmegleServer {
         
         // Remove o tipo de chat
         this.socketChatType.delete(socket.id);
+        
+        // Remove do contador de usuários online apenas se não for apenas para estatísticas
+        if (!isStatsOnly) {
+            this.removeOnlineUser(socket.id);
+        }
     }
 
     removeFromActiveConnection(socketId, chatType) {
@@ -338,6 +359,34 @@ class OmegleServer {
                 this.tryMatch(chatType);
             }
         }
+    }
+
+    addOnlineUser(socketId) {
+        this.onlineUsers.add(socketId);
+        this.broadcastOnlineCount();
+        logger.info(`Usuário ${socketId} adicionado. Total online: ${this.onlineUsers.size}`);
+    }
+
+    removeOnlineUser(socketId) {
+        this.onlineUsers.delete(socketId);
+        this.broadcastOnlineCount();
+        logger.info(`Usuário ${socketId} removido. Total online: ${this.onlineUsers.size}`);
+    }
+
+    broadcastOnlineCount() {
+        const stats = this.getOnlineStats();
+        this.io.emit('online_stats', stats);
+    }
+
+    getOnlineStats() {
+        return {
+            totalOnline: this.onlineUsers.size,
+            textChatWaiting: this.textChatWaitingUsers.length,
+            videoChatWaiting: this.videoChatWaitingUsers.length,
+            textChatConnected: this.textChatConnections.size,
+            videoChatConnected: this.videoChatConnections.size,
+            timestamp: new Date().toISOString()
+        };
     }
 
     start() {
