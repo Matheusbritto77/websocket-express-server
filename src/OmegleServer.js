@@ -277,7 +277,7 @@ class OmegleServer {
         const chatType = this.socketChatType.get(socket.id);
         logger.info(`Usuário ${socket.id} solicitou próximo no chat ${chatType}`);
         
-        // Remove da conexão atual
+        // Remove da conexão atual e retorna para a fila
         this.removeFromActiveConnection(socket.id, chatType);
         
         // Adiciona de volta à fila
@@ -320,11 +320,10 @@ class OmegleServer {
                     chatType: chatType
                 });
 
-                // Adiciona o parceiro de volta à fila apenas se não estiver lá
+                // Adiciona o parceiro de volta à fila
                 if (!waitingQueue.includes(connection.partnerId)) {
                     waitingQueue.push(connection.partnerId);
                     logger.info(`Parceiro ${connection.partnerId} adicionado de volta à fila do chat ${chatType}`);
-                    this.tryMatch(chatType);
                 }
             }
 
@@ -333,6 +332,11 @@ class OmegleServer {
             connections.delete(connection.partnerId);
             
             logger.info(`Conexões removidas para ${socketId} e ${connection.partnerId} no chat ${chatType}`);
+            
+            // Tenta fazer match para o parceiro se ele foi adicionado à fila
+            if (partnerSocket && waitingQueue.includes(connection.partnerId)) {
+                this.tryMatch(chatType);
+            }
         }
     }
 

@@ -155,16 +155,30 @@ class OmegleChat {
     }
 
     nextUser() {
-        if (this.socket) {
-            this.socket.emit('next');
-            this.isConnected = false;
-            this.currentPartner = null;
-            this.updateStatus('Procurando próximo usuário...', 'waiting');
-            this.showLoading();
-            this.updateButtons('waiting');
-            this.disableChat();
-            this.clearMessages();
-            this.addSystemMessage('Procurando próximo usuário...');
+        if (this.socket && this.socket.connected) {
+            try {
+                // Reseta estados
+                this.isConnected = false;
+                this.currentPartner = null;
+                
+                // Envia solicitação de próximo
+                this.socket.emit('next');
+                
+                // Atualiza interface
+                this.updateStatus('Procurando próximo usuário...', 'waiting');
+                this.showLoading();
+                this.updateButtons('waiting');
+                this.disableChat();
+                this.clearMessages();
+                this.addSystemMessage('Procurando próximo usuário...');
+                
+                console.log('Solicitação de próximo enviada');
+            } catch (error) {
+                console.error('Erro ao solicitar próximo usuário:', error);
+                this.showError('Erro ao trocar de usuário. Tente novamente.');
+            }
+        } else {
+            this.showError('Você não está conectado ao servidor');
         }
     }
 

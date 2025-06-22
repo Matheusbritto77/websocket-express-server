@@ -168,9 +168,13 @@ class VideoChat {
         }
 
         this.isWaiting = true;
-        this.updateStatus('Procurando alguém para conversar...', 'waiting');
+        this.updateStatus('Buscando conexão...', 'waiting');
         this.showLoading();
         this.updateButtons('waiting');
+        
+        // Atualiza o texto do loading
+        this.loadingText.textContent = 'Buscando conexão...';
+        this.loadingSubtext.textContent = 'Aguarde um momento';
         
         console.log('Iniciando chat de vídeo...');
     }
@@ -185,6 +189,10 @@ class VideoChat {
                 this.updateStatus(data.message, 'waiting');
                 this.showLoading();
                 this.updateButtons('waiting');
+                
+                // Atualiza o texto do loading
+                this.loadingText.textContent = 'Buscando conexão...';
+                this.loadingSubtext.textContent = 'Aguarde um momento';
                 break;
                 
             case 'connected':
@@ -208,6 +216,10 @@ class VideoChat {
                 this.hideVideoArea();
                 this.cleanupPeerConnection();
                 this.addSystemMessage('Seu parceiro desconectou. Procurando novo usuário...');
+                
+                // Atualiza o texto do loading para reconexão
+                this.loadingText.textContent = 'Buscando nova conexão...';
+                this.loadingSubtext.textContent = 'Aguarde um momento';
                 break;
         }
     }
@@ -223,28 +235,59 @@ class VideoChat {
         const text = this.messageInput.value.trim();
         if (!text) return;
         
+        // Verifica se está conectado
+        if (!this.isConnected || !this.socket || !this.socket.connected) {
+            this.showError('Você não está conectado com ninguém');
+            return;
+        }
+        
         // Envia a mensagem
-        this.socket.emit('message', { text });
-        
-        // Adiciona à interface
-        this.addMessage(text, 'sent', new Date().toISOString());
-        
-        // Limpa o input
-        this.messageInput.value = '';
+        try {
+            this.socket.emit('message', { text });
+            
+            // Adiciona à interface
+            this.addMessage(text, 'sent', new Date().toISOString());
+            
+            // Limpa o input
+            this.messageInput.value = '';
+        } catch (error) {
+            console.error('Erro ao enviar mensagem:', error);
+            this.showError('Erro ao enviar mensagem. Tente novamente.');
+        }
     }
 
     nextUser() {
-        if (this.socket) {
-            this.socket.emit('next');
-            this.isConnected = false;
-            this.currentPartner = null;
-            this.updateStatus('Procurando próximo usuário...', 'waiting');
-            this.showLoading();
-            this.updateButtons('waiting');
-            this.hideVideoArea();
-            this.cleanupPeerConnection();
-            this.clearMessages();
-            this.addSystemMessage('Procurando próximo usuário...');
+        if (this.socket && this.socket.connected) {
+            try {
+                // Limpa a conexão WebRTC primeiro
+                this.cleanupPeerConnection();
+                
+                // Reseta estados
+                this.isConnected = false;
+                this.currentPartner = null;
+                
+                // Envia solicitação de próximo
+                this.socket.emit('next');
+                
+                // Atualiza interface
+                this.updateStatus('Buscando conexão...', 'waiting');
+                this.showLoading();
+                this.updateButtons('waiting');
+                this.hideVideoArea();
+                this.clearMessages();
+                this.addSystemMessage('Procurando próximo usuário...');
+                
+                // Atualiza o texto do loading
+                this.loadingText.textContent = 'Buscando conexão...';
+                this.loadingSubtext.textContent = 'Aguarde um momento';
+                
+                console.log('Solicitação de próximo enviada');
+            } catch (error) {
+                console.error('Erro ao solicitar próximo usuário:', error);
+                this.showError('Erro ao trocar de usuário. Tente novamente.');
+            }
+        } else {
+            this.showError('Você não está conectado ao servidor');
         }
     }
 
@@ -269,90 +312,117 @@ class VideoChat {
 
     // WebRTC Methods
     initializePeerConnection() {
-        const configuration = {
-            iceServers: [
-                { urls: 'stun:stun.l.google.com:19302' },
-                { urls: 'stun:stun1.l.google.com:19302' },
-                { urls: 'stun:stun2.l.google.com:19302' }
-            ]
-        };
+        try {
+            const configuration = {
+                iceServers: [
+                    { urls: 'stun:stun.l.google.com:19302' },
+                    { urls: 'stun:stun1.l.google.com:19302' },
+                    { urls: 'stun:stun2.l.google.com:19302' }
+                ]
+            };
 
-        this.peerConnection = new RTCPeerConnection(configuration);
+            this.peerConnection = new RTCPeerConnection(configuration);
 
-        // Adiciona stream local
-        this.localStream.getTracks().forEach(track => {
-            this.peerConnection.addTrack(track, this.localStream);
-        });
-
-        // Manipula stream remoto
-        this.peerConnection.ontrack = (event) => {
-            console.log('Stream remoto recebido:', event.streams);
-            this.remoteStream = event.streams[0];
-            
-            // Verifica se o stream tem tracks
-            if (this.remoteStream && this.remoteStream.getTracks().length > 0) {
-                console.log('Stream tem tracks:', this.remoteStream.getTracks().length);
-                this.remoteVideo.srcObject = this.remoteStream;
-                this.remotePlaceholder.style.display = 'none';
-                
-                // Adiciona listener para quando o vídeo começar a tocar
-                this.remoteVideo.onloadedmetadata = () => {
-                    console.log('Vídeo remoto carregado, dimensões:', this.remoteVideo.videoWidth, 'x', this.remoteVideo.videoHeight);
-                };
-                
-                this.remoteVideo.onplay = () => {
-                    console.log('Vídeo remoto começou a tocar');
-                };
-                
-                this.remoteVideo.onerror = (error) => {
-                    console.error('Erro no vídeo remoto:', error);
-                };
-            } else {
-                console.warn('Stream remoto não tem tracks');
-            }
-        };
-
-        // Manipula candidatos ICE
-        this.peerConnection.onicecandidate = (event) => {
-            if (event.candidate) {
-                console.log('Enviando candidate:', event.candidate);
-                this.socket.emit('candidate', {
-                    candidate: event.candidate
+            // Adiciona stream local
+            if (this.localStream && this.localStream.getTracks().length > 0) {
+                this.localStream.getTracks().forEach(track => {
+                    this.peerConnection.addTrack(track, this.localStream);
                 });
             }
-        };
 
-        // Logs de estado da conexão
-        this.peerConnection.oniceconnectionstatechange = () => {
-            console.log('ICE Connection State:', this.peerConnection.iceConnectionState);
-        };
+            // Manipula stream remoto
+            this.peerConnection.ontrack = (event) => {
+                console.log('Stream remoto recebido:', event.streams);
+                this.remoteStream = event.streams[0];
+                
+                // Verifica se o stream tem tracks
+                if (this.remoteStream && this.remoteStream.getTracks().length > 0) {
+                    console.log('Stream tem tracks:', this.remoteStream.getTracks().length);
+                    this.remoteVideo.srcObject = this.remoteStream;
+                    this.remotePlaceholder.style.display = 'none';
+                    
+                    // Adiciona listener para quando o vídeo começar a tocar
+                    this.remoteVideo.onloadedmetadata = () => {
+                        console.log('Vídeo remoto carregado, dimensões:', this.remoteVideo.videoWidth, 'x', this.remoteVideo.videoHeight);
+                    };
+                    
+                    this.remoteVideo.onplay = () => {
+                        console.log('Vídeo remoto começou a tocar');
+                    };
+                    
+                    this.remoteVideo.onerror = (error) => {
+                        console.error('Erro no vídeo remoto:', error);
+                    };
+                } else {
+                    console.warn('Stream remoto não tem tracks');
+                }
+            };
 
-        this.peerConnection.onconnectionstatechange = () => {
-            console.log('Connection State:', this.peerConnection.connectionState);
-        };
+            // Manipula candidatos ICE
+            this.peerConnection.onicecandidate = (event) => {
+                if (event.candidate && this.socket && this.socket.connected) {
+                    console.log('Enviando candidate:', event.candidate);
+                    try {
+                        this.socket.emit('candidate', {
+                            candidate: event.candidate
+                        });
+                    } catch (error) {
+                        console.error('Erro ao enviar candidate:', error);
+                    }
+                }
+            };
 
-        this.peerConnection.onsignalingstatechange = () => {
-            console.log('Signaling State:', this.peerConnection.signalingState);
-        };
+            // Logs de estado da conexão
+            this.peerConnection.oniceconnectionstatechange = () => {
+                console.log('ICE Connection State:', this.peerConnection.iceConnectionState);
+                
+                // Se a conexão falhou, tenta reconectar
+                if (this.peerConnection.iceConnectionState === 'failed') {
+                    console.log('Conexão ICE falhou, tentando reconectar...');
+                    this.cleanupPeerConnection();
+                    setTimeout(() => {
+                        if (this.isConnected && this.currentPartner) {
+                            this.initializePeerConnection();
+                        }
+                    }, 2000);
+                }
+            };
 
-        // Determina quem deve ser o offerer baseado no socket ID
-        const mySocketId = this.socket.id;
-        const partnerSocketId = this.currentPartner;
-        
-        console.log('Meu socket ID:', mySocketId);
-        console.log('Partner socket ID:', partnerSocketId);
-        
-        // O usuário com socket ID menor será o offerer
-        if (mySocketId < partnerSocketId) {
-            console.log('Sou o offerer, criando offer...');
-            setTimeout(() => this.createOffer(), 1000); // Delay para estabilizar
-        } else {
-            console.log('Sou o answerer, aguardando offer...');
+            this.peerConnection.onconnectionstatechange = () => {
+                console.log('Connection State:', this.peerConnection.connectionState);
+            };
+
+            this.peerConnection.onsignalingstatechange = () => {
+                console.log('Signaling State:', this.peerConnection.signalingState);
+            };
+
+            // Determina quem deve ser o offerer baseado no socket ID
+            const mySocketId = this.socket.id;
+            const partnerSocketId = this.currentPartner;
+            
+            console.log('Meu socket ID:', mySocketId);
+            console.log('Partner socket ID:', partnerSocketId);
+            
+            // O usuário com socket ID menor será o offerer
+            if (mySocketId < partnerSocketId) {
+                console.log('Sou o offerer, criando offer...');
+                setTimeout(() => this.createOffer(), 1000); // Delay para estabilizar
+            } else {
+                console.log('Sou o answerer, aguardando offer...');
+            }
+        } catch (error) {
+            console.error('Erro ao inicializar peer connection:', error);
+            this.showError('Erro ao estabelecer conexão de vídeo. Tente novamente.');
         }
     }
 
     async createOffer() {
         try {
+            if (!this.peerConnection || this.peerConnection.signalingState === 'closed') {
+                console.log('Peer connection não está disponível para criar offer');
+                return;
+            }
+            
             console.log('Criando offer...');
             const offer = await this.peerConnection.createOffer();
             console.log('Offer criado:', offer);
@@ -360,12 +430,17 @@ class VideoChat {
             await this.peerConnection.setLocalDescription(offer);
             console.log('Local description definida');
             
-            this.socket.emit('offer', {
-                offer: offer
-            });
-            console.log('Offer enviado');
+            if (this.socket && this.socket.connected) {
+                this.socket.emit('offer', {
+                    offer: offer
+                });
+                console.log('Offer enviado');
+            } else {
+                console.error('Socket não está conectado para enviar offer');
+            }
         } catch (error) {
             console.error('Erro ao criar offer:', error);
+            this.showError('Erro ao estabelecer conexão. Tente novamente.');
         }
     }
 
@@ -385,6 +460,12 @@ class VideoChat {
                 return;
             }
             
+            // Verifica se o peer connection ainda está válido
+            if (this.peerConnection.signalingState === 'closed') {
+                console.log('Peer connection fechada, ignorando offer');
+                return;
+            }
+            
             console.log('Definindo remote description...');
             await this.peerConnection.setRemoteDescription(data.offer);
             console.log('Remote description definida');
@@ -396,21 +477,37 @@ class VideoChat {
             await this.peerConnection.setLocalDescription(answer);
             console.log('Local description definida via answer');
             
-            this.socket.emit('answer', {
-                answer: answer
-            });
-            console.log('Answer enviado');
+            if (this.socket && this.socket.connected) {
+                this.socket.emit('answer', {
+                    answer: answer
+                });
+                console.log('Answer enviado');
+            } else {
+                console.error('Socket não está conectado para enviar answer');
+            }
             
             // Processa candidatos pendentes
             await this.processPendingCandidates();
         } catch (error) {
             console.error('Erro ao processar offer:', error);
+            this.showError('Erro ao processar conexão. Tente novamente.');
         }
     }
 
     async handleAnswer(data) {
         try {
             console.log('Answer recebido, processando...');
+            
+            if (!this.peerConnection) {
+                console.log('Peer connection não existe, ignorando answer');
+                return;
+            }
+            
+            // Verifica se o peer connection ainda está válido
+            if (this.peerConnection.signalingState === 'closed') {
+                console.log('Peer connection fechada, ignorando answer');
+                return;
+            }
             
             // Só processa se não temos descrição remota ainda
             if (!this.peerConnection.remoteDescription) {
@@ -425,12 +522,24 @@ class VideoChat {
             }
         } catch (error) {
             console.error('Erro ao processar answer:', error);
+            this.showError('Erro ao processar resposta da conexão.');
         }
     }
 
     async handleCandidate(data) {
         try {
             console.log('Candidate recebido, processando...');
+            
+            if (!this.peerConnection) {
+                console.log('Peer connection não existe, ignorando candidate');
+                return;
+            }
+            
+            // Verifica se o peer connection ainda está válido
+            if (this.peerConnection.signalingState === 'closed') {
+                console.log('Peer connection fechada, ignorando candidate');
+                return;
+            }
             
             // Se temos descrição remota, adiciona imediatamente
             if (this.peerConnection.remoteDescription) {
@@ -443,6 +552,7 @@ class VideoChat {
             }
         } catch (error) {
             console.error('Erro ao processar candidate:', error);
+            // Não mostra erro para o usuário pois candidates podem falhar normalmente
         }
     }
 
@@ -467,29 +577,51 @@ class VideoChat {
     cleanupPeerConnection() {
         console.log('Limpando peer connection...');
         
+        // Limpa candidatos pendentes primeiro
+        this.pendingCandidates = [];
+        
         if (this.peerConnection) {
-            // Fecha todas as conexões
-            this.peerConnection.close();
-            this.peerConnection = null;
-            console.log('Peer connection fechada');
+            try {
+                // Remove todos os event listeners
+                this.peerConnection.onicecandidate = null;
+                this.peerConnection.oniceconnectionstatechange = null;
+                this.peerConnection.onconnectionstatechange = null;
+                this.peerConnection.onsignalingstatechange = null;
+                this.peerConnection.ontrack = null;
+                
+                // Fecha todas as conexões
+                this.peerConnection.close();
+                this.peerConnection = null;
+                console.log('Peer connection fechada');
+            } catch (error) {
+                console.error('Erro ao limpar peer connection:', error);
+                this.peerConnection = null;
+            }
         }
         
         // Limpa o vídeo remoto
-        if (this.remoteVideo.srcObject) {
-            this.remoteVideo.srcObject = null;
-            console.log('Vídeo remoto limpo');
+        if (this.remoteVideo && this.remoteVideo.srcObject) {
+            try {
+                const tracks = this.remoteVideo.srcObject.getTracks();
+                tracks.forEach(track => {
+                    track.stop();
+                });
+                this.remoteVideo.srcObject = null;
+                console.log('Vídeo remoto limpo');
+            } catch (error) {
+                console.error('Erro ao limpar vídeo remoto:', error);
+            }
         }
         
         // Mostra placeholder do vídeo remoto
-        this.remotePlaceholder.style.display = 'block';
+        if (this.remotePlaceholder) {
+            this.remotePlaceholder.style.display = 'block';
+        }
         
-        // Limpa candidatos pendentes
-        this.pendingCandidates = [];
-        console.log('Candidatos pendentes limpos');
+        // Reseta o stream remoto
+        this.remoteStream = null;
         
-        // Reseta o currentPartner
-        this.currentPartner = null;
-        console.log('Partner resetado');
+        console.log('Limpeza da peer connection concluída');
     }
 
     // UI Methods
