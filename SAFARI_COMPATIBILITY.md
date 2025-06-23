@@ -64,7 +64,36 @@ if (this.isSafari) {
 }
 ```
 
-### 4. **Event Listeners e Promises**
+### 4. **Chat de Texto - Problemas Específicos**
+
+**Problema**: O chat de texto pode não funcionar corretamente no Safari devido a:
+- Eventos de teclado não sendo capturados corretamente
+- Eventos de socket não sendo processados adequadamente
+- Falta de tratamento de erro específico
+
+**Soluções Implementadas**:
+- Adicionado listener `keydown` como fallback para `keypress`
+- Melhor tratamento de erros em todos os métodos
+- Adicionado evento `partner_left` que estava faltando
+- Verificações de conectividade mais robustas
+
+**Código**:
+```javascript
+// Adicionar listener para keydown como fallback para Safari
+this.messageInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        this.sendMessage(e);
+    }
+});
+
+// Evento partner_left que estava faltando
+this.socket.on('partner_left', (data) => {
+    this.handlePartnerLeft(data);
+});
+```
+
+### 5. **Event Listeners e Promises**
 
 **Problema**: Safari pode ter problemas com async/await e event listeners.
 
@@ -73,7 +102,7 @@ if (this.isSafari) {
 - Correções em addEventListener
 - Tratamento de localStorage em modo privado
 
-### 5. **localStorage em Modo Privado**
+### 6. **localStorage em Modo Privado**
 
 **Problema**: Safari em modo privado pode ter problemas com localStorage.
 
@@ -89,14 +118,27 @@ if (this.isSafari) {
 - Fallbacks para getUserMedia
 - Configurações específicas para Socket.IO
 
-### 2. `public/js/safari-polyfills.js` (Novo)
+### 2. `public/js/omegle.js` (Chat de Texto)
+- Adicionada detecção de Safari
+- Configurações específicas para Socket.IO
+- Adicionado listener `keydown` como fallback
+- Adicionado evento `partner_left`
+- Melhor tratamento de erros em todos os métodos
+- Verificações de conectividade mais robustas
+
+### 3. `public/js/safari-polyfills.js` (Novo)
 - Polyfills específicos para Safari
 - Correções para WebRTC
 - Correções para Socket.IO
 - Correções para localStorage
 
-### 3. Páginas HTML
+### 4. Páginas HTML
 - Adicionado script de polyfills antes dos outros scripts
+
+### 5. `public/test-text-chat-safari.html` (Novo)
+- Página de teste específica para chat de texto no Safari
+- Debug detalhado de todos os eventos
+- Testes de conectividade e funcionalidade
 
 ## Como Testar
 
@@ -112,14 +154,32 @@ Abra o console do Safari e verifique se aparece:
 - Verifique se as permissões de câmera/microfone funcionam
 - Teste a conexão com outro usuário
 
-### 3. **Teste de Socket.IO**
+### 3. **Teste de Chat de Texto**
+- Acesse a página de chat de texto
+- Use a página de teste: `/test-text-chat-safari.html`
+- Verifique se a conexão Socket.IO funciona
+- Teste o envio de mensagens
+- Teste o botão "Próximo"
+
+### 4. **Teste de Socket.IO**
 - Verifique se a conexão WebSocket/polling funciona
 - Teste o chat de texto
 - Verifique se as mensagens são enviadas/recebidas
 
-### 4. **Teste de localStorage**
+### 5. **Teste de localStorage**
 - Teste em modo privado
 - Verifique se as preferências são salvas
+
+## Página de Teste Específica
+
+Acesse `/test-text-chat-safari.html` para um teste detalhado do chat de texto no Safari. Esta página inclui:
+
+- Detecção automática do Safari
+- Teste de API
+- Teste de Socket.IO
+- Teste de eventos de chat
+- Log detalhado de todos os eventos
+- Botões para testar cada funcionalidade
 
 ## Versões Suportadas
 
@@ -138,8 +198,22 @@ Abra o console do Safari e verifique se aparece:
 ### Problema: "Vídeo não aparece"
 **Solução**: Verifique as permissões de câmera no Safari
 
+### Problema: "Chat de texto não funciona"
+**Solução**: 
+1. Use a página de teste `/test-text-chat-safari.html`
+2. Verifique os logs no console
+3. Teste se o Socket.IO está conectando
+4. Verifique se o evento `join_chat` está sendo enviado
+
 ### Problema: "localStorage não funciona"
 **Solução**: Verifique se não está em modo privado ou use sessionStorage
+
+### Problema: "Mensagens não são enviadas"
+**Solução**:
+1. Verifique se está conectado ao chat
+2. Teste com a página de teste
+3. Verifique se o evento `message` está sendo emitido
+4. Verifique se há erros no console
 
 ## Configurações Recomendadas para Safari
 
@@ -164,6 +238,8 @@ Para debug, verifique o console do Safari por mensagens como:
 - `🔧 RTCPeerConnection configurado para Safari`
 - `🔧 Socket.IO configurado para Safari`
 - `✅ Polyfills para Safari aplicados com sucesso`
+- `Evento join_chat enviado para chat de texto`
+- `Socket conectado com ID: [socket-id]`
 
 ## Suporte
 
@@ -172,4 +248,5 @@ Se encontrar problemas específicos com Safari, verifique:
 2. Configurações de privacidade
 3. Configurações de rede
 4. Logs do console
-5. Logs do servidor 
+5. Logs do servidor
+6. Use a página de teste `/test-text-chat-safari.html` 

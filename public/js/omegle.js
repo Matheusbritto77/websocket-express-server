@@ -5,8 +5,17 @@ class OmegleChat {
         this.isWaiting = false;
         this.currentPartner = null;
         
+        // Detectar Safari
+        this.isSafari = this.detectSafari();
+        
         this.initializeElements();
         this.bindEvents();
+    }
+
+    // Detectar Safari
+    detectSafari() {
+        const userAgent = navigator.userAgent;
+        return /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
     }
 
     initializeElements() {
@@ -43,25 +52,41 @@ class OmegleChat {
                 this.sendMessage(e);
             }
         });
+
+        // Adicionar listener para keydown como fallback para Safari
+        this.messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendMessage(e);
+            }
+        });
     }
 
     initializeSocket() {
-        this.socket = io({
+        // Configurações específicas para Safari
+        const socketOptions = {
             timeout: 20000,
             forceNew: true,
             reconnection: true,
             reconnectionAttempts: 5,
-            reconnectionDelay: 1000,
-            transports: ['websocket', 'polling']
-        });
+            reconnectionDelay: 1000
+        };
+
+        // Safari tem melhor compatibilidade com polling primeiro
+        if (this.isSafari) {
+            socketOptions.transports = ['polling', 'websocket'];
+        } else {
+            socketOptions.transports = ['websocket', 'polling'];
+        }
+
+        this.socket = io(socketOptions);
 
         // Eventos do socket
         this.socket.on('connect', () => {
             console.log('Conectado ao servidor');
             this.updateStatus('Conectado ao servidor', 'success');
             
-            // Entra no chat de texto
-            this.socket.emit('join_chat', { type: 'text' });
+            // Não envia join_chat automaticamente, apenas quando startChat for chamado
         });
 
         this.socket.on('disconnect', () => {
@@ -76,6 +101,10 @@ class OmegleChat {
 
         this.socket.on('message', (data) => {
             this.handleIncomingMessage(data);
+        });
+
+        this.socket.on('partner_left', (data) => {
+            this.handlePartnerLeft(data);
         });
 
         this.socket.on('error', (data) => {
@@ -93,49 +122,87 @@ class OmegleChat {
         this.showLoading();
         this.updateButtons('waiting');
         
-        // Simula o envio do evento para entrar na fila
-        // O servidor automaticamente adiciona à fila quando conecta
-        console.log('Iniciando chat...');
+        // Garante que o evento join_chat seja enviado
+        if (this.socket && this.socket.connected) {
+            this.socket.emit('join_chat', { type: 'text' });
+            console.log('Evento join_chat enviado para chat de texto');
+        } else {
+            console.log('Socket não conectado, aguardando conexão...');
+        }
     }
 
     handleStatusUpdate(data) {
         console.log('Status atualizado:', data);
         
-        switch (data.type) {
-            case 'waiting':
-                this.isWaiting = true;
-                this.isConnected = false;
-                this.updateStatus(data.message, 'waiting');
-                this.showLoading();
-                this.updateButtons('waiting');
-                break;
-                
-            case 'connected':
-                this.isWaiting = false;
-                this.isConnected = true;
-                this.currentPartner = data.roomId;
-                this.updateStatus(data.message, 'connected');
-                this.hideLoading();
-                this.enableChat();
-                this.updateButtons('connected');
-                this.addSystemMessage('Você foi conectado com um estranho!');
-                break;
-                
-            case 'partner_disconnected':
-                this.isConnected = false;
-                this.currentPartner = null;
-                this.updateStatus(data.message, 'waiting');
-                this.showLoading();
-                this.updateButtons('waiting');
-                this.disableChat();
-                this.addSystemMessage('Seu parceiro desconectou. Procurando novo usuário...');
-                break;
+        try {
+            switch (data.type) {
+                case 'waiting':
+                    this.isWaiting = true;
+                    this.isConnected = false;
+                    this.updateStatus(data.message, 'waiting');
+                    this.showLoading();
+                    this.updateButtons('waiting');
+                    break;
+                    
+                case 'connected':
+                    this.isWaiting = false;
+                    this.isConnected = true;
+                    this.currentPartner = data.roomId;
+                    this.updateStatus(data.message, 'connected');
+                    this.hideLoading();
+                    this.enableChat();
+                    this.updateButtons('connected');
+                    this.addSystemMessage('Você foi conectado com um estranho!');
+                    break;
+                    
+                case 'partner_disconnected':
+                    this.isConnected = false;
+                    this.currentPartner = null;
+                    this.updateStatus(data.message, 'waiting');
+                    this.showLoading();
+                    this.updateButtons('waiting');
+                    this.disableChat();
+                    this.addSystemMessage('Seu parceiro desconectou. Procurando novo usuário...');
+                    break;
+                    
+                default:
+                    console.log('Status desconhecido:', data.type);
+                    break;
+            }
+        } catch (error) {
+            console.error('Erro ao processar status:', error);
+            this.showError('Erro ao processar status. Tente novamente.');
         }
     }
 
     handleIncomingMessage(data) {
         console.log('Mensagem recebida:', data);
-        this.addMessage(data.text, 'received', data.timestamp);
+        
+        try {
+            if (data && data.text) {
+                this.addMessage(data.text, 'received', data.timestamp);
+            } else {
+                console.warn('Mensagem recebida sem texto:', data);
+            }
+        } catch (error) {
+            console.error('Erro ao processar mensagem recebida:', error);
+        }
+    }
+
+    handlePartnerLeft(data) {
+        console.log('Parceiro saiu:', data);
+        
+        try {
+            this.isConnected = false;
+            this.currentPartner = null;
+            this.updateStatus('Seu parceiro saiu. Procurando novo usuário...', 'waiting');
+            this.showLoading();
+            this.updateButtons('waiting');
+            this.disableChat();
+            this.addSystemMessage('Seu parceiro saiu da conversa. Procurando novo usuário...');
+        } catch (error) {
+            console.error('Erro ao processar saída do parceiro:', error);
+        }
     }
 
     sendMessage(e) {
@@ -144,14 +211,25 @@ class OmegleChat {
         const text = this.messageInput.value.trim();
         if (!text || !this.isConnected) return;
         
+        // Verifica se está conectado
+        if (!this.isConnected || !this.socket || !this.socket.connected) {
+            this.showError('Você não está conectado com ninguém');
+            return;
+        }
+        
         // Envia a mensagem
-        this.socket.emit('message', { text });
-        
-        // Adiciona à interface
-        this.addMessage(text, 'sent', new Date().toISOString());
-        
-        // Limpa o input
-        this.messageInput.value = '';
+        try {
+            this.socket.emit('message', { text });
+            
+            // Adiciona à interface
+            this.addMessage(text, 'sent', new Date().toISOString());
+            
+            // Limpa o input
+            this.messageInput.value = '';
+        } catch (error) {
+            console.error('Erro ao enviar mensagem:', error);
+            this.showError('Erro ao enviar mensagem. Tente novamente.');
+        }
     }
 
     nextUser() {
@@ -249,38 +327,45 @@ class OmegleChat {
     }
 
     addMessage(text, type, timestamp) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${type}`;
-        
-        const time = new Date(timestamp).toLocaleTimeString('pt-BR', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        
-        messageDiv.innerHTML = `
-            <div>${this.escapeHtml(text)}</div>
-            <div class="message-time">${time}</div>
-        `;
-        
-        this.chatMessages.appendChild(messageDiv);
-        this.scrollToBottom();
+        try {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const time = timestamp ? new Date(timestamp).toLocaleTimeString() : new Date().toLocaleTimeString();
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="message-text">${this.escapeHtml(text)}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            this.chatMessages.appendChild(messageDiv);
+            this.scrollToBottom();
+        } catch (error) {
+            console.error('Erro ao adicionar mensagem:', error);
+        }
     }
 
     addSystemMessage(text) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message system';
-        messageDiv.style.cssText = `
-            background: #fff3cd;
-            color: #856404;
-            text-align: center;
-            font-style: italic;
-            margin: 10px auto;
-            max-width: 80%;
-        `;
-        messageDiv.textContent = text;
-        
-        this.chatMessages.appendChild(messageDiv);
-        this.scrollToBottom();
+        try {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message system';
+            
+            const time = new Date().toLocaleTimeString();
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="message-text">${this.escapeHtml(text)}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            this.chatMessages.appendChild(messageDiv);
+            this.scrollToBottom();
+        } catch (error) {
+            console.error('Erro ao adicionar mensagem do sistema:', error);
+        }
     }
 
     clearMessages() {
@@ -288,7 +373,13 @@ class OmegleChat {
     }
 
     scrollToBottom() {
-        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        try {
+            if (this.chatMessages) {
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+        } catch (error) {
+            console.error('Erro ao fazer scroll:', error);
+        }
     }
 
     showError(message) {
