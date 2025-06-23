@@ -243,6 +243,10 @@
             background: linear-gradient(90deg, #ff6b6b, #ee5a24);
         }
 
+        .menu-card.chat-groups::before {
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+
         .menu-icon {
             width: 80px;
             height: 80px;
@@ -261,6 +265,10 @@
 
         .menu-card.chat-video .menu-icon {
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .menu-card.chat-groups .menu-icon {
+            background: linear-gradient(135deg, #28a745, #20c997);
         }
 
         .menu-card h2 {
@@ -292,6 +300,10 @@
 
         .menu-card.chat-video .menu-btn {
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .menu-card.chat-groups .menu-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
         }
 
         .menu-btn:hover {
@@ -443,6 +455,19 @@
                 <a href="/video-chat" class="menu-btn">
                     <i class="material-icons">arrow_forward</i>
                     Iniciar Vídeo
+                </a>
+            </div>
+
+            <!-- Grupos Públicos -->
+            <div class="menu-card chat-groups" onclick="window.location.href='/groups'">
+                <div class="menu-icon">
+                    <i class="material-icons">group</i>
+                </div>
+                <h2>Grupos Públicos</h2>
+                <p>Participe de grupos temáticos e converse com pessoas que compartilham seus interesses. Crie seus próprios grupos!</p>
+                <a href="/groups" class="menu-btn">
+                    <i class="material-icons">arrow_forward</i>
+                    Ver Grupos
                 </a>
             </div>
         </div>

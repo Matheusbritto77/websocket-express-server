@@ -2,11 +2,19 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const logger = require('./config/logger');
 const redisService = require('./services/RedisService');
 const postgresService = require('./services/PostgreSQLService');
 const User = require('./models/User');
 const ChatRoom = require('./models/ChatRoom');
+
+// Configurações
+const database = require('./config/database');
+const mongoService = require('./config/mongo');
 
 class OmegleServer {
     constructor(port = 3000) {
@@ -46,26 +54,48 @@ class OmegleServer {
         try {
             console.log('🔄 Inicializando serviços do OmegleServer...');
             
-            // Inicializar Redis Service (obrigatório)
+            // Inicializar Redis (obrigatório)
             await redisService.initialize();
-            console.log('✅ Redis Service inicializado');
-            
-            // Inicializar PostgreSQL Service (opcional)
+            console.log('✅ Redis inicializado');
+
+            // Inicializar PostgreSQL (opcional)
             try {
                 await postgresService.initialize();
-                console.log('✅ PostgreSQL Service inicializado');
+                console.log('✅ PostgreSQL inicializado');
             } catch (postgresError) {
                 console.log('⚠️ PostgreSQL não disponível:', postgresError.message);
                 console.log('ℹ️ Sistema funcionará sem autenticação de usuários');
+            }
+
+            // Inicializar MongoDB (opcional)
+            try {
+                await mongoService.connect();
+                console.log('✅ MongoDB inicializado');
+            } catch (mongoError) {
+                console.log('⚠️ MongoDB não disponível:', mongoError.message);
+                console.log('ℹ️ Sistema funcionará sem histórico de mensagens dos grupos');
+            }
+
+            // Configurar limpeza automática de mensagens antigas (a cada 6 horas)
+            if (mongoService.isConnected) {
+                setInterval(async () => {
+                    try {
+                        await mongoService.cleanupOldMessages();
+                    } catch (error) {
+                        console.log('⚠️ Erro na limpeza do MongoDB:', error.message);
+                    }
+                }, 6 * 60 * 60 * 1000);
             }
             
             // Configurar limpeza periódica de dados
             setInterval(async () => {
                 await redisService.cleanupExpiredData();
-                try {
-                    await postgresService.cleanupExpiredSessions();
-                } catch (error) {
-                    // Ignorar erros de PostgreSQL
+                if (postgresService.pool) {
+                    try {
+                        await postgresService.cleanupExpiredSessions();
+                    } catch (error) {
+                        // Ignorar erros de PostgreSQL
+                    }
                 }
             }, 300000); // A cada 5 minutos
             
@@ -74,9 +104,10 @@ class OmegleServer {
                 await this.broadcastOnlineCount();
             }, 10000); // A cada 10 segundos
             
-            console.log('✅ Todos os serviços inicializados com sucesso');
+            console.log('✅ Serviços inicializados com sucesso');
         } catch (error) {
             console.error('❌ Erro ao inicializar serviços:', error);
+            // Não lançar erro para permitir que o servidor continue funcionando
         }
     }
 
@@ -526,6 +557,333 @@ class OmegleServer {
                 res.status(500).json({ error: 'Erro interno do servidor' });
             }
         });
+
+        // Rotas de grupos públicos
+        this.app.get('/groups', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/groups.html'));
+        });
+
+        this.app.get('/group/:id', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/group-chat.html'));
+        });
+
+        // API para listar grupos públicos
+        this.app.get('/api/groups', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const limit = parseInt(req.query.limit) || 50;
+                const offset = parseInt(req.query.offset) || 0;
+                const groups = await postgresService.getPublicGroups(limit, offset);
+                res.json(groups);
+            } catch (error) {
+                logger.error('Erro ao buscar grupos:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para criar grupo (apenas usuários registrados)
+        this.app.post('/api/groups', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const { name, description } = req.body;
+
+                if (!name || name.trim().length < 3) {
+                    return res.status(400).json({ error: 'Nome do grupo deve ter pelo menos 3 caracteres' });
+                }
+
+                if (name.trim().length > 100) {
+                    return res.status(400).json({ error: 'Nome do grupo deve ter no máximo 100 caracteres' });
+                }
+
+                const group = await postgresService.createPublicGroup(
+                    name.trim(), 
+                    description?.trim() || '', 
+                    req.user.user_id
+                );
+
+                res.json({
+                    success: true,
+                    message: 'Grupo criado com sucesso',
+                    group
+                });
+            } catch (error) {
+                logger.error('Erro ao criar grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter detalhes de um grupo
+        this.app.get('/api/groups/:id', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                const group = await postgresService.getPublicGroupById(groupId);
+
+                if (!group) {
+                    return res.status(404).json({ error: 'Grupo não encontrado' });
+                }
+
+                res.json(group);
+            } catch (error) {
+                logger.error('Erro ao buscar grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para editar grupo (apenas admin)
+        this.app.put('/api/groups/:id', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                const { name, description } = req.body;
+
+                if (!name || name.trim().length < 3) {
+                    return res.status(400).json({ error: 'Nome do grupo deve ter pelo menos 3 caracteres' });
+                }
+
+                const group = await postgresService.updatePublicGroup(
+                    groupId,
+                    name.trim(),
+                    description?.trim() || '',
+                    req.user.user_id
+                );
+
+                res.json({
+                    success: true,
+                    message: 'Grupo atualizado com sucesso',
+                    group
+                });
+            } catch (error) {
+                logger.error('Erro ao atualizar grupo:', error);
+                if (error.message.includes('administradores')) {
+                    res.status(403).json({ error: error.message });
+                } else {
+                    res.status(500).json({ error: 'Erro interno do servidor' });
+                }
+            }
+        });
+
+        // API para excluir grupo (apenas admin)
+        this.app.delete('/api/groups/:id', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                await postgresService.deletePublicGroup(groupId, req.user.user_id);
+
+                res.json({
+                    success: true,
+                    message: 'Grupo excluído com sucesso'
+                });
+            } catch (error) {
+                logger.error('Erro ao excluir grupo:', error);
+                if (error.message.includes('administradores')) {
+                    res.status(403).json({ error: error.message });
+                } else {
+                    res.status(500).json({ error: 'Erro interno do servidor' });
+                }
+            }
+        });
+
+        // API para entrar em um grupo
+        this.app.post('/api/groups/:id/join', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                const { socketId } = req.body;
+
+                // Verificar se o grupo existe
+                const group = await postgresService.getPublicGroupById(groupId);
+                if (!group) {
+                    return res.status(404).json({ error: 'Grupo não encontrado' });
+                }
+
+                // Se não há usuário logado, permitir entrada anônima
+                if (!req.headers.authorization) {
+                    res.json({
+                        success: true,
+                        message: 'Entrada anônima permitida',
+                        group,
+                        isAnonymous: true
+                    });
+                    return;
+                }
+
+                // Usuário logado
+                const member = await postgresService.joinPublicGroup(groupId, req.user.user_id, socketId);
+
+                res.json({
+                    success: true,
+                    message: 'Entrou no grupo com sucesso',
+                    group,
+                    member,
+                    isAnonymous: false
+                });
+            } catch (error) {
+                logger.error('Erro ao entrar no grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para sair de um grupo
+        this.app.post('/api/groups/:id/leave', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                await postgresService.leavePublicGroup(groupId, req.user.user_id);
+
+                res.json({
+                    success: true,
+                    message: 'Saiu do grupo com sucesso'
+                });
+            } catch (error) {
+                logger.error('Erro ao sair do grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter mensagens de um grupo
+        this.app.get('/api/groups/:id/messages', async (req, res) => {
+            try {
+                const groupId = parseInt(req.params.id);
+                const limit = parseInt(req.query.limit) || 50;
+                const offset = parseInt(req.query.offset) || 0;
+
+                // Buscar mensagens do MongoDB (últimas 24h)
+                const messages = await mongoService.getGroupMessages(groupId, limit, offset);
+                res.json(messages);
+            } catch (error) {
+                logger.error('Erro ao buscar mensagens do grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter mensagens de um grupo por período
+        this.app.get('/api/groups/:id/messages/history', async (req, res) => {
+            try {
+                const groupId = parseInt(req.params.id);
+                const hours = parseInt(req.query.hours) || 24;
+
+                // Buscar mensagens do MongoDB por período
+                const messages = await mongoService.getGroupMessagesByTimeRange(groupId, hours);
+                res.json(messages);
+            } catch (error) {
+                logger.error('Erro ao buscar histórico de mensagens do grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter estatísticas de mensagens de um grupo
+        this.app.get('/api/groups/:id/messages/stats', async (req, res) => {
+            try {
+                const groupId = parseInt(req.params.id);
+
+                // Buscar estatísticas do MongoDB
+                const stats = await mongoService.getGroupMessageStats(groupId);
+                res.json(stats);
+            } catch (error) {
+                logger.error('Erro ao buscar estatísticas de mensagens do grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API para obter membros de um grupo
+        this.app.get('/api/groups/:id/members', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de grupos indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const groupId = parseInt(req.params.id);
+                const members = await postgresService.getGroupMembers(groupId);
+                res.json(members);
+            } catch (error) {
+                logger.error('Erro ao buscar membros do grupo:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de teste para MongoDB
+        this.app.get('/api/test/mongo', async (req, res) => {
+            try {
+                const testMessage = new (require('../models/GroupMessage'))({
+                    groupId: 1,
+                    userId: null,
+                    socketId: 'test',
+                    message: 'Mensagem de teste',
+                    senderName: 'Teste',
+                    isRegisteredUser: false
+                });
+
+                const saved = await testMessage.save();
+                const count = await require('../models/GroupMessage').countDocuments();
+                
+                res.json({
+                    success: true,
+                    message: 'MongoDB funcionando',
+                    savedMessage: saved,
+                    totalMessages: count
+                });
+            } catch (error) {
+                logger.error('Erro no teste do MongoDB:', error);
+                res.status(500).json({
+                    success: false,
+                    error: error.message
+                });
+            }
+        });
     }
 
     setupSocketHandlers() {
@@ -571,6 +929,23 @@ class OmegleServer {
             // Evento para sair
             socket.on('disconnect', () => {
                 this.handleDisconnect(socket, isStatsOnly);
+            });
+
+            // Eventos de grupos públicos
+            socket.on('join_group', (data) => {
+                this.handleJoinGroup(socket, data);
+            });
+
+            socket.on('leave_group', (data) => {
+                this.handleLeaveGroup(socket, data);
+            });
+
+            socket.on('group_message', (data) => {
+                this.handleGroupMessage(socket, data);
+            });
+
+            socket.on('create_group', (data) => {
+                this.handleCreateGroup(socket, data);
             });
         });
     }
@@ -1065,6 +1440,243 @@ class OmegleServer {
                 videoActive: 0,
                 timestamp: new Date().toISOString()
             };
+        }
+    }
+
+    // Handlers de grupos públicos
+    async handleJoinGroup(socket, data) {
+        try {
+            const { groupId } = data;
+            
+            if (!groupId) {
+                socket.emit('group_error', { message: 'ID do grupo é obrigatório' });
+                return;
+            }
+
+            // Verificar se o grupo existe (apenas se PostgreSQL estiver disponível)
+            let group = null;
+            if (postgresService.pool) {
+                group = await postgresService.getPublicGroupById(groupId);
+                if (!group) {
+                    socket.emit('group_error', { message: 'Grupo não encontrado' });
+                    return;
+                }
+            } else {
+                // Se PostgreSQL não estiver disponível, criar um grupo temporário
+                group = {
+                    id: groupId,
+                    name: `Grupo ${groupId}`,
+                    description: 'Grupo temporário',
+                    created_by: null,
+                    creator_name: 'Sistema'
+                };
+            }
+
+            // Verificar se o usuário está logado
+            const sessionToken = socket.handshake.auth.token;
+            let userId = null;
+            let isRegisteredUser = false;
+            let senderName = 'Stranger';
+
+            if (sessionToken && postgresService.pool) {
+                try {
+                    const session = await postgresService.validateSession(sessionToken);
+                    if (session) {
+                        userId = session.user_id;
+                        isRegisteredUser = true;
+                        senderName = session.username;
+                        
+                        // Adicionar usuário ao grupo
+                        await postgresService.joinPublicGroup(groupId, userId, socket.id);
+                    }
+                } catch (error) {
+                    // Usuário não logado ou sessão inválida
+                }
+            }
+
+            // Entrar na sala do socket
+            socket.join(`group_${groupId}`);
+
+            // Armazenar informações do grupo no socket
+            socket.data.groupId = groupId;
+            socket.data.userId = userId;
+            socket.data.isRegisteredUser = isRegisteredUser;
+            socket.data.senderName = senderName;
+
+            // Carregar mensagens anteriores (últimas 24h)
+            const messages = await mongoService.getGroupMessages(groupId, 50);
+            
+            socket.emit('group_joined', {
+                group,
+                messages,
+                isRegisteredUser,
+                senderName
+            });
+
+            // Notificar outros membros
+            socket.to(`group_${groupId}`).emit('group_user_joined', {
+                senderName,
+                isRegisteredUser,
+                timestamp: new Date().toISOString()
+            });
+
+            logger.info(`Usuário ${senderName} entrou no grupo ${groupId}`);
+
+        } catch (error) {
+            logger.error('Erro ao entrar no grupo:', error);
+            socket.emit('group_error', { message: 'Erro interno do servidor' });
+        }
+    }
+
+    async handleLeaveGroup(socket, data) {
+        try {
+            const { groupId } = data;
+            
+            if (!groupId || !socket.data.groupId) {
+                return;
+            }
+
+            // Sair da sala do socket
+            socket.leave(`group_${groupId}`);
+
+            // Se usuário registrado, remover do banco
+            if (socket.data.userId && postgresService.pool) {
+                try {
+                    await postgresService.leavePublicGroup(groupId, socket.data.userId);
+                } catch (error) {
+                    logger.error('Erro ao remover usuário do grupo:', error);
+                }
+            }
+
+            // Notificar outros membros
+            socket.to(`group_${groupId}`).emit('group_user_left', {
+                senderName: socket.data.senderName,
+                isRegisteredUser: socket.data.isRegisteredUser,
+                timestamp: new Date().toISOString()
+            });
+
+            // Limpar dados do socket
+            delete socket.data.groupId;
+            delete socket.data.userId;
+            delete socket.data.isRegisteredUser;
+            delete socket.data.senderName;
+
+            logger.info(`Usuário ${socket.data.senderName} saiu do grupo ${groupId}`);
+
+        } catch (error) {
+            logger.error('Erro ao sair do grupo:', error);
+        }
+    }
+
+    async handleGroupMessage(socket, data) {
+        try {
+            const { groupId, message } = data;
+            
+            if (!groupId || !message || !socket.data.groupId) {
+                socket.emit('group_error', { message: 'Dados inválidos' });
+                return;
+            }
+
+            if (message.trim().length === 0) {
+                return;
+            }
+
+            if (message.length > 1000) {
+                socket.emit('group_error', { message: 'Mensagem muito longa (máximo 1000 caracteres)' });
+                return;
+            }
+
+            const senderName = socket.data.senderName || 'Stranger';
+            const isRegisteredUser = socket.data.isRegisteredUser || false;
+            const userId = socket.data.userId;
+
+            // Salvar mensagem no MongoDB (histórico de 24h)
+            let savedMessage = null;
+            try {
+                savedMessage = await mongoService.addGroupMessage(
+                    groupId,
+                    userId,
+                    socket.id,
+                    message.trim(),
+                    senderName,
+                    isRegisteredUser
+                );
+            } catch (error) {
+                logger.error('Erro ao salvar mensagem do grupo no MongoDB:', error);
+            }
+
+            // Broadcast para todos no grupo
+            const messageData = {
+                id: savedMessage?._id || Date.now(),
+                message: message.trim(),
+                senderName,
+                isRegisteredUser,
+                timestamp: new Date().toISOString(),
+                socketId: socket.id
+            };
+
+            this.io.to(`group_${groupId}`).emit('group_message', messageData);
+
+            logger.info(`Mensagem no grupo ${groupId} de ${senderName}: ${message.substring(0, 50)}...`);
+
+        } catch (error) {
+            logger.error('Erro ao processar mensagem do grupo:', error);
+            socket.emit('group_error', { message: 'Erro interno do servidor' });
+        }
+    }
+
+    async handleCreateGroup(socket, data) {
+        try {
+            const { name, description } = data;
+            
+            // Verificar se PostgreSQL está disponível
+            if (!postgresService.pool) {
+                socket.emit('group_error', { message: 'Sistema de grupos indisponível' });
+                return;
+            }
+
+            // Verificar se o usuário está logado
+            const sessionToken = socket.handshake.auth.token;
+            if (!sessionToken) {
+                socket.emit('group_error', { message: 'Apenas usuários registrados podem criar grupos' });
+                return;
+            }
+
+            const session = await postgresService.validateSession(sessionToken);
+            if (!session) {
+                socket.emit('group_error', { message: 'Sessão inválida' });
+                return;
+            }
+
+            // Validações
+            if (!name || name.trim().length < 3) {
+                socket.emit('group_error', { message: 'Nome do grupo deve ter pelo menos 3 caracteres' });
+                return;
+            }
+
+            if (name.trim().length > 100) {
+                socket.emit('group_error', { message: 'Nome do grupo deve ter no máximo 100 caracteres' });
+                return;
+            }
+
+            // Criar grupo
+            const group = await postgresService.createPublicGroup(
+                name.trim(),
+                description?.trim() || '',
+                session.user_id
+            );
+
+            socket.emit('group_created', {
+                success: true,
+                message: 'Grupo criado com sucesso',
+                group
+            });
+
+            logger.info(`Grupo criado: ${group.name} por ${session.username}`);
+
+        } catch (error) {
+            logger.error('Erro ao criar grupo:', error);
+            socket.emit('group_error', { message: 'Erro interno do servidor' });
         }
     }
 

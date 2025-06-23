@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Grupos Públicos - Stranger Chat</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .create-group-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .create-group-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .group-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .group-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .group-creator {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .group-description {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .group-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .stat-item i {
+            color: #667eea;
+        }
+
+        .join-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .loading .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(255, 255, 255, 0.9);
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            opacity: 0.8;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: none;
+            }
+            
+            .groups-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .group-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">
+        <i class="material-icons">arrow_back</i>
+        Voltar
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1>👥 Grupos Públicos</h1>
+            <p>Conecte-se com pessoas que compartilham seus interesses</p>
+        </div>
+
+        <div class="actions">
+            <button class="create-group-btn" onclick="showCreateGroupModal()">
+                <i class="material-icons">add</i>
+                Criar Grupo
+            </button>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar grupos...">
+                <i class="material-icons search-icon">search</i>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando grupos...</p>
+        </div>
+
+        <div id="groupsGrid" class="groups-grid" style="display: none;"></div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <i class="material-icons">group</i>
+            <h3>Nenhum grupo encontrado</h3>
+            <p>Seja o primeiro a criar um grupo público!</p>
+        </div>
+    </div>
+
+    <!-- Modal de Criar Grupo -->
+    <div id="createGroupModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 15px; padding: 30px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+            <h2 style="margin-bottom: 20px; color: #333;">Criar Novo Grupo</h2>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Nome do Grupo *</label>
+                <input type="text" id="groupName" placeholder="Digite o nome do grupo" style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Descrição</label>
+                <textarea id="groupDescription" placeholder="Descreva o propósito do grupo..." rows="4" style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button onclick="hideCreateGroupModal()" style="padding: 10px 20px; border: 2px solid #e9ecef; background: white; border-radius: 10px; cursor: pointer;">Cancelar</button>
+                <button onclick="createGroup()" style="padding: 10px 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; cursor: pointer;">Criar Grupo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Aviso - Usuário não registrado -->
+    <div id="authRequiredModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 15px; padding: 30px; max-width: 400px; width: 90%; text-align: center;">
+            <div style="margin-bottom: 20px;">
+                <i class="material-icons" style="font-size: 3rem; color: #667eea; margin-bottom: 15px;">lock</i>
+                <h2 style="margin-bottom: 15px; color: #333;">Registro Necessário</h2>
+                <p style="color: #666; line-height: 1.5; margin-bottom: 25px;">
+                    Para criar grupos públicos, você precisa estar registrado. 
+                    Faça seu registro gratuitamente e comece a criar grupos temáticos!
+                </p>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="hideAuthRequiredModal()" style="padding: 10px 20px; border: 2px solid #e9ecef; background: white; border-radius: 10px; cursor: pointer;">Cancelar</button>
+                <a href="/login" style="padding: 10px 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block;">
+                    <i class="material-icons" style="font-size: 1rem; margin-right: 5px;">person_add</i>
+                    Fazer Registro
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    
+    <script>
+        let groups = [];
+        let filteredGroups = [];
+        let userData = null;
+
+        // Verificar se usuário está logado
+        function checkAuthStatus() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            const storedUserData = localStorage.getItem('userData');
+            
+            if (sessionToken && storedUserData) {
+                try {
+                    userData = JSON.parse(storedUserData);
+                } catch (error) {
+                    console.error('Erro ao parsear dados do usuário:', error);
+                }
+            }
+        }
+
+        // Carregar grupos
+        async function loadGroups() {
+            try {
+                const response = await fetch('/api/groups');
+                if (response.ok) {
+                    groups = await response.json();
+                    filteredGroups = [...groups];
+                    displayGroups();
+                } else {
+                    const error = await response.json();
+                    showError(error.message || 'Erro ao carregar grupos');
+                }
+            } catch (error) {
+                showError('Erro de conexão');
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // Exibir grupos
+        function displayGroups() {
+            const grid = document.getElementById('groupsGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredGroups.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            grid.innerHTML = filteredGroups.map(group => `
+                <div class="group-card" onclick="joinGroup(${group.id})">
+                    <div class="group-header">
+                        <div>
+                            <div class="group-name">${escapeHtml(group.name)}</div>
+                            <div class="group-creator">Criado por ${escapeHtml(group.creator_name || 'Usuário')}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="group-description">${escapeHtml(group.description || 'Sem descrição')}</div>
+                    
+                    <div class="group-stats">
+                        <div class="stat-item">
+                            <i class="material-icons">people</i>
+                            <span>${group.member_count || 0} membros</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="material-icons">message</i>
+                            <span>${group.message_count || 0} mensagens</span>
+                        </div>
+                    </div>
+                    
+                    <button class="join-btn">Entrar no Grupo</button>
+                </div>
+            `).join('');
+        }
+
+        // Entrar em um grupo
+        function joinGroup(groupId) {
+            window.location.href = `/group/${groupId}`;
+        }
+
+        // Buscar grupos
+        function searchGroups(query) {
+            if (!query.trim()) {
+                filteredGroups = [...groups];
+            } else {
+                const searchTerm = query.toLowerCase();
+                filteredGroups = groups.filter(group => 
+                    group.name.toLowerCase().includes(searchTerm) ||
+                    group.description.toLowerCase().includes(searchTerm) ||
+                    (group.creator_name && group.creator_name.toLowerCase().includes(searchTerm))
+                );
+            }
+            displayGroups();
+        }
+
+        // Modal de criar grupo
+        function showCreateGroupModal() {
+            if (!userData) {
+                showAuthRequiredModal();
+                return;
+            }
+            document.getElementById('createGroupModal').style.display = 'flex';
+        }
+
+        function hideCreateGroupModal() {
+            document.getElementById('createGroupModal').style.display = 'none';
+            document.getElementById('groupName').value = '';
+            document.getElementById('groupDescription').value = '';
+        }
+
+        // Modal de aviso para usuários não registrados
+        function showAuthRequiredModal() {
+            document.getElementById('authRequiredModal').style.display = 'flex';
+        }
+
+        function hideAuthRequiredModal() {
+            document.getElementById('authRequiredModal').style.display = 'none';
+        }
+
+        // Criar grupo
+        async function createGroup() {
+            const name = document.getElementById('groupName').value.trim();
+            const description = document.getElementById('groupDescription').value.trim();
+
+            if (!name) {
+                showError('Nome do grupo é obrigatório');
+                return;
+            }
+
+            if (name.length < 3) {
+                showError('Nome do grupo deve ter pelo menos 3 caracteres');
+                return;
+            }
+
+            try {
+                const sessionToken = localStorage.getItem('sessionToken');
+                const response = await fetch('/api/groups', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionToken}`
+                    },
+                    body: JSON.stringify({ name, description })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    hideCreateGroupModal();
+                    showSuccess('Grupo criado com sucesso!');
+                    loadGroups(); // Recarregar grupos
+                } else {
+                    const error = await response.json();
+                    showError(error.error || 'Erro ao criar grupo');
+                }
+            } catch (error) {
+                showError('Erro de conexão');
+            }
+        }
+
+        // Utilitários
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            // Criar elemento de sucesso temporário
+            const successDiv = document.createElement('div');
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 2000;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            successDiv.innerHTML = `
+                <i class="material-icons">check_circle</i>
+                ${message}
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.style.opacity = '0';
+                successDiv.style.transform = 'translateX(100%)';
+                successDiv.style.transition = 'all 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(successDiv);
+                }, 300);
+            }, 3000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchGroups(e.target.value);
+        });
+
+        // Inicialização
+        checkAuthStatus();
+        loadGroups();
+
+        // Fechar modais ao clicar fora
+        document.addEventListener('click', (e) => {
+            const createModal = document.getElementById('createGroupModal');
+            const authModal = document.getElementById('authRequiredModal');
+            
+            // Fechar modal de criar grupo
+            if (createModal && e.target === createModal) {
+                hideCreateGroupModal();
+            }
+            
+            // Fechar modal de aviso de autenticação
+            if (authModal && e.target === authModal) {
+                hideAuthRequiredModal();
+            }
+        });
+
+        // Fechar modais com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideCreateGroupModal();
+                hideAuthRequiredModal();
+            }
+        });
+    </script>
+</body>
+</html> 

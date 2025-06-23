@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Chat do Grupo - Stranger Chat</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .chat-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .group-info {
+            flex: 1;
+        }
+
+        .group-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .group-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .group-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .history-info {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .history-info i {
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-body {
+            background: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+        }
+
+        .messages-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.own {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .message-content {
+            max-width: 70%;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .message.own .message-content {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        .message-text {
+            line-height: 1.4;
+        }
+
+        .system-message {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            resize: none;
+            max-height: 100px;
+            min-height: 45px;
+            font-family: inherit;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .user-status.registered {
+            color: #28a745;
+        }
+
+        .user-status.anonymous {
+            color: #6c757d;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                padding: 10px;
+            }
+            
+            .chat-header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .header-actions {
+                justify-content: center;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+            
+            .input-wrapper {
+                flex-direction: column;
+            }
+            
+            .send-btn {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/groups" class="back-btn">
+        <i class="material-icons">arrow_back</i>
+        Voltar
+    </a>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="group-info">
+                <div class="group-name" id="groupName">Carregando...</div>
+                <div class="group-description" id="groupDescription"></div>
+                <div class="group-stats">
+                    <span id="memberCount">0 membros</span>
+                    <span id="messageCount">0 mensagens</span>
+                </div>
+                <div class="history-info">
+                    <i class="material-icons">schedule</i>
+                    <span>Histórico das últimas 24 horas</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="leaveGroup()">
+                    <i class="material-icons">exit_to_app</i>
+                    Sair
+                </button>
+                <button class="btn btn-danger" id="deleteBtn" onclick="deleteGroup()" style="display: none;">
+                    <i class="material-icons">delete</i>
+                    Excluir
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-body">
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Conectando ao grupo...</p>
+            </div>
+
+            <div id="messagesContainer" class="messages-container" style="display: none;"></div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        class="message-input" 
+                        placeholder="Digite sua mensagem..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn" onclick="sendMessage()">
+                        <i class="material-icons">send</i>
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    
+    <script>
+        let socket = null;
+        let groupData = null;
+        let userData = null;
+        let isRegisteredUser = false;
+        let senderName = 'Stranger';
+
+        // Obter ID do grupo da URL
+        function getGroupId() {
+            const pathParts = window.location.pathname.split('/');
+            return pathParts[pathParts.length - 1];
+        }
+
+        // Verificar autenticação
+        function checkAuthStatus() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            const storedUserData = localStorage.getItem('userData');
+            
+            if (sessionToken && storedUserData) {
+                try {
+                    userData = JSON.parse(storedUserData);
+                    isRegisteredUser = true;
+                    senderName = userData.username;
+                } catch (error) {
+                    console.error('Erro ao parsear dados do usuário:', error);
+                }
+            }
+        }
+
+        // Carregar dados do grupo
+        async function loadGroupData() {
+            try {
+                const groupId = getGroupId();
+                const response = await fetch(`/api/groups/${groupId}`);
+                
+                if (response.ok) {
+                    groupData = await response.json();
+                    displayGroupInfo();
+                    
+                    // Carregar estatísticas de mensagens
+                    await loadMessageStats();
+                } else {
+                    const error = await response.json();
+                    showError(error.error || 'Grupo não encontrado');
+                }
+            } catch (error) {
+                showError('Erro ao carregar dados do grupo');
+            }
+        }
+
+        // Carregar estatísticas de mensagens
+        async function loadMessageStats() {
+            try {
+                const groupId = getGroupId();
+                const response = await fetch(`/api/groups/${groupId}/messages/stats`);
+                
+                if (response.ok) {
+                    const stats = await response.json();
+                    document.getElementById('messageCount').textContent = `${stats.last24h} mensagens (24h)`;
+                }
+            } catch (error) {
+                console.error('Erro ao carregar estatísticas:', error);
+            }
+        }
+
+        // Exibir informações do grupo
+        function displayGroupInfo() {
+            document.getElementById('groupName').textContent = groupData.name;
+            document.getElementById('groupDescription').textContent = groupData.description || 'Sem descrição';
+            document.getElementById('memberCount').textContent = `${groupData.member_count || 0} membros`;
+            document.getElementById('messageCount').textContent = `${groupData.message_count || 0} mensagens`;
+
+            // Mostrar botão de excluir apenas para admins
+            if (isRegisteredUser && userData && userData.id === groupData.created_by) {
+                document.getElementById('deleteBtn').style.display = 'block';
+            }
+        }
+
+        // Conectar ao socket
+        function connectToGroup() {
+            const groupId = getGroupId();
+            const sessionToken = localStorage.getItem('sessionToken');
+
+            socket = io({
+                auth: {
+                    token: sessionToken
+                }
+            });
+
+            socket.on('connect', () => {
+                console.log('Conectado ao servidor');
+                socket.emit('join_group', { groupId });
+            });
+
+            socket.on('group_joined', (data) => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('messagesContainer').style.display = 'block';
+                
+                // Atualizar dados do usuário
+                isRegisteredUser = data.isRegisteredUser;
+                senderName = data.senderName;
+                
+                // Carregar mensagens anteriores
+                loadMessages(data.messages);
+            });
+
+            socket.on('group_message', (data) => {
+                addMessage(data);
+            });
+
+            socket.on('group_user_joined', (data) => {
+                addSystemMessage(`${data.senderName} entrou no grupo`);
+            });
+
+            socket.on('group_user_left', (data) => {
+                addSystemMessage(`${data.senderName} saiu do grupo`);
+            });
+
+            socket.on('group_error', (data) => {
+                showError(data.message);
+            });
+
+            socket.on('disconnect', () => {
+                showError('Conexão perdida. Tentando reconectar...');
+            });
+        }
+
+        // Carregar mensagens
+        function loadMessages(messages) {
+            const container = document.getElementById('messagesContainer');
+            container.innerHTML = '';
+            
+            if (messages && messages.length > 0) {
+                messages.forEach(message => {
+                    addMessage(message);
+                });
+            }
+            
+            scrollToBottom();
+        }
+
+        // Adicionar mensagem
+        function addMessage(data) {
+            const container = document.getElementById('messagesContainer');
+            const isOwnMessage = data.socketId === socket?.id;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isOwnMessage ? 'own' : ''}`;
+            
+            const time = new Date(data.timestamp).toLocaleTimeString('pt-BR', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    ${data.senderName.charAt(0).toUpperCase()}
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-sender">${escapeHtml(data.senderName)}</span>
+                        <span class="message-time">${time}</span>
+                        <span class="user-status ${data.isRegisteredUser ? 'registered' : 'anonymous'}">
+                            <i class="material-icons">${data.isRegisteredUser ? 'verified' : 'person'}</i>
+                            ${data.isRegisteredUser ? 'Registrado' : 'Anônimo'}
+                        </span>
+                    </div>
+                    <div class="message-text">${escapeHtml(data.message)}</div>
+                </div>
+            `;
+            
+            container.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Adicionar mensagem do sistema
+        function addSystemMessage(text) {
+            const container = document.getElementById('messagesContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'system-message';
+            messageDiv.textContent = text;
+            container.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Enviar mensagem
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message || !socket) return;
+            
+            const groupId = getGroupId();
+            socket.emit('group_message', { groupId, message });
+            
+            input.value = '';
+            input.style.height = 'auto';
+        }
+
+        // Sair do grupo
+        function leaveGroup() {
+            if (socket) {
+                const groupId = getGroupId();
+                socket.emit('leave_group', { groupId });
+            }
+            window.location.href = '/groups';
+        }
+
+        // Excluir grupo (apenas admin)
+        async function deleteGroup() {
+            if (!confirm('Tem certeza que deseja excluir este grupo? Esta ação não pode ser desfeita.')) {
+                return;
+            }
+
+            try {
+                const groupId = getGroupId();
+                const sessionToken = localStorage.getItem('sessionToken');
+                
+                const response = await fetch(`/api/groups/${groupId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    alert('Grupo excluído com sucesso');
+                    window.location.href = '/groups';
+                } else {
+                    const error = await response.json();
+                    showError(error.error || 'Erro ao excluir grupo');
+                }
+            } catch (error) {
+                showError('Erro de conexão');
+            }
+        }
+
+        // Utilitários
+        function scrollToBottom() {
+            const container = document.getElementById('messagesContainer');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Auto-resize do textarea
+        document.getElementById('messageInput').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+        });
+
+        // Enviar com Enter
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Inicialização
+        checkAuthStatus();
+        loadGroupData();
+        connectToGroup();
+    </script>
+</body>
+</html> 

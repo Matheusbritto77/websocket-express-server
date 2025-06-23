@@ -108,6 +108,49 @@ class PostgreSQLService {
                 )
             `);
 
+            // Tabela de grupos públicos
+            await this.pool.query(`
+                CREATE TABLE IF NOT EXISTS public_groups (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    description TEXT,
+                    created_by INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    is_active BOOLEAN DEFAULT TRUE,
+                    member_count INTEGER DEFAULT 0,
+                    message_count INTEGER DEFAULT 0
+                )
+            `);
+
+            // Tabela de membros dos grupos
+            await this.pool.query(`
+                CREATE TABLE IF NOT EXISTS group_members (
+                    id SERIAL PRIMARY KEY,
+                    group_id INTEGER REFERENCES public_groups(id) ON DELETE CASCADE,
+                    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                    socket_id VARCHAR(255),
+                    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    is_admin BOOLEAN DEFAULT FALSE,
+                    is_active BOOLEAN DEFAULT TRUE,
+                    UNIQUE(group_id, user_id)
+                )
+            `);
+
+            // Tabela de mensagens dos grupos
+            await this.pool.query(`
+                CREATE TABLE IF NOT EXISTS group_messages (
+                    id SERIAL PRIMARY KEY,
+                    group_id INTEGER REFERENCES public_groups(id) ON DELETE CASCADE,
+                    user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                    socket_id VARCHAR(255),
+                    message TEXT NOT NULL,
+                    sender_name VARCHAR(100) NOT NULL,
+                    is_registered_user BOOLEAN DEFAULT FALSE,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
             // Índices para performance
             await this.pool.query(`
                 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
@@ -117,6 +160,12 @@ class PostgreSQLService {
                 CREATE INDEX IF NOT EXISTS idx_sessions_expires_at ON sessions(expires_at);
                 CREATE INDEX IF NOT EXISTS idx_login_history_user_id ON login_history(user_id);
                 CREATE INDEX IF NOT EXISTS idx_login_history_login_at ON login_history(login_at);
+                CREATE INDEX IF NOT EXISTS idx_public_groups_created_by ON public_groups(created_by);
+                CREATE INDEX IF NOT EXISTS idx_public_groups_is_active ON public_groups(is_active);
+                CREATE INDEX IF NOT EXISTS idx_group_members_group_id ON group_members(group_id);
+                CREATE INDEX IF NOT EXISTS idx_group_members_user_id ON group_members(user_id);
+                CREATE INDEX IF NOT EXISTS idx_group_messages_group_id ON group_messages(group_id);
+                CREATE INDEX IF NOT EXISTS idx_group_messages_created_at ON group_messages(created_at);
             `);
 
         } catch (error) {
@@ -343,6 +392,244 @@ class PostgreSQLService {
     async close() {
         if (this.pool) {
             await this.pool.end();
+        }
+    }
+
+    // Métodos de grupos públicos
+    async createPublicGroup(name, description, createdBy) {
+        try {
+            const result = await this.pool.query(
+                `INSERT INTO public_groups (name, description, created_by) 
+                 VALUES ($1, $2, $3) 
+                 RETURNING *`,
+                [name, description, createdBy]
+            );
+
+            const group = result.rows[0];
+
+            // Adicionar criador como admin
+            await this.pool.query(
+                `INSERT INTO group_members (group_id, user_id, is_admin) 
+                 VALUES ($1, $2, TRUE)`,
+                [group.id, createdBy]
+            );
+
+            return group;
+        } catch (error) {
+            console.error('Erro ao criar grupo público:', error);
+            throw error;
+        }
+    }
+
+    async getPublicGroups(limit = 50, offset = 0) {
+        try {
+            const result = await this.pool.query(
+                `SELECT pg.*, u.username as creator_name, gm.member_count
+                 FROM public_groups pg
+                 LEFT JOIN users u ON pg.created_by = u.id
+                 LEFT JOIN (
+                     SELECT group_id, COUNT(*) as member_count 
+                     FROM group_members 
+                     WHERE is_active = TRUE 
+                     GROUP BY group_id
+                 ) gm ON pg.id = gm.group_id
+                 WHERE pg.is_active = TRUE
+                 ORDER BY pg.created_at DESC
+                 LIMIT $1 OFFSET $2`,
+                [limit, offset]
+            );
+
+            return result.rows;
+        } catch (error) {
+            console.error('Erro ao buscar grupos públicos:', error);
+            throw error;
+        }
+    }
+
+    async getPublicGroupById(groupId) {
+        try {
+            const result = await this.pool.query(
+                `SELECT pg.*, u.username as creator_name
+                 FROM public_groups pg
+                 LEFT JOIN users u ON pg.created_by = u.id
+                 WHERE pg.id = $1 AND pg.is_active = TRUE`,
+                [groupId]
+            );
+
+            return result.rows[0] || null;
+        } catch (error) {
+            console.error('Erro ao buscar grupo por ID:', error);
+            throw error;
+        }
+    }
+
+    async updatePublicGroup(groupId, name, description, updatedBy) {
+        try {
+            // Verificar se o usuário é admin do grupo
+            const isAdmin = await this.isGroupAdmin(groupId, updatedBy);
+            if (!isAdmin) {
+                throw new Error('Apenas administradores podem editar grupos');
+            }
+
+            const result = await this.pool.query(
+                `UPDATE public_groups 
+                 SET name = $1, description = $2, updated_at = CURRENT_TIMESTAMP 
+                 WHERE id = $3 AND is_active = TRUE 
+                 RETURNING *`,
+                [name, description, groupId]
+            );
+
+            return result.rows[0];
+        } catch (error) {
+            console.error('Erro ao atualizar grupo:', error);
+            throw error;
+        }
+    }
+
+    async deletePublicGroup(groupId, deletedBy) {
+        try {
+            // Verificar se o usuário é admin do grupo
+            const isAdmin = await this.isGroupAdmin(groupId, deletedBy);
+            if (!isAdmin) {
+                throw new Error('Apenas administradores podem excluir grupos');
+            }
+
+            await this.pool.query(
+                'UPDATE public_groups SET is_active = FALSE WHERE id = $1',
+                [groupId]
+            );
+
+            return true;
+        } catch (error) {
+            console.error('Erro ao excluir grupo:', error);
+            throw error;
+        }
+    }
+
+    async joinPublicGroup(groupId, userId, socketId) {
+        try {
+            // Verificar se já é membro
+            const existingMember = await this.pool.query(
+                'SELECT * FROM group_members WHERE group_id = $1 AND user_id = $2',
+                [groupId, userId]
+            );
+
+            if (existingMember.rows.length > 0) {
+                // Atualizar socket_id se já é membro
+                await this.pool.query(
+                    'UPDATE group_members SET socket_id = $1, is_active = TRUE WHERE group_id = $2 AND user_id = $3',
+                    [socketId, groupId, userId]
+                );
+                return existingMember.rows[0];
+            } else {
+                // Adicionar novo membro
+                const result = await this.pool.query(
+                    `INSERT INTO group_members (group_id, user_id, socket_id) 
+                     VALUES ($1, $2, $3) 
+                     RETURNING *`,
+                    [groupId, userId, socketId]
+                );
+                return result.rows[0];
+            }
+        } catch (error) {
+            console.error('Erro ao entrar no grupo:', error);
+            throw error;
+        }
+    }
+
+    async leavePublicGroup(groupId, userId) {
+        try {
+            await this.pool.query(
+                'UPDATE group_members SET is_active = FALSE WHERE group_id = $1 AND user_id = $2',
+                [groupId, userId]
+            );
+            return true;
+        } catch (error) {
+            console.error('Erro ao sair do grupo:', error);
+            throw error;
+        }
+    }
+
+    async isGroupAdmin(groupId, userId) {
+        try {
+            const result = await this.pool.query(
+                'SELECT is_admin FROM group_members WHERE group_id = $1 AND user_id = $2 AND is_active = TRUE',
+                [groupId, userId]
+            );
+            return result.rows.length > 0 && result.rows[0].is_admin;
+        } catch (error) {
+            console.error('Erro ao verificar admin do grupo:', error);
+            return false;
+        }
+    }
+
+    async isGroupMember(groupId, userId) {
+        try {
+            const result = await this.pool.query(
+                'SELECT * FROM group_members WHERE group_id = $1 AND user_id = $2 AND is_active = TRUE',
+                [groupId, userId]
+            );
+            return result.rows.length > 0;
+        } catch (error) {
+            console.error('Erro ao verificar membro do grupo:', error);
+            return false;
+        }
+    }
+
+    async addGroupMessage(groupId, userId, socketId, message, senderName, isRegisteredUser) {
+        try {
+            const result = await this.pool.query(
+                `INSERT INTO group_messages (group_id, user_id, socket_id, message, sender_name, is_registered_user) 
+                 VALUES ($1, $2, $3, $4, $5, $6) 
+                 RETURNING *`,
+                [groupId, userId, socketId, message, senderName, isRegisteredUser]
+            );
+
+            // Atualizar contador de mensagens
+            await this.pool.query(
+                'UPDATE public_groups SET message_count = message_count + 1 WHERE id = $1',
+                [groupId]
+            );
+
+            return result.rows[0];
+        } catch (error) {
+            console.error('Erro ao adicionar mensagem do grupo:', error);
+            throw error;
+        }
+    }
+
+    async getGroupMessages(groupId, limit = 50, offset = 0) {
+        try {
+            const result = await this.pool.query(
+                `SELECT * FROM group_messages 
+                 WHERE group_id = $1 
+                 ORDER BY created_at DESC 
+                 LIMIT $2 OFFSET $3`,
+                [groupId, limit, offset]
+            );
+
+            return result.rows.reverse(); // Retornar em ordem cronológica
+        } catch (error) {
+            console.error('Erro ao buscar mensagens do grupo:', error);
+            throw error;
+        }
+    }
+
+    async getGroupMembers(groupId) {
+        try {
+            const result = await this.pool.query(
+                `SELECT gm.*, u.username, u.email 
+                 FROM group_members gm
+                 LEFT JOIN users u ON gm.user_id = u.id
+                 WHERE gm.group_id = $1 AND gm.is_active = TRUE
+                 ORDER BY gm.joined_at ASC`,
+                [groupId]
+            );
+
+            return result.rows;
+        } catch (error) {
+            console.error('Erro ao buscar membros do grupo:', error);
+            throw error;
         }
     }
 }

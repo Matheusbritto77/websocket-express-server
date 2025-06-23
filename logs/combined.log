@@ -4439,3 +4439,139 @@
 {"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:03:40"}
 {"level":"info","message":"Nova conexão: IjT_uuhiXOc26RJTAAAB","service":"omegle-clone","timestamp":"2025-06-22 21:03:44"}
 {"level":"info","message":"Nova conexão: QxJDc3ZYKuwBCVY6AAAD","service":"omegle-clone","timestamp":"2025-06-22 21:03:49"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:18:37"}
+{"level":"info","message":"Nova conexão: shlFmmObghes7sbmAAAB","service":"omegle-clone","timestamp":"2025-06-22 21:19:25"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:19:26"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: hello...","service":"omegle-clone","timestamp":"2025-06-22 21:19:31"}
+{"level":"info","message":"Usuário shlFmmObghes7sbmAAAB desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:19:36"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:23:37"}
+{"level":"info","message":"Nova conexão: G_xP65oonjCPCBlIAAAB","service":"omegle-clone","timestamp":"2025-06-22 21:23:53"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:23:53"}
+{"level":"info","message":"Usuário G_xP65oonjCPCBlIAAAB desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:23:59"}
+{"level":"info","message":"Nova conexão: 7XTfTbB6f_lSJSG0AAAD","service":"omegle-clone","timestamp":"2025-06-22 21:24:01"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:24:01"}
+{"level":"info","message":"Usuário 7XTfTbB6f_lSJSG0AAAD desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:24:20"}
+{"level":"info","message":"Nova conexão: pKTDBTbYhQCvW7KlAAAF","service":"omegle-clone","timestamp":"2025-06-22 21:24:57"}
+{"level":"info","message":"Nova conexão: wYqk5jYfYQYIgJQpAAAH","service":"omegle-clone","timestamp":"2025-06-22 21:25:00"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:25:00"}
+{"level":"info","message":"Nova conexão: gNyp-I9e8dv6fztQAAAJ","service":"omegle-clone","timestamp":"2025-06-22 21:25:12"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:25:13"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: hello...","service":"omegle-clone","timestamp":"2025-06-22 21:25:16"}
+{"level":"info","message":"Nova conexão: wbl9eXDAJVMdi631AAAL","service":"omegle-clone","timestamp":"2025-06-22 21:25:21"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:25:22"}
+{"level":"info","message":"Nova conexão: SOxmqMjVf4OFrYcLAAAN","service":"omegle-clone","timestamp":"2025-06-22 21:25:36"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:25:36"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: ola...","service":"omegle-clone","timestamp":"2025-06-22 21:25:40"}
+{"level":"info","message":"Usuário wYqk5jYfYQYIgJQpAAAH desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:25:45"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: hello...","service":"omegle-clone","timestamp":"2025-06-22 21:25:47"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: ola...","service":"omegle-clone","timestamp":"2025-06-22 21:25:59"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: test...","service":"omegle-clone","timestamp":"2025-06-22 21:26:05"}
+{"level":"info","message":"Usuário wbl9eXDAJVMdi631AAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:26:06"}
+{"level":"info","message":"Nova conexão: nc9exjc4qYOKNkGUAAAP","service":"omegle-clone","timestamp":"2025-06-22 21:26:28"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:26:28"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: test...","service":"omegle-clone","timestamp":"2025-06-22 21:26:56"}
+{"level":"info","message":"Nova conexão: 7uEC4osiJjVcF2ClAAAR","service":"omegle-clone","timestamp":"2025-06-22 21:27:10"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:27:10"}
+{"level":"info","message":"Usuário nc9exjc4qYOKNkGUAAAP desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:27:13"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: test...","service":"omegle-clone","timestamp":"2025-06-22 21:27:18"}
+{"level":"info","message":"Nova conexão: FLWwYnSIKN4Ii-8bAAAT","service":"omegle-clone","timestamp":"2025-06-22 21:27:28"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:27:28"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: fghjk...","service":"omegle-clone","timestamp":"2025-06-22 21:27:30"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: b...","service":"omegle-clone","timestamp":"2025-06-22 21:27:37"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: ghj...","service":"omegle-clone","timestamp":"2025-06-22 21:27:45"}
+{"level":"info","message":"Usuário FLWwYnSIKN4Ii-8bAAAT desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:27:54"}
+{"level":"info","message":"Usuário 7uEC4osiJjVcF2ClAAAR desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:27:54"}
+{"level":"info","message":"Nova conexão: znred4gFL4W01aY_AAAV","service":"omegle-clone","timestamp":"2025-06-22 21:27:58"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:27:58"}
+{"level":"info","message":"Usuário znred4gFL4W01aY_AAAV desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:27:59"}
+{"level":"info","message":"Nova conexão: _BIw033x1QPzmg4aAAAX","service":"omegle-clone","timestamp":"2025-06-22 21:28:02"}
+{"level":"info","message":"Nova conexão: 4J109-AhJvUxK1qhAAAZ","service":"omegle-clone","timestamp":"2025-06-22 21:28:09"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:28:09"}
+{"level":"info","message":"Usuário 4J109-AhJvUxK1qhAAAZ desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:28:54"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:33:23"}
+{"level":"info","message":"Nova conexão: rrRg2SATpNzdNjIbAAAB","service":"omegle-clone","timestamp":"2025-06-22 21:33:23"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:24"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:24"}
+{"level":"info","message":"Nova conexão: nvXfdWtyL51oMIlmAAAD","service":"omegle-clone","timestamp":"2025-06-22 21:33:26"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:26"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:26"}
+{"level":"info","message":"Usuário rrRg2SATpNzdNjIbAAAB desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:33:27"}
+{"level":"warn","message":"⚠️ MongoDB não disponível:","service":"omegle-clone","timestamp":"2025-06-22 21:33:29"}
+{"level":"info","message":"Nova conexão: qu0vNGhFd4AJ1pQfAAAF","service":"omegle-clone","timestamp":"2025-06-22 21:33:34"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:34"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:34"}
+{"level":"warn","message":"MongoDB não disponível para salvar mensagem do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:41"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: ola...","service":"omegle-clone","timestamp":"2025-06-22 21:33:41"}
+{"level":"info","message":"Usuário nvXfdWtyL51oMIlmAAAD desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:33:45"}
+{"level":"info","message":"Nova conexão: 2PH1WcQpP67Jrn7vAAAH","service":"omegle-clone","timestamp":"2025-06-22 21:33:46"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:46"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:46"}
+{"level":"info","message":"Usuário 2PH1WcQpP67Jrn7vAAAH desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:33:48"}
+{"level":"info","message":"Nova conexão: DCPhziah1PxbRDRCAAAJ","service":"omegle-clone","timestamp":"2025-06-22 21:33:49"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:50"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:50"}
+{"level":"info","message":"Nova conexão: NViXJLas5CLBSLCqAAAL","service":"omegle-clone","timestamp":"2025-06-22 21:33:54"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:54"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:54"}
+{"level":"info","message":"Usuário NViXJLas5CLBSLCqAAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:33:55"}
+{"level":"info","message":"Nova conexão: zVXySWjNMrZe5tUMAAAN","service":"omegle-clone","timestamp":"2025-06-22 21:33:55"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:55"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:55"}
+{"level":"info","message":"Usuário zVXySWjNMrZe5tUMAAAN desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:33:56"}
+{"level":"info","message":"Nova conexão: xLuXaA2EkwqGsrN8AAAP","service":"omegle-clone","timestamp":"2025-06-22 21:33:56"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:56"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:33:56"}
+{"level":"warn","message":"MongoDB não disponível para salvar mensagem do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:33:59"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: ola...","service":"omegle-clone","timestamp":"2025-06-22 21:33:59"}
+{"level":"warn","message":"MongoDB não disponível para salvar mensagem do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:34:14"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: gee...","service":"omegle-clone","timestamp":"2025-06-22 21:34:14"}
+{"level":"info","message":"Usuário DCPhziah1PxbRDRCAAAJ desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:34:17"}
+{"level":"info","message":"Nova conexão: 7NdavgG_IsLW6prYAAAR","service":"omegle-clone","timestamp":"2025-06-22 21:34:18"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:34:18"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:34:18"}
+{"level":"info","message":"Usuário 7NdavgG_IsLW6prYAAAR desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:34:30"}
+{"level":"info","message":"Nova conexão: 8vM8s9Q25b02DadoAAAT","service":"omegle-clone","timestamp":"2025-06-22 21:34:34"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:34:34"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:34:34"}
+{"level":"warn","message":"MongoDB não disponível para salvar mensagem do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:34:38"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: dfghjklkjh...","service":"omegle-clone","timestamp":"2025-06-22 21:34:38"}
+{"level":"info","message":"Usuário qu0vNGhFd4AJ1pQfAAAF desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:34:43"}
+{"level":"info","message":"Nova conexão: myhw5nLvRiGkdlPnAAAV","service":"omegle-clone","timestamp":"2025-06-22 21:34:44"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:34:44"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:34:44"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:44:18"}
+{"level":"info","message":"Nova conexão: O9M7pyN7dOWOHUkYAAAC","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"info","message":"Nova conexão: 6DfniDiq5NIIDom_AAAD","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:44:19"}
+{"level":"info","message":"Nova conexão: IF_pSpJ64g2WQ4VsAAAF","service":"omegle-clone","timestamp":"2025-06-22 21:44:20"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 21:48:08"}
+{"level":"info","message":"Nova conexão: YegrIZljOxKb2nQEAAAC","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Nova conexão: 17Na_0mirIiX5NjgAAAD","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"warn","message":"MongoDB não disponível para buscar mensagens do grupo","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"🔄 Conectando ao MongoDB: mongodb://***@168.231.95.211:27017","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"✅ MongoDB conectado com sucesso via mongoose","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"📊 Teste do modelo: 1 mensagens encontradas","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"✅ Índices TTL criados no MongoDB","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Nova conexão: IIRXNRP3jYfcPaJYAAAF","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:48:09"}
+{"level":"info","message":"Usuário IIRXNRP3jYfcPaJYAAAF desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:48:32"}
+{"level":"info","message":"Nova conexão: KuFpv9DFTgcFvuRUAAAH","service":"omegle-clone","timestamp":"2025-06-22 21:48:35"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:48:36"}
+{"level":"info","message":"💬 Mensagem do grupo 1 salva no MongoDB","service":"omegle-clone","timestamp":"2025-06-22 21:48:39"}
+{"level":"info","message":"Mensagem no grupo 1 de matheusbritto: fghjgfg...","service":"omegle-clone","timestamp":"2025-06-22 21:48:39"}
+{"level":"info","message":"Usuário 17Na_0mirIiX5NjgAAAD desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:48:44"}
+{"level":"info","message":"Nova conexão: UlvegLoldbKekazDAAAJ","service":"omegle-clone","timestamp":"2025-06-22 21:48:49"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:48:49"}
+{"level":"info","message":"💬 Mensagem do grupo 1 salva no MongoDB","service":"omegle-clone","timestamp":"2025-06-22 21:48:54"}
+{"level":"info","message":"Mensagem no grupo 1 de Stranger: fghjfg[...","service":"omegle-clone","timestamp":"2025-06-22 21:48:54"}
+{"level":"info","message":"Usuário YegrIZljOxKb2nQEAAAC desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:49:04"}
+{"level":"info","message":"Nova conexão: Vnamfs82o1A1KSpeAAAL","service":"omegle-clone","timestamp":"2025-06-22 21:49:04"}
+{"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:49:04"}
+{"level":"info","message":"Usuário Vnamfs82o1A1KSpeAAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:49:07"}
+{"level":"info","message":"Nova conexão: TP_V-laUSYPe9Yd0AAAN","service":"omegle-clone","timestamp":"2025-06-22 21:49:15"}

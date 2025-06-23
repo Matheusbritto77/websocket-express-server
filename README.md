@@ -122,6 +122,10 @@ npm test
 - **WebRTC**: Offers, answers e candidates
 - **Logs de atividade**: Auditoria
 - **Índices otimizados**: Performance de queries
+- **Mensagens dos Grupos**: Histórico das últimas 24 horas
+- **TTL Automático**: Expiração automática após 24 horas
+- **Índices Otimizados**: Para consultas rápidas por grupo e período
+- **Estatísticas**: Contadores de mensagens por período
 
 ### PostgreSQL (Futuro)
 - **Usuários registrados**: Sistema de contas
@@ -254,4 +258,260 @@ Se você encontrar algum problema ou tiver sugestões:
 
 ---
 
-**Divirta-se conversando com estranhos! 🎉** 
+**Divirta-se conversando com estranhos! 🎉**
+
+# 🎯 Stranger Chat - Servidor WebSocket com Express
+
+Um servidor completo de chat anônimo estilo Omegle com chat de texto, vídeo e grupos públicos, construído com Node.js, Express, Socket.IO, Redis, MongoDB e PostgreSQL.
+
+## 🚀 Funcionalidades
+
+### Chat Anônimo
+- **Chat de Texto**: Conecte-se com estranhos aleatoriamente
+- **Chat de Vídeo**: Conversas com vídeo e áudio em tempo real
+- **Sistema de Espera**: Fila inteligente para conectar usuários
+- **Botão "Próximo"**: Pule para o próximo usuário facilmente
+
+### Grupos Públicos
+- **Criação de Grupos**: Usuários registrados podem criar grupos temáticos
+- **Chat em Grupo**: Mensagens de texto em tempo real
+- **Histórico de 24h**: Mensagens salvas no MongoDB com TTL automático
+- **Gerenciamento**: Admins podem editar nome, descrição e excluir grupos
+- **Participação**: Usuários registrados e anônimos podem participar
+- **Identificação**: Usuários registrados mostram nome, anônimos mostram "Stranger"
+
+### Sistema de Autenticação
+- **Registro e Login**: Sistema completo de autenticação
+- **Sessões Persistentes**: Sessões armazenadas no PostgreSQL
+- **Perfil de Usuário**: Dados pessoais e histórico de login
+- **Segurança**: Senhas criptografadas com bcrypt
+
+### Estatísticas em Tempo Real
+- **Contador Online**: Widget com usuários online
+- **Estatísticas Detalhadas**: Usuários em espera, conversas ativas
+- **Persistência**: Dados salvos no Redis
+
+## 🛠️ Tecnologias
+
+- **Backend**: Node.js, Express
+- **WebSocket**: Socket.IO
+- **Cache**: Redis
+- **Banco Principal**: PostgreSQL
+- **Banco Secundário**: MongoDB (opcional)
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Segurança**: bcrypt, JWT
+
+## 📋 Pré-requisitos
+
+- Node.js 16+
+- Redis
+- PostgreSQL
+- MongoDB (opcional)
+
+## ⚙️ Instalação
+
+1. **Clone o repositório**
+```bash
+git clone <url-do-repositorio>
+cd websocket-express-server
+```
+
+2. **Instale as dependências**
+```bash
+npm install
+```
+
+3. **Configure as variáveis de ambiente**
+```bash
+cp config.example .env
+```
+
+Edite o arquivo `.env` com suas configurações:
+```env
+# Servidor
+PORT=3333
+NODE_ENV=development
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+# PostgreSQL
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=sua_senha
+POSTGRES_DB=stranger_chat
+POSTGRES_SSL=false
+
+# MongoDB (opcional)
+MONGO_URL=mongodb://localhost:27017/stranger_chat
+MONGO_PASSWORD=Setcel2@@
+
+# Logs
+LOG_LEVEL=info
+```
+
+4. **Inicie os serviços**
+```bash
+# Redis
+redis-server
+
+# PostgreSQL
+# Certifique-se de que o PostgreSQL está rodando
+
+# MongoDB (opcional)
+mongod
+```
+
+5. **Execute o servidor**
+```bash
+npm start
+```
+
+## 🗄️ Estrutura do Banco de Dados
+
+### PostgreSQL (Principal)
+
+#### Tabela `users`
+- Armazena dados dos usuários registrados
+- Username, email, senha criptografada
+- Dados de perfil em JSONB
+
+#### Tabela `sessions`
+- Sessões ativas dos usuários
+- Token de sessão, socket_id
+- Controle de expiração
+
+#### Tabela `login_history`
+- Histórico de tentativas de login
+- IP, user agent, sucesso/falha
+
+#### Tabela `public_groups`
+- Grupos públicos criados pelos usuários
+- Nome, descrição, criador
+- Contadores de membros e mensagens
+
+#### Tabela `group_members`
+- Membros dos grupos
+- Relacionamento usuário-grupo
+- Controle de admin
+
+#### Tabela `group_messages`
+- Mensagens dos grupos
+- Identificação de usuários registrados vs anônimos
+
+### Redis (Cache)
+- Contadores de usuários online
+- Filas de espera para chat
+- Cache de sessões ativas
+
+### MongoDB (Opcional)
+- Logs de conversas
+- Estatísticas detalhadas
+- Dados de analytics
+
+## 🔌 APIs
+
+### Autenticação
+- `POST /api/auth/register` - Registrar usuário
+- `POST /api/auth/login` - Fazer login
+- `POST /api/auth/validate` - Validar sessão
+- `POST /api/auth/logout` - Fazer logout
+- `GET /api/auth/profile` - Obter perfil
+- `PUT /api/auth/profile` - Atualizar perfil
+- `GET /api/auth/login-history` - Histórico de login
+
+### Grupos Públicos
+- `GET /api/groups` - Listar grupos
+- `POST /api/groups` - Criar grupo (usuários registrados)
+- `GET /api/groups/:id` - Obter detalhes do grupo
+- `PUT /api/groups/:id` - Editar grupo (admin)
+- `DELETE /api/groups/:id` - Excluir grupo (admin)
+- `POST /api/groups/:id/join` - Entrar no grupo
+- `POST /api/groups/:id/leave` - Sair do grupo
+- `GET /api/groups/:id/messages` - Mensagens do grupo (últimas 24h)
+- `GET /api/groups/:id/messages/history` - Histórico por período
+- `GET /api/groups/:id/messages/stats` - Estatísticas de mensagens
+- `GET /api/groups/:id/members` - Membros do grupo
+
+### Estatísticas
+- `GET /api/stats/online` - Estatísticas online
+
+## 📡 Eventos Socket.IO
+
+### Chat Anônimo
+- `find_partner` - Procurar parceiro
+- `next` - Próximo usuário
+- `message` - Enviar mensagem
+- `disconnect` - Desconectar
+
+### Grupos Públicos
+- `join_group` - Entrar em grupo
+- `leave_group` - Sair do grupo
+- `group_message` - Mensagem no grupo
+- `create_group` - Criar grupo
+
+## 🎨 Páginas
+
+- `/` - Página principal
+- `/chat` - Chat de texto
+- `/video-chat` - Chat de vídeo
+- `/groups` - Lista de grupos públicos
+- `/group/:id` - Chat do grupo
+- `/login` - Login/Registro
+- `/profile` - Perfil do usuário
+
+## 🔒 Segurança
+
+- **Senhas**: Criptografadas com bcrypt
+- **Sessões**: Tokens JWT seguros
+- **Validação**: Input sanitization
+- **Rate Limiting**: Proteção contra spam
+- **HTTPS**: Recomendado para produção
+
+## 📊 Monitoramento
+
+- **Logs**: Winston com rotação
+- **Métricas**: Estatísticas em tempo real
+- **Erros**: Tratamento robusto de exceções
+- **Performance**: Otimizações de banco
+
+## 🚀 Deploy
+
+### Produção
+```bash
+NODE_ENV=production npm start
+```
+
+### Docker (opcional)
+```dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3333
+CMD ["npm", "start"]
+```
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 🆘 Suporte
+
+Para suporte, abra uma issue no GitHub ou entre em contato através do email.
+
+---
+
+**Desenvolvido com ❤️ para conectar pessoas de forma segura e anônima.** 
