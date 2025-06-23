@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Perfil - Stranger Chat</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .profile-email {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .profile-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .login-history {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .history-info {
+            flex: 1;
+        }
+
+        .history-date {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .history-details {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .history-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-header {
+                padding: 30px 20px;
+            }
+            
+            .profile-content {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>👤 Meu Perfil</h1>
+            <p>Gerencie suas informações e configurações</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">
+                    <i class="material-icons">person</i>
+                </div>
+                <div class="profile-name" id="profileName">Carregando...</div>
+                <div class="profile-email" id="profileEmail">carregando@email.com</div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalChats">0</div>
+                    <div class="stat-label">Total de Chats</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalMessages">0</div>
+                    <div class="stat-label">Mensagens</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalTime">0</div>
+                    <div class="stat-label">Minutos Online</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="memberSince">0</div>
+                    <div class="stat-label">Dias Membro</div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="message success" id="successMessage"></div>
+                <div class="message error" id="errorMessage"></div>
+
+                <!-- Informações Básicas -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <i class="material-icons">info</i>
+                        Informações Básicas
+                    </h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username">Nome de Usuário</label>
+                            <input type="text" id="username" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="createdAt">Data de Registro</label>
+                            <input type="text" id="createdAt" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastLogin">Último Login</label>
+                            <input type="text" id="lastLogin" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configurações do Perfil -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <i class="material-icons">settings</i>
+                        Configurações do Perfil
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="displayName">Nome de Exibição</label>
+                        <input type="text" id="displayName" placeholder="Seu nome de exibição">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Biografia</label>
+                        <textarea id="bio" rows="3" placeholder="Conte um pouco sobre você..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="language">Idioma Preferido</label>
+                            <select id="language">
+                                <option value="pt-BR">Português (Brasil)</option>
+                                <option value="en-US">English (US)</option>
+                                <option value="es-ES">Español</option>
+                                <option value="fr-FR">Français</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="theme">Tema</label>
+                            <select id="theme">
+                                <option value="light">Claro</option>
+                                <option value="dark">Escuro</option>
+                                <option value="auto">Automático</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="saveProfile()">
+                        <i class="material-icons">save</i>
+                        Salvar Configurações
+                    </button>
+                </div>
+
+                <!-- Histórico de Login -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <i class="material-icons">history</i>
+                        Histórico de Login
+                    </h3>
+                    
+                    <div class="login-history" id="loginHistory">
+                        <div class="loading" id="historyLoading">
+                            <div class="spinner"></div>
+                            <p>Carregando histórico...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ações da Conta -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <i class="material-icons">security</i>
+                        Segurança da Conta
+                    </h3>
+                    
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="changePassword()">
+                            <i class="material-icons">lock</i>
+                            Alterar Senha
+                        </button>
+                        
+                        <button class="btn btn-secondary" onclick="logout()">
+                            <i class="material-icons">logout</i>
+                            Sair da Conta
+                        </button>
+                        
+                        <button class="btn btn-danger" onclick="deleteAccount()">
+                            <i class="material-icons">delete_forever</i>
+                            Excluir Conta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userData = null;
+
+        // Carregar dados do usuário
+        async function loadUserData() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            if (!sessionToken) {
+                window.location.href = '/login';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/auth/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    userData = await response.json();
+                    displayUserData();
+                    loadLoginHistory();
+                } else {
+                    localStorage.removeItem('sessionToken');
+                    localStorage.removeItem('userData');
+                    window.location.href = '/login';
+                }
+            } catch (error) {
+                console.error('Erro ao carregar dados do usuário:', error);
+                showMessage('Erro ao carregar dados do usuário', 'error');
+            }
+        }
+
+        function displayUserData() {
+            if (!userData) return;
+
+            // Informações básicas
+            document.getElementById('profileName').textContent = userData.username;
+            document.getElementById('profileEmail').textContent = userData.email;
+            document.getElementById('username').value = userData.username;
+            document.getElementById('email').value = userData.email;
+            
+            // Datas
+            const createdAt = new Date(userData.created_at);
+            const lastLogin = userData.last_login ? new Date(userData.last_login) : null;
+            
+            document.getElementById('createdAt').value = createdAt.toLocaleDateString('pt-BR');
+            document.getElementById('lastLogin').value = lastLogin ? lastLogin.toLocaleDateString('pt-BR') + ' ' + lastLogin.toLocaleTimeString('pt-BR') : 'Nunca';
+
+            // Avatar
+            const avatar = document.getElementById('profileAvatar');
+            avatar.innerHTML = `<i class="material-icons">${userData.username.charAt(0).toUpperCase()}</i>`;
+
+            // Estatísticas
+            const profileData = userData.profile_data || {};
+            document.getElementById('totalChats').textContent = profileData.totalChats || 0;
+            document.getElementById('totalMessages').textContent = profileData.totalMessages || 0;
+            document.getElementById('totalTime').textContent = Math.round((profileData.totalTime || 0) / 60);
+            
+            const daysSince = Math.floor((Date.now() - createdAt.getTime()) / (1000 * 60 * 60 * 24));
+            document.getElementById('memberSince').textContent = daysSince;
+
+            // Configurações do perfil
+            document.getElementById('displayName').value = profileData.displayName || '';
+            document.getElementById('bio').value = profileData.bio || '';
+            document.getElementById('language').value = profileData.language || 'pt-BR';
+            document.getElementById('theme').value = profileData.theme || 'light';
+        }
+
+        async function loadLoginHistory() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            if (!sessionToken) return;
+
+            try {
+                const response = await fetch('/api/auth/login-history', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    const history = await response.json();
+                    displayLoginHistory(history);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar histórico:', error);
+            }
+        }
+
+        function displayLoginHistory(history) {
+            const container = document.getElementById('loginHistory');
+            const loading = document.getElementById('historyLoading');
+            
+            loading.style.display = 'none';
+
+            if (history.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">Nenhum histórico encontrado</p>';
+                return;
+            }
+
+            const historyHtml = history.map(item => `
+                <div class="history-item">
+                    <div class="history-info">
+                        <div class="history-date">${new Date(item.login_at).toLocaleDateString('pt-BR')} ${new Date(item.login_at).toLocaleTimeString('pt-BR')}</div>
+                        <div class="history-details">
+                            ${item.ip_address} • ${item.user_agent ? item.user_agent.substring(0, 50) + '...' : 'N/A'}
+                        </div>
+                    </div>
+                    <div class="history-status ${item.success ? 'status-success' : 'status-failed'}">
+                        ${item.success ? 'Sucesso' : 'Falha'}
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = historyHtml;
+        }
+
+        async function saveProfile() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            if (!sessionToken) return;
+
+            const profileData = {
+                displayName: document.getElementById('displayName').value,
+                bio: document.getElementById('bio').value,
+                language: document.getElementById('language').value,
+                theme: document.getElementById('theme').value
+            };
+
+            try {
+                const response = await fetch('/api/auth/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionToken}`
+                    },
+                    body: JSON.stringify(profileData)
+                });
+
+                if (response.ok) {
+                    showMessage('Perfil atualizado com sucesso!', 'success');
+                    await loadUserData(); // Recarregar dados
+                } else {
+                    const data = await response.json();
+                    showMessage(data.error || 'Erro ao atualizar perfil', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro de conexão', 'error');
+            }
+        }
+
+        function changePassword() {
+            const newPassword = prompt('Digite sua nova senha (mínimo 6 caracteres):');
+            if (!newPassword || newPassword.length < 6) {
+                alert('Senha deve ter pelo menos 6 caracteres');
+                return;
+            }
+
+            const confirmPassword = prompt('Confirme sua nova senha:');
+            if (newPassword !== confirmPassword) {
+                alert('Senhas não coincidem');
+                return;
+            }
+
+            // Implementar alteração de senha
+            alert('Funcionalidade de alteração de senha será implementada em breve');
+        }
+
+        function logout() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            if (sessionToken) {
+                fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                }).catch(() => {
+                    // Ignorar erros de logout
+                });
+            }
+
+            localStorage.removeItem('sessionToken');
+            localStorage.removeItem('userData');
+            window.location.href = '/';
+        }
+
+        function deleteAccount() {
+            if (!confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.')) {
+                return;
+            }
+
+            if (!confirm('ÚLTIMA CHANCE: Tem certeza absoluta que deseja excluir sua conta?')) {
+                return;
+            }
+
+            // Implementar exclusão de conta
+            alert('Funcionalidade de exclusão de conta será implementada em breve');
+        }
+
+        function showMessage(message, type) {
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (type === 'success') {
+                successMsg.textContent = message;
+                successMsg.style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.textContent = message;
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+            }
+
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+            }, 5000);
+        }
+
+        // Carregar dados quando a página carregar
+        window.addEventListener('load', loadUserData);
+    </script>
+</body>
+</html> 

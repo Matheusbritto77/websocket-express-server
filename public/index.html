@@ -34,16 +34,157 @@
             color: #333;
         }
 
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            height: 40px;
+        }
+
+        .menu-left .menu-title {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .menu-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .menu-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-1px);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 60px; /* Espaço para o menu fixo */
         }
 
         .header {
             text-align: center;
             margin-bottom: 60px;
             color: white;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile-section {
+            position: relative;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-info span {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .profile-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .profile-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .profile-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10px 0;
+            min-width: 200px;
+            z-index: 1000;
+            margin-top: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .menu-item:hover {
+            background: #f8f9fa;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .auth-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
         .header h1 {
@@ -217,13 +358,62 @@
             .menu-card {
                 padding: 30px 20px;
             }
+
+            .top-menu {
+                padding: 8px 15px;
+            }
+
+            .menu-title {
+                font-size: 0.8rem;
+            }
+
+            .menu-link {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Menu Superior -->
+        <div class="top-menu">
+            <div class="menu-left">
+                <span class="menu-title">Stranger Chat</span>
+            </div>
+            <div class="menu-right">
+                <a href="/login" class="menu-link">Register</a>
+            </div>
+        </div>
+
         <!-- Header -->
         <div class="header">
+            <div class="header-top">
+                <div class="profile-section" id="profileSection" style="display: none;">
+                    <div class="profile-info">
+                        <span id="userDisplayName">Usuário</span>
+                        <button class="profile-btn" onclick="toggleProfileMenu()">
+                            <i class="material-icons">account_circle</i>
+                        </button>
+                    </div>
+                    <div class="profile-menu" id="profileMenu" style="display: none;">
+                        <a href="/profile" class="menu-item">
+                            <i class="material-icons">person</i>
+                            Meu Perfil
+                        </a>
+                        <button class="menu-item" onclick="logout()">
+                            <i class="material-icons">logout</i>
+                            Sair
+                        </button>
+                    </div>
+                </div>
+                <div class="auth-section" id="authSection">
+                    <a href="/login" class="auth-btn">
+                        <i class="material-icons">login</i>
+                        Entrar
+                    </a>
+                </div>
+            </div>
             <h1>🎯 Stranger Chat</h1>
             <p>Conecte-se com pessoas aleatórias em tempo real. Chat anônimo e seguro com texto e vídeo.</p>
         </div>
@@ -293,5 +483,125 @@
     <!-- Scripts -->
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script src="/js/online-counter.js"></script>
+    
+    <script>
+        // Gerenciamento de autenticação
+        let userData = null;
+
+        function checkAuthStatus() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            const storedUserData = localStorage.getItem('userData');
+            
+            if (sessionToken && storedUserData) {
+                try {
+                    userData = JSON.parse(storedUserData);
+                    
+                    // Validar sessão
+                    fetch('/api/auth/validate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ sessionToken })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showProfileSection();
+                        } else {
+                            clearAuthData();
+                            showAuthSection();
+                        }
+                    })
+                    .catch(() => {
+                        clearAuthData();
+                        showAuthSection();
+                    });
+                } catch (error) {
+                    clearAuthData();
+                    showAuthSection();
+                }
+            } else {
+                showAuthSection();
+            }
+        }
+
+        function showProfileSection() {
+            document.getElementById('profileSection').style.display = 'block';
+            document.getElementById('authSection').style.display = 'none';
+            
+            const displayName = userData?.profile_data?.displayName || userData?.username || 'Usuário';
+            document.getElementById('userDisplayName').textContent = displayName;
+        }
+
+        function showAuthSection() {
+            document.getElementById('profileSection').style.display = 'none';
+            document.getElementById('authSection').style.display = 'block';
+        }
+
+        function toggleProfileMenu() {
+            const menu = document.getElementById('profileMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function logout() {
+            const sessionToken = localStorage.getItem('sessionToken');
+            
+            if (sessionToken) {
+                fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                }).catch(() => {
+                    // Ignorar erros de logout
+                });
+            }
+            
+            clearAuthData();
+            showAuthSection();
+            toggleProfileMenu();
+        }
+
+        function clearAuthData() {
+            localStorage.removeItem('sessionToken');
+            localStorage.removeItem('userData');
+            userData = null;
+        }
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            const profileSection = document.getElementById('profileSection');
+            const profileMenu = document.getElementById('profileMenu');
+            
+            if (!profileSection.contains(e.target)) {
+                profileMenu.style.display = 'none';
+            }
+        });
+
+        // Verificar status de autenticação quando a página carregar
+        window.addEventListener('load', checkAuthStatus);
+    </script>
+
+    <script>
+        // Função para reativar o widget de usuários online
+        function showOnlineWidget() {
+            const existingWidget = document.getElementById('online-widget');
+            if (existingWidget) {
+                existingWidget.style.display = 'block';
+                localStorage.removeItem('onlineWidgetHidden');
+            } else {
+                // Se o widget não existe, criar um novo
+                if (typeof OnlineCounter !== 'undefined') {
+                    window.onlineCounter = new OnlineCounter();
+                    localStorage.removeItem('onlineWidgetHidden');
+                }
+            }
+        }
+
+        // Adicionar botão para reativar o widget (opcional)
+        // Pode ser chamado de qualquer lugar da aplicação
+        // Exemplo: showOnlineWidget();
+    </script>
 </body>
 </html>

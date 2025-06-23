@@ -18,6 +18,9 @@ class OnlineCounter {
         widget.id = 'online-widget';
         widget.className = 'online-widget';
         widget.innerHTML = `
+            <button class="widget-close-btn" onclick="closeOnlineWidget()">
+                <i class="material-icons">close</i>
+            </button>
             <div class="online-counter">
                 <div class="counter-icon">👥</div>
                 <div class="counter-content">
@@ -114,7 +117,31 @@ class OnlineCounter {
     }
 }
 
+// Função global para fechar o widget
+function closeOnlineWidget() {
+    const widget = document.getElementById('online-widget');
+    if (widget) {
+        widget.style.display = 'none';
+        // Salvar preferência no localStorage
+        localStorage.setItem('onlineWidgetHidden', 'true');
+    }
+}
+
+// Função para mostrar o widget novamente (pode ser chamada de outro lugar)
+function showOnlineWidget() {
+    const widget = document.getElementById('online-widget');
+    if (widget) {
+        widget.style.display = 'block';
+        localStorage.removeItem('onlineWidgetHidden');
+    }
+}
+
 // Inicializa o contador quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
-    window.onlineCounter = new OnlineCounter();
+    // Verificar se o usuário fechou o widget anteriormente
+    const isHidden = localStorage.getItem('onlineWidgetHidden') === 'true';
+    
+    if (!isHidden) {
+        window.onlineCounter = new OnlineCounter();
+    }
 }); 

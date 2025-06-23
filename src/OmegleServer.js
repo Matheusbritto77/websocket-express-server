@@ -4,6 +4,7 @@ const socketIo = require('socket.io');
 const path = require('path');
 const logger = require('./config/logger');
 const redisService = require('./services/RedisService');
+const postgresService = require('./services/PostgreSQLService');
 const User = require('./models/User');
 const ChatRoom = require('./models/ChatRoom');
 
@@ -13,7 +14,10 @@ class OmegleServer {
         this.app = express();
         this.server = http.createServer(this.app);
         this.io = socketIo(this.server, {
-            cors: { origin: '*', methods: ['GET', 'POST'] }
+            cors: {
+                origin: "*",
+                methods: ["GET", "POST"]
+            }
         });
         
         // Filas separadas para chat de texto e chat com vídeo
@@ -42,13 +46,27 @@ class OmegleServer {
         try {
             console.log('🔄 Inicializando serviços do OmegleServer...');
             
-            // Inicializar Redis Service
+            // Inicializar Redis Service (obrigatório)
             await redisService.initialize();
             console.log('✅ Redis Service inicializado');
+            
+            // Inicializar PostgreSQL Service (opcional)
+            try {
+                await postgresService.initialize();
+                console.log('✅ PostgreSQL Service inicializado');
+            } catch (postgresError) {
+                console.log('⚠️ PostgreSQL não disponível:', postgresError.message);
+                console.log('ℹ️ Sistema funcionará sem autenticação de usuários');
+            }
             
             // Configurar limpeza periódica de dados
             setInterval(async () => {
                 await redisService.cleanupExpiredData();
+                try {
+                    await postgresService.cleanupExpiredSessions();
+                } catch (error) {
+                    // Ignorar erros de PostgreSQL
+                }
             }, 300000); // A cada 5 minutos
             
             // Configurar broadcast periódico das estatísticas online
@@ -65,6 +83,37 @@ class OmegleServer {
     setupMiddleware() {
         this.app.use(express.json());
         this.app.use(express.static(path.join(__dirname, '../public')));
+    }
+
+    // Middleware para validar sessão
+    async validateSession(req, res, next) {
+        try {
+            // Verificar se PostgreSQL está disponível
+            if (!postgresService.pool) {
+                return res.status(503).json({ 
+                    error: 'Sistema de autenticação indisponível',
+                    message: 'PostgreSQL não está conectado'
+                });
+            }
+
+            const authHeader = req.headers.authorization;
+            if (!authHeader || !authHeader.startsWith('Bearer ')) {
+                return res.status(401).json({ error: 'Token de autenticação necessário' });
+            }
+
+            const sessionToken = authHeader.substring(7);
+            const session = await postgresService.validateSession(sessionToken);
+            
+            if (!session) {
+                return res.status(401).json({ error: 'Sessão inválida ou expirada' });
+            }
+
+            req.user = session;
+            next();
+        } catch (error) {
+            logger.error('Erro ao validar sessão:', error);
+            res.status(500).json({ error: 'Erro interno do servidor' });
+        }
     }
 
     setupRoutes() {
@@ -199,6 +248,281 @@ class OmegleServer {
                 res.json(rooms);
             } catch (error) {
                 logger.error('Erro ao buscar salas:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // Rotas de autenticação
+        this.app.get('/login', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/login.html'));
+        });
+
+        this.app.get('/profile', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/profile.html'));
+        });
+
+        // API de registro
+        this.app.post('/api/auth/register', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const { username, email, password } = req.body;
+
+                // Validações básicas
+                if (!username || !email || !password) {
+                    return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+                }
+
+                if (username.length < 3 || username.length > 20) {
+                    return res.status(400).json({ error: 'Nome de usuário deve ter entre 3 e 20 caracteres' });
+                }
+
+                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                    return res.status(400).json({ error: 'Nome de usuário deve conter apenas letras, números e _' });
+                }
+
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    return res.status(400).json({ error: 'Email inválido' });
+                }
+
+                if (password.length < 6) {
+                    return res.status(400).json({ error: 'Senha deve ter pelo menos 6 caracteres' });
+                }
+
+                // Criar usuário
+                const user = await postgresService.createUser(username, email, password);
+                
+                // Criar sessão
+                const sessionToken = await postgresService.createSession(
+                    user.id, 
+                    null, 
+                    req.headers['user-agent'], 
+                    req.ip
+                );
+
+                // Registrar tentativa de login
+                await postgresService.logLoginAttempt(
+                    user.id, 
+                    req.ip, 
+                    req.headers['user-agent'], 
+                    true
+                );
+
+                res.json({
+                    success: true,
+                    message: 'Conta criada com sucesso',
+                    sessionToken,
+                    user: {
+                        id: user.id,
+                        username: user.username,
+                        email: user.email
+                    }
+                });
+            } catch (error) {
+                logger.error('Erro no registro:', error);
+                if (error.message === 'Usuário ou email já existe') {
+                    res.status(400).json({ error: error.message });
+                } else {
+                    res.status(500).json({ error: 'Erro interno do servidor' });
+                }
+            }
+        });
+
+        // API de login
+        this.app.post('/api/auth/login', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const { username, password } = req.body;
+
+                if (!username || !password) {
+                    return res.status(400).json({ error: 'Usuário e senha são obrigatórios' });
+                }
+
+                // Autenticar usuário
+                const user = await postgresService.authenticateUser(username, password);
+                
+                if (!user) {
+                    // Tentar encontrar usuário para registrar falha
+                    try {
+                        const existingUser = await postgresService.pool.query(
+                            'SELECT id FROM users WHERE username = $1 OR email = $1',
+                            [username]
+                        );
+                        
+                        if (existingUser.rows.length > 0) {
+                            await postgresService.logLoginAttempt(
+                                existingUser.rows[0].id,
+                                req.ip,
+                                req.headers['user-agent'],
+                                false,
+                                'Senha incorreta'
+                            );
+                        }
+                    } catch (logError) {
+                        // Ignorar erros de log
+                    }
+                    
+                    return res.status(401).json({ error: 'Usuário ou senha incorretos' });
+                }
+
+                // Criar sessão
+                const sessionToken = await postgresService.createSession(
+                    user.id, 
+                    null, 
+                    req.headers['user-agent'], 
+                    req.ip
+                );
+
+                // Registrar tentativa de login
+                await postgresService.logLoginAttempt(
+                    user.id, 
+                    req.ip, 
+                    req.headers['user-agent'], 
+                    true
+                );
+
+                res.json({
+                    success: true,
+                    message: 'Login realizado com sucesso',
+                    sessionToken,
+                    user: {
+                        id: user.id,
+                        username: user.username,
+                        email: user.email
+                    }
+                });
+            } catch (error) {
+                logger.error('Erro no login:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de validação de sessão
+        this.app.post('/api/auth/validate', async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const { sessionToken } = req.body;
+                
+                if (!sessionToken) {
+                    return res.status(400).json({ error: 'Token de sessão necessário' });
+                }
+
+                const session = await postgresService.validateSession(sessionToken);
+                
+                if (!session) {
+                    return res.status(401).json({ error: 'Sessão inválida ou expirada' });
+                }
+
+                res.json({ valid: true, user: session });
+            } catch (error) {
+                logger.error('Erro ao validar sessão:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de logout
+        this.app.post('/api/auth/logout', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const authHeader = req.headers.authorization;
+                const sessionToken = authHeader.substring(7);
+                
+                await postgresService.invalidateSession(sessionToken);
+                
+                res.json({ success: true, message: 'Logout realizado com sucesso' });
+            } catch (error) {
+                logger.error('Erro no logout:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de perfil do usuário
+        this.app.get('/api/auth/profile', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const user = await postgresService.getUserById(req.user.user_id);
+                
+                if (!user) {
+                    return res.status(404).json({ error: 'Usuário não encontrado' });
+                }
+
+                res.json(user);
+            } catch (error) {
+                logger.error('Erro ao buscar perfil:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de atualização de perfil
+        this.app.put('/api/auth/profile', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const profileData = req.body;
+                const user = await postgresService.updateUserProfile(req.user.user_id, profileData);
+                
+                res.json(user);
+            } catch (error) {
+                logger.error('Erro ao atualizar perfil:', error);
+                res.status(500).json({ error: 'Erro interno do servidor' });
+            }
+        });
+
+        // API de histórico de login
+        this.app.get('/api/auth/login-history', this.validateSession.bind(this), async (req, res) => {
+            try {
+                // Verificar se PostgreSQL está disponível
+                if (!postgresService.pool) {
+                    return res.status(503).json({ 
+                        error: 'Sistema de autenticação indisponível',
+                        message: 'PostgreSQL não está conectado'
+                    });
+                }
+
+                const history = await postgresService.getLoginHistory(req.user.user_id, 10);
+                res.json(history);
+            } catch (error) {
+                logger.error('Erro ao buscar histórico:', error);
                 res.status(500).json({ error: 'Erro interno do servidor' });
             }
         });

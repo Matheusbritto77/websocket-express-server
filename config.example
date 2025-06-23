@@ -9,7 +9,7 @@ REDIS_DB=0
 # MongoDB Configuration (Opcional)
 MONGO_EXTERNAL_URL=mongodb://localhost:27017/chatdb
 
-# PostgreSQL Configuration
+# PostgreSQL Configuration (Opcional - para autenticação)
 PG_EXTERNAL_HOST=168.231.95.211
 PG_EXTERNAL_PORT=5432
 PG_DATABASE=postgresSocket
@@ -17,4 +17,10 @@ PG_USER=PostgresSocker2D@
 PG_PASSWORD=Setcel2@@
 
 # Logging
-LOG_LEVEL=debug 
+LOG_LEVEL=debug
+
+# Notas:
+# - Redis é obrigatório para o funcionamento do chat
+# - MongoDB é opcional (funciona sem ele)
+# - PostgreSQL é opcional (sistema de autenticação funciona sem ele)
+# - Se PostgreSQL não estiver disponível, o chat funciona normalmente sem autenticação 

@@ -12,6 +12,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     min-width: 200px;
+    position: relative;
 }
 
 .online-widget:hover {
@@ -91,6 +92,17 @@
         padding: 12px;
     }
     
+    .widget-close-btn {
+        top: 6px;
+        right: 6px;
+        width: 20px;
+        height: 20px;
+    }
+    
+    .widget-close-btn i {
+        font-size: 12px;
+    }
+    
     .online-counter {
         gap: 10px;
     }
@@ -115,6 +127,16 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
+    .widget-close-btn {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ccc;
+    }
+    
+    .widget-close-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    
     .counter-main {
         color: #fff;
     }
@@ -122,4 +144,33 @@
     .counter-details {
         color: #ccc;
     }
+}
+
+.widget-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    font-size: 16px;
+    color: #666;
+}
+
+.widget-close-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #333;
+    transform: scale(1.1);
+}
+
+.widget-close-btn i {
+    font-size: 14px;
 } 
