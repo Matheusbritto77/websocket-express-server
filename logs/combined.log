@@ -4575,3 +4575,20 @@
 {"level":"info","message":"Usuário Stranger entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 21:49:04"}
 {"level":"info","message":"Usuário Vnamfs82o1A1KSpeAAAL desconectou","service":"omegle-clone","timestamp":"2025-06-22 21:49:07"}
 {"level":"info","message":"Nova conexão: TP_V-laUSYPe9Yd0AAAN","service":"omegle-clone","timestamp":"2025-06-22 21:49:15"}
+{"level":"info","message":"Servidor Omegle iniciado na porta 3333","service":"omegle-clone","timestamp":"2025-06-22 22:39:50"}
+{"level":"info","message":"Nova conexão: XBk4QghA-OAXWcOiAAAB","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"🔄 Conectando ao MongoDB: mongodb://***@168.231.95.211:27017","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"✅ MongoDB conectado com sucesso via mongoose","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"📊 Teste do modelo: 6 mensagens encontradas","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"✅ Índices TTL criados no MongoDB","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"Usuário matheusbritto entrou no grupo 1","service":"omegle-clone","timestamp":"2025-06-22 22:39:51"}
+{"level":"info","message":"Usuário XBk4QghA-OAXWcOiAAAB desconectou","service":"omegle-clone","timestamp":"2025-06-22 22:40:38"}
+{"level":"info","message":"Nova conexão: i8bXUUCz9W0NvWUJAAAD","service":"omegle-clone","timestamp":"2025-06-22 22:41:05"}
+{"level":"info","message":"Usuário i8bXUUCz9W0NvWUJAAAD entrou no chat text","service":"omegle-clone","timestamp":"2025-06-22 22:41:05"}
+{"level":"info","message":"Usuário i8bXUUCz9W0NvWUJAAAD adicionado à fila de text. Total: 1","service":"omegle-clone","timestamp":"2025-06-22 22:41:05"}
+{"level":"info","message":"Nova conexão: NphwaCM-Z8P0l__IAAAF","service":"omegle-clone","timestamp":"2025-06-22 22:41:09"}
+{"level":"info","message":"Usuário NphwaCM-Z8P0l__IAAAF entrou no chat text","service":"omegle-clone","timestamp":"2025-06-22 22:41:09"}
+{"level":"info","message":"Usuário NphwaCM-Z8P0l__IAAAF adicionado à fila de text. Total: 2","service":"omegle-clone","timestamp":"2025-06-22 22:41:09"}
+{"level":"info","message":"Match criado: i8bXUUCz9W0NvWUJAAAD e NphwaCM-Z8P0l__IAAAF no chat text (sala: text_room_1750642869885_at016lww9)","service":"omegle-clone","timestamp":"2025-06-22 22:41:10"}
+{"level":"info","message":"Mensagem enviada de NphwaCM-Z8P0l__IAAAF para i8bXUUCz9W0NvWUJAAAD na sala text_room_1750642869885_at016lww9","service":"omegle-clone","timestamp":"2025-06-22 22:41:14"}
+{"level":"info","message":"Mensagem enviada de i8bXUUCz9W0NvWUJAAAD para NphwaCM-Z8P0l__IAAAF na sala text_room_1750642869885_at016lww9","service":"omegle-clone","timestamp":"2025-06-22 22:41:20"}

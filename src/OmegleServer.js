@@ -953,7 +953,10 @@ class OmegleServer {
     async handleJoinChat(socket, data) {
         const chatType = data.type; // 'text' ou 'video'
         
+        console.log(`🔍 handleJoinChat chamado - Socket: ${socket.id}, Tipo: ${chatType}`);
+        
         if (chatType !== 'text' && chatType !== 'video') {
+            console.log(`❌ Tipo de chat inválido: ${chatType}`);
             socket.emit('error', { message: 'Tipo de chat inválido' });
             return;
         }
@@ -964,6 +967,7 @@ class OmegleServer {
             const isAllowed = await redisService.checkRateLimit(rateLimitKey, 10, 60000); // 10 tentativas por minuto
             
             if (!isAllowed) {
+                console.log(`❌ Rate limit excedido para socket: ${socket.id}`);
                 socket.emit('error', { message: 'Muitas tentativas de conexão. Tente novamente em alguns minutos.' });
                 return;
             }
@@ -971,12 +975,14 @@ class OmegleServer {
             // Define o tipo de chat para este socket
             this.socketChatType.set(socket.id, chatType);
             
+            console.log(`✅ Usuário ${socket.id} entrou no chat ${chatType}`);
             logger.info(`Usuário ${socket.id} entrou no chat ${chatType}`);
             
             // Adiciona à fila apropriada
             await this.addToWaitingQueue(socket, chatType);
             
         } catch (error) {
+            console.error(`❌ Erro ao processar join_chat:`, error);
             logger.error('Erro ao processar join_chat:', error);
             socket.emit('error', { message: 'Erro interno do servidor' });
         }
@@ -984,29 +990,40 @@ class OmegleServer {
 
     async addToWaitingQueue(socket, chatType) {
         try {
+            console.log(`🔍 addToWaitingQueue - Socket: ${socket.id}, Tipo: ${chatType}`);
+            
             // Adicionar à fila Redis
-            await redisService.addToWaitingQueue(socket.id, chatType);
+            const redisResult = await redisService.addToWaitingQueue(socket.id, chatType);
+            console.log(`📊 Redis addToWaitingQueue resultado:`, redisResult);
             
             const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
             
             // Adiciona à fila de espera apenas o id se não estiver presente
             if (!waitingQueue.includes(socket.id)) {
                 waitingQueue.push(socket.id);
+                console.log(`✅ Usuário ${socket.id} adicionado à fila de ${chatType}. Total: ${waitingQueue.length}`);
                 logger.info(`Usuário ${socket.id} adicionado à fila de ${chatType}. Total: ${waitingQueue.length}`);
+            } else {
+                console.log(`⚠️ Usuário ${socket.id} já está na fila de ${chatType}`);
             }
 
             // Notifica o usuário
+            const statusMessage = `Procurando alguém para conversar no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}...`;
+            console.log(`📤 Enviando status para ${socket.id}:`, { type: 'waiting', message: statusMessage });
+            
             socket.emit('status', { 
                 type: 'waiting', 
-                message: `Procurando alguém para conversar no chat ${chatType === 'text' ? 'de texto' : 'com vídeo'}...`,
+                message: statusMessage,
                 position: waitingQueue.length,
                 chatType: chatType
             });
 
             // Tenta fazer match
+            console.log(`🔍 Tentando fazer match para ${chatType}...`);
             await this.tryMatch(chatType);
             
         } catch (error) {
+            console.error(`❌ Erro ao adicionar à fila de espera:`, error);
             logger.error('Erro ao adicionar à fila de espera:', error);
         }
     }
@@ -1016,10 +1033,14 @@ class OmegleServer {
             const waitingQueue = chatType === 'text' ? this.textChatWaitingUsers : this.videoChatWaitingUsers;
             const connections = chatType === 'text' ? this.textChatConnections : this.videoChatConnections;
             
+            console.log(`🔍 tryMatch - Tipo: ${chatType}, Usuários na fila: ${waitingQueue.length}`);
+            
             // Se há pelo menos 2 usuários esperando, faz o match
             if (waitingQueue.length >= 2) {
                 const user1 = waitingQueue.shift();
                 const user2 = waitingQueue.shift();
+                
+                console.log(`🎯 Fazendo match: ${user1} e ${user2} no chat ${chatType}`);
                 
                 const roomId = `${chatType}_room_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
                 
@@ -1049,6 +1070,8 @@ class OmegleServer {
                 const socket1 = this.io.sockets.sockets.get(user1);
                 const socket2 = this.io.sockets.sockets.get(user2);
                 
+                console.log(`📤 Notificando usuários - Socket1: ${!!socket1}, Socket2: ${!!socket2}`);
+                
                 if (socket1) {
                     socket1.emit('status', { 
                         type: 'connected', 
@@ -1069,13 +1092,17 @@ class OmegleServer {
                     });
                 }
                 
+                console.log(`✅ Match criado com sucesso: ${user1} e ${user2} no chat ${chatType} (sala: ${roomId})`);
                 logger.info(`Match criado: ${user1} e ${user2} no chat ${chatType} (sala: ${roomId})`);
                 
                 // Remover da fila Redis
                 await redisService.removeFromWaitingQueue(user1, chatType);
                 await redisService.removeFromWaitingQueue(user2, chatType);
+            } else {
+                console.log(`⏳ Aguardando mais usuários para ${chatType}. Atual: ${waitingQueue.length}`);
             }
         } catch (error) {
+            console.error(`❌ Erro ao tentar fazer match:`, error);
             logger.error('Erro ao tentar fazer match:', error);
         }
     }

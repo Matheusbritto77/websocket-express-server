@@ -86,7 +86,11 @@ class OmegleChat {
             console.log('Conectado ao servidor');
             this.updateStatus('Conectado ao servidor', 'success');
             
-            // Não envia join_chat automaticamente, apenas quando startChat for chamado
+            // Se estiver esperando, envia o join_chat automaticamente
+            if (this.isWaiting) {
+                this.socket.emit('join_chat', { type: 'text' });
+                console.log('Evento join_chat enviado automaticamente após conexão');
+            }
         });
 
         this.socket.on('disconnect', () => {
@@ -128,6 +132,7 @@ class OmegleChat {
             console.log('Evento join_chat enviado para chat de texto');
         } else {
             console.log('Socket não conectado, aguardando conexão...');
+            // Se o socket não estiver conectado, o evento será enviado quando conectar
         }
     }
 
