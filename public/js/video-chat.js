@@ -9,8 +9,17 @@ class VideoChat {
         this.peerConnection = null;
         this.pendingCandidates = []; // Array para candidatos pendentes
         
+        // Detectar Safari
+        this.isSafari = this.detectSafari();
+        
         this.initializeElements();
         this.bindEvents();
+    }
+
+    // Detectar Safari
+    detectSafari() {
+        const userAgent = navigator.userAgent;
+        return /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
     }
 
     initializeElements() {
@@ -63,11 +72,39 @@ class VideoChat {
         try {
             this.updateStatus('Solicitando permissões...', 'waiting');
             
-            // Solicita permissões de câmera e microfone
-            this.localStream = await navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: true
-            });
+            // Configurações específicas para Safari
+            const constraints = {
+                video: {
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 },
+                    facingMode: 'user'
+                },
+                audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    autoGainControl: true
+                }
+            };
+
+            // Fallback para navegadores mais antigos
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                // Fallback para versões antigas
+                const getUserMedia = navigator.getUserMedia || 
+                                   navigator.webkitGetUserMedia || 
+                                   navigator.mozGetUserMedia || 
+                                   navigator.msGetUserMedia;
+                
+                if (getUserMedia) {
+                    this.localStream = await new Promise((resolve, reject) => {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
+                } else {
+                    throw new Error('getUserMedia não é suportado neste navegador');
+                }
+            } else {
+                // Solicita permissões de câmera e microfone
+                this.localStream = await navigator.mediaDevices.getUserMedia(constraints);
+            }
             
             // Verifica se o stream tem tracks
             if (this.localStream && this.localStream.getTracks().length > 0) {
@@ -107,14 +144,23 @@ class VideoChat {
     }
 
     initializeSocket() {
-        this.socket = io({
+        // Configurações específicas para Safari
+        const socketOptions = {
             timeout: 20000,
             forceNew: true,
             reconnection: true,
             reconnectionAttempts: 5,
-            reconnectionDelay: 1000,
-            transports: ['websocket', 'polling']
-        });
+            reconnectionDelay: 1000
+        };
+
+        // Safari tem melhor compatibilidade com polling primeiro
+        if (this.isSafari) {
+            socketOptions.transports = ['polling', 'websocket'];
+        } else {
+            socketOptions.transports = ['websocket', 'polling'];
+        }
+
+        this.socket = io(socketOptions);
 
         // Eventos do socket
         this.socket.on('connect', () => {
@@ -313,6 +359,7 @@ class VideoChat {
     // WebRTC Methods
     initializePeerConnection() {
         try {
+            // Configurações específicas para Safari
             const configuration = {
                 iceServers: [
                     { urls: 'stun:stun.l.google.com:19302' },
@@ -320,6 +367,13 @@ class VideoChat {
                     { urls: 'stun:stun2.l.google.com:19302' }
                 ]
             };
+
+            // Safari precisa de configurações específicas
+            if (this.isSafari) {
+                configuration.iceCandidatePoolSize = 10;
+                configuration.bundlePolicy = 'max-bundle';
+                configuration.rtcpMuxPolicy = 'require';
+            }
 
             this.peerConnection = new RTCPeerConnection(configuration);
 
@@ -424,7 +478,15 @@ class VideoChat {
             }
             
             console.log('Criando offer...');
-            const offer = await this.peerConnection.createOffer();
+            
+            // Configurações específicas para Safari
+            const offerOptions = {};
+            if (this.isSafari) {
+                offerOptions.offerToReceiveAudio = true;
+                offerOptions.offerToReceiveVideo = true;
+            }
+            
+            const offer = await this.peerConnection.createOffer(offerOptions);
             console.log('Offer criado:', offer);
             
             await this.peerConnection.setLocalDescription(offer);
@@ -467,11 +529,27 @@ class VideoChat {
             }
             
             console.log('Definindo remote description...');
-            await this.peerConnection.setRemoteDescription(data.offer);
+            
+            // Safari pode precisar de tratamento especial
+            if (this.isSafari) {
+                // Garante que a descrição está no formato correto
+                const offer = new RTCSessionDescription(data.offer);
+                await this.peerConnection.setRemoteDescription(offer);
+            } else {
+                await this.peerConnection.setRemoteDescription(data.offer);
+            }
+            
             console.log('Remote description definida');
             
             console.log('Criando answer...');
-            const answer = await this.peerConnection.createAnswer();
+            
+            // Configurações específicas para Safari
+            const answerOptions = {};
+            if (this.isSafari) {
+                answerOptions.voiceActivityDetection = true;
+            }
+            
+            const answer = await this.peerConnection.createAnswer(answerOptions);
             console.log('Answer criado:', answer);
             
             await this.peerConnection.setLocalDescription(answer);
@@ -512,7 +590,16 @@ class VideoChat {
             // Só processa se não temos descrição remota ainda
             if (!this.peerConnection.remoteDescription) {
                 console.log('Definindo remote description via answer...');
-                await this.peerConnection.setRemoteDescription(data.answer);
+                
+                // Safari pode precisar de tratamento especial
+                if (this.isSafari) {
+                    // Garante que a descrição está no formato correto
+                    const answer = new RTCSessionDescription(data.answer);
+                    await this.peerConnection.setRemoteDescription(answer);
+                } else {
+                    await this.peerConnection.setRemoteDescription(data.answer);
+                }
+                
                 console.log('Remote description definida via answer');
                 
                 // Processa candidatos pendentes
